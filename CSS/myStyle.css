@@ -1,0 +1,290 @@
+/* start variables */
+:root{
+    --main-color: #09203F;
+    --secondary-color: #EC801D;
+    --third-color: #f5f4f4;
+    --linear-color: linear-gradient(90deg, #09203F 0%, #537895 100%);
+}
+/* end variables */
+
+/* Start global rules */
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+::-ms-reveal {
+    display: none;
+}
+html{
+    scroll-behavior: smooth;
+    height: 100vh;
+}
+
+
+body{
+    margin: 0;
+    font-family: 'Oxanium';
+    color: var(--main-color);
+    
+    min-height: 100%;
+}
+/* end global rules */
+
+
+.container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+
+/* start header */
+.header{
+    height: 100px;
+    background:var(--linear-color);
+    background-position: 0;
+}
+.header .container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: unset;
+}
+
+.header img{
+    width: 10%;
+}
+.header img:hover{
+    cursor:pointer;
+}
+
+.header .logo{
+    font-family: 'Oxanium';
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--third-color);
+}
+.header .logo span{
+    color:rgb(232,236,236,63%)
+}
+
+@media (min-width: 500px){
+    .header .logo{
+        margin: 35px 0px;
+        font-size: 32px;
+    }
+    .header img{
+        width: 50px;
+    }
+    .header{
+        height: 110px;
+        background: url(/SVG/Rectangle\ 12.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+@media (min-width: 800px){
+    .header .logo{
+        margin: 25px 0px;
+        font-size: 38px;
+    }
+    .header img{
+        width: 50px;
+    }
+    .header{
+        height: 150px;
+    }
+}
+@media (min-width: 1200px){
+    .header .logo{
+        font-size: 45px;
+    }
+    .header img{
+        width: 55px;
+    }
+    .header{
+        height: 130px;
+    }
+}
+
+@media (min-width: 1700px){
+    .header{
+        background:var(--linear-color);
+        height: 100px;
+    }
+    .header img{
+        width: 40px;
+    }
+}
+
+@media (max-width: 380px){
+    .header .logo {
+        font-size: 18px;
+    }
+}
+/* end header */
+
+
+/* start_form */
+.sign_form{
+    margin: 0 auto; 
+    width: 350px;
+}
+
+.sign_field{
+    border:3.5px solid var(--main-color); 
+    border-radius: 7px; 
+    padding-left: 15px; 
+    align-self: center;
+    margin: 10px 0px;  
+}
+
+.sign_legend{
+    font-size: 18px; font-weight: 500;
+}
+
+.sign_input{
+    width: fit-content;
+    margin: 0; 
+    border: none; 
+    outline: none;
+    margin:-6px 0px 0px 0px; 
+    text-indent: 10px;
+    width: 100%;
+    height: 32px; 
+    font-size: 17px; 
+    font-family: 'Oxanium';
+    color:#537895;
+    background-color:unset;
+}
+
+.sign_password{
+    width: fit-content;
+    margin: 0; 
+    border: none; 
+    outline: none;
+    margin:-6px 0px 0px 0px; 
+    text-indent: 10px;
+    width: 93%;
+    height: 32px; 
+    font-size: 17px; 
+    font-family: 'Oxanium';
+    color:#537895;
+    background-color:unset;
+}
+
+.eye{
+    width: 7%;
+    margin: -2px 0 0 0;
+    float: right;
+    visibility: hidden;
+}
+
+.sign_screen .container{
+    margin: auto;
+    width: 100%;
+    padding-top: 50px;
+}
+
+.sign_screen button{
+    height: 50px;
+    color: var(--third-color);
+    background-color: var(--main-color);
+    font-family: 'Oxanium';
+    border-radius: 20px;
+    font-size: 20px; 
+    font-weight: 900;
+    width: 100%;
+}
+.sign_screen button:hover{
+    cursor:pointer;
+    background: #06395f;
+}
+.sign_form a{
+    text-decoration: none;
+    font-weight: 900;
+    color: --main-color98;
+    padding: 5px;
+    margin: 0 0 10px;
+    float: right;
+}
+.sign_form a:active{
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.name fieldset{
+    width: 48%;
+    display: flexbox;
+}
+
+.others{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.others p{
+    margin: 30px 0 10px;
+}
+
+.others a{
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.others img{
+    width: 40px;
+    height: 40px;
+}
+.others img:hover{
+    cursor:pointer;
+}
+
+@media (min-width: 992px){
+    .sign_form{
+        width:450px;
+    }
+    .others{
+        font-size: 16px;
+    }
+}
+@media (max-width: 380px){
+    .sign_form{
+        width: auto;
+    }
+    .sign_legend{
+        font-size: 12px;
+    }
+}
+/* end_form */
+
+
+/* Start footer */
+.footer{
+    position:fixed;
+    background: var(--linear-color);
+    color: var(--third-color);
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.footer span{
+    color: var(--secondary-color);
+}
+/* End footer */
+

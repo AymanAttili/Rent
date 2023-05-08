@@ -1,0 +1,403 @@
+
+:root{
+    --main-color: #09203F;
+    --secondary-color: #EC801D;
+    --third-color: #f5f4f4;
+    --fourth-color: #537895c9;
+    --hover-color:#eaebf3;
+    --linear-color: linear-gradient(90deg, #09203F 0%, #537895 100%);
+}
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Oxanium';
+}
+::-ms-reveal {
+    display: none;
+}
+html{
+    scroll-behavior: smooth;
+    height: 100vh;
+}
+
+
+body{
+    margin: 0;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hide{
+    visibility: hidden;
+}
+.erase{
+    display: none;
+}
+
+
+/* Start navbar */
+
+.navbar .container{
+    width: 100%;
+    height: 80px;
+    background: var(--linear-color);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.navbar .logo{
+    width: 300px;
+    margin: 0 10px;
+}
+
+.navbar .left, .navbar .right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.navbar .menu{
+    width: 45px;
+    margin: 10px 0 0 10px;
+}
+.navbar .menu:hover{
+    cursor: pointer;
+}
+.navbar .profile_picture{
+    width: 40px
+}
+.navbar .heart{
+    width: 40px;
+    margin: 0 10px;
+}
+.navbar .signup_button{
+    color: var(--main-color);
+    background: var(--third-color);
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 14px;
+    margin: 0 5px;
+}
+.navbar .signup_button:hover{
+    background: var(--secondary-color);
+    color: var(--third-color);
+    cursor: pointer;
+}
+.navbar .login_button{
+    color: var(--third-color);
+    background: var(--main-color);
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 14px;
+    margin: 0 5px;
+}
+.navbar .login_button:hover{
+    background: var(--secondary-color);
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+/* Start menu */
+#slide{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #284b794b;
+    z-index: 3;
+}
+
+.menu_popup{
+    position: absolute;
+    width: 240px;
+    font-weight: 700;
+    font-size: 18px;
+    color:var(--main-color);
+    margin: 0 10px 0 -300px;
+    padding: 10px;
+    background: var(--third-color);
+    height: 100vh;
+    border: #b5bdc4 solid 2px;
+    border-radius: 3px;
+    z-index: 4;
+    transition-duration: 0.5s;
+}
+.menu_popup .switch{
+    width: 30px;
+}
+
+.topMenu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.topMenu .switchTo{
+    font-size: 14px;
+}
+.topMenu .switchIcon{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+.topMenu .switchIcon:hover{
+    background: var(--hover-color);
+    cursor: pointer;
+}
+.topMenu .switchIcon p{
+    margin-bottom: 0;
+}
+.topMenu .close{
+    color: var(--secondary-color);
+    order: -1;
+}
+.topMenu .close:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.menuList {
+    list-style-type: none;
+    text-indent: 10px;
+    padding: 0;
+}
+
+.menuList li{
+    padding: 5px 0;
+    border-radius: 3px;
+}
+.menuList li:hover{
+    background: var(--hover-color);
+    cursor: pointer;
+}
+
+/* End menu */
+
+/* End navbar */
+
+
+
+/* Start searchbar */
+
+.searchbar{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 5px 10px 18px #b8b8b9;
+
+}
+
+
+.searchbox{
+    height:44px;
+    width:40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border: #09203f2c solid 2px;
+    border-radius: 5px;
+
+}
+.search{
+    font-size: 16px;
+    font-weight: 500;
+    text-indent: 5px;
+    width: 95%;
+    height: 100%;
+    border: none;
+    outline: unset;
+    background: unset;
+    color: var(--fourth-color);
+}
+
+.choose, .filterButton{
+    width: 17%;
+    background: white;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--fourth-color);
+    border: #09203f2c solid 2px;
+    text-align: center;
+    border-radius: 5px;
+    
+}
+.filterButton .icon{
+    margin-top: -5px;
+}
+.filterButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.filtersList{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+
+    font-size: 16px;
+    font-weight: 500;
+}
+.filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    border: #ec811d2f solid 2px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 4px 5px;
+    height: fit-content;
+    margin-right: 10px;
+}
+.filterDescription{
+    margin: auto;
+    
+}
+.filter .icon{
+    width: 20%;
+    margin: auto 0;
+}
+.clearAll{
+    margin-left: 10px;
+    color: var(--secondary-color);
+}
+
+
+.sort{
+    background: var(--third-color);
+    border: #09203f2c solid 2px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    height:44px;
+}
+.sort .noProperties{
+    color: var(--fourth-color);
+    font-size: 16px;
+    font-weight: 500;
+    text-indent: 5px;
+}
+.sort .noProperties::after{
+    content: ' Properties.';
+    color: var(--fourth-color);
+}
+
+.sort .sortBy{
+    background: white;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    border: none;
+    text-align: center;
+    height: 100%;
+    background: unset;
+}
+.sort .divSortBy::before{
+    content: 'Sort by:';
+    color: var(--fourth-color);
+}
+
+/* End searchbar */
+
+
+/* Start cards */
+.cardsSection{
+    float: left;
+    width: 50%;
+}
+
+.cards{
+    overflow-y: scroll;
+    height: calc(100vh - 280px)
+}
+h1{
+    color: white;
+}
+
+/* End cards */
+
+
+
+
+/* Start map */
+#map{
+    width: 100%;
+    height: 100%;
+}
+
+.mapContainer{
+    position: fixed;
+    right: 0;
+    width:50%;
+    height: 100%;
+    
+    height: calc(100vh - 80px);
+    padding: 5px;
+    background: var(--secondary-color);
+}
+.mapContainer a.direction-link {
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    z-index: 1;
+    color: var(--third-color);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 8px 20px;
+    background: var(--secondary-color);
+}
+.mapContainer a.direction-link:hover {
+    text-decoration: none;
+    background: var(--main-color);
+    color: var(--third-color);
+}
+/* End map */
+
+
+
+/* Start footer */
+
+.footer{
+    
+    background: var(--linear-color);
+    color: var(--third-color);
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    bottom: 0;
+    z-index: -1;
+}
+
+.footer span{
+    color: var(--secondary-color);
+}
+/* End footer */
+

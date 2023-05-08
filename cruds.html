@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Main template CSS file-->
+
+<!--    Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Template1</title>
+
+</head>
+
+<body>
+    
+    <div class="crud">
+        <div class="head">
+            <h1>CRUDS</h1>
+            <p>product management system</p>
+        </div>
+
+        <div class="input">
+            <input type="text" placeholder="title" id="title">
+
+            <div class="total">
+                <input onkeyup='calcTotal()' type="number" placeholder="price" id="price">
+                <input onkeyup='calcTotal()' type="number" placeholder="taxes" id="taxes">
+                <input onkeyup='calcTotal()' type="number" placeholder="ads" id="ads">
+                <input onkeyup='calcTotal()' type="number" placeholder="discount" id="discount">
+                <small id="total"></small>
+            </div>
+
+            <input type="number" placeholder="count" id="count">
+            <input type="text" placeholder="category" id="category">
+
+        </div>
+
+    
+
+        <div class="output">
+            <button id="create" onclick="create()">Create</button>
+            <input type="text" placeholder="search" id="search"> 
+            
+            <div class="search">
+                <button id="searchName">Search by name</button>
+                <button id="searchCategory">Search by category</button>
+            </div>
+            <div id="deleteAll">
+
+            </div>
+            <hr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>price</th>
+                        <th>taxes</th>
+                        <th>ads</th>
+                        <th>discount</th>
+                        <th>total</th>
+                        <th>category</th>
+                        <th>update</th>
+                        <th>delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+    
+
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            font-family: 'Oxanium';
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #09203F;
+        }
+
+        .crud{
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+            border: #09203F solid 5px;
+            padding: 20px;
+        }
+
+        
+        input{
+            width: 100%;
+            border: none;
+            outline: unset;
+            color: #09203F;
+            background: #E8ECEC;
+            border-radius: 5px;
+            margin: 5px 0;
+            padding: 10px 0;
+            text-indent: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Oxanium';
+            transition-duration: 0.4s;
+        }
+        input:focus, button:hover{
+            transform: scale(1.03) ;
+        }
+        
+        .total{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .total input{
+            width: 20%;
+        }
+        
+        .total small{
+                color: #E8ECEC;
+                background: #EC801D;
+                padding: 4px;
+        }
+        .total small::before{
+            content: 'Total: ';
+        }
+
+        button{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 20px;
+            background-color: #09203F;
+            color: #E8ECEC;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Oxanium';
+            transition-duration: 0.5s;
+        }
+        button:hover{
+            background-color: #0f305c;
+        }
+
+        .search{
+            display: flex;
+            justify-content: space-around;
+        }
+        .search button{
+            width: 48%;
+        }
+
+        #deleteAll button{
+            background: #EC801D;
+        }
+        #deleteAll button:hover{
+            background: #EC801D;
+        }
+        
+
+        table{
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        table button{
+            width: 90%;
+            background: #EC801D;
+        }
+        table button:hover{
+            background: #EC801D;
+        }
+        
+        th{
+            padding: 4px;
+            border-bottom: #385e8f solid 1px;
+        }
+        
+        td{
+            border-bottom: #385e8f solid 1px;
+        }
+        
+    </style>
+
+    <script>
+        
+        let title = document.getElementById('title');
+        let price = document.getElementById('price');
+        let taxes = document.getElementById('taxes');
+        let ads = document.getElementById('ads');
+        let discount = document.getElementById('discount');
+        let total = document.getElementById('total');
+        let count = document.getElementById('count');
+        let category = document.getElementById('category');
+        let search = document.getElementById('search');
+        let tbody = document.querySelector('tbody');
+        let btnDelete = document.querySelector('#deleteAll');
+        let btnCreate = document.getElementById('create');
+
+        let mood='create';
+        let tmp;
+        
+        
+        function calcTotal(){
+            
+            if(price.value!=''){
+                let ans=+price.value + +taxes.value + +ads.value - +discount.value;
+                total.innerHTML=ans;
+                total.style.background='#0f305c';
+            }
+            else{
+                total.innerHTML='';
+                total.style.background='#EC801D';
+            }
+        }
+
+
+        let products = [];
+        if(localStorage.products!=null){
+            products=JSON.parse(localStorage.products);
+        }
+        function create(){
+
+            let product={
+                    title: title.value,
+                    price: price.value,
+                    taxes: taxes.value,
+                    ads: ads.value,
+                    discount: discount.value,
+                    total: total.innerHTML,
+                    category: category.value
+                }
+            
+            if(mood==='create'){
+                for(i=1 ; i<=count.value ; i++){
+                    products.push(product);
+                }
+            }
+            else{
+                products[tmp]=product;
+                count.style.display='block';
+                btnCreate.innerHTML='Create';
+                mood='create';
+            }
+            localStorage.setItem('products',JSON.stringify(products));
+            
+
+            clearData();
+            read();
+            calcTotal();
+        }
+
+        function clearData(){
+            title.value='';
+            price.value='';
+            taxes.value='';
+            ads.value='';
+            discount.value='';
+            total.innerHTML=''
+            count.value='';
+            category.value='';
+        }
+        
+
+        function read(){
+            let content='';
+            for( i=0 ; i<products.length ; i++){
+                content+=`
+                    <tr>
+                        <td>${i+1}</td>
+                        <td>${products[i].title}</td>
+                        <td>${products[i].price}</td>
+                        <td>${products[i].taxes}</td>
+                        <td>${products[i].ads}</td>
+                        <td>${products[i].discount}</td>
+                        <td>${products[i].total}</td>
+                        <td>${products[i].category}</td>
+                        <td><button onclick="updateProduct(${i})" class='update'>Update</button></td>
+                        <td><button onclick="deleteData(${i})" class='update'>Delete</button></td>
+                    </tr>
+                `
+            }
+            tbody.innerHTML=content;
+            
+            if(products.length>0){
+                btnDelete.innerHTML=`
+                    <button onclick="deleteAll()">Delete all (${products.length})</button>
+                `
+            }
+            else{
+                btnDelete.innerHTML='';
+            }
+        }
+        read();
+
+        function deleteData(i){
+            products.splice(i,1);
+            localStorage.setItem('products',JSON.stringify(products));
+            read();
+        }
+
+        function deleteAll(){
+            products.splice(0);
+            localStorage.removeItem('products');
+            
+            read();
+        }
+
+        
+        function updateProduct(i){
+            title.value=products[i].title;
+            price.value=products[i].price;
+            taxes.value=products[i].taxes;
+            ads.value=products[i].ads;
+            discount.value=products[i].discount;
+            calcTotal();
+            category.value=products[i].category;
+            count.style.display='none';
+            btnCreate.innerHTML='Update';
+            mood='update';
+            tmp=i;
+
+            scroll({
+                top: 0,
+                behavior: "smooth",
+            })
+        }
+        
+    </script>
+</body>
+</html>
