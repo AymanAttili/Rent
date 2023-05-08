@@ -82,7 +82,7 @@ body{
     }
     .header{
         height: 110px;
-        background: url(/SVG/Rectangle\ 12.svg);
+        background: url('./SVG/Rectangle\ 12.svg');
         background-repeat: no-repeat;
         background-size: cover;
     }
