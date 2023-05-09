@@ -15,7 +15,7 @@
 </head>
 <body>
       <!-- Start navbar -->
-      <nav class="navbar">
+    <nav class="navbar">
         <div id="slide" class="erase" onclick="popup(-300)"></div>
             <div class="menu_popup ">
                 <div class="topMenu">
@@ -28,8 +28,8 @@
                 </div>
                 <hr>
                 <ul class="menuList">
-                    <li onclick="window.open('./Index.html')">Home</li>
-                    <li onclick="window.open('./Search.html')">Search</li>
+                    <li onclick="window.open('./Index.html','_self')">Home</li>
+                    <li onclick="window.open('./Search.html','_self')">Search</li>
                     <hr>
                     <section class="">
                         <li>Saved properties <small>0</small></li>
@@ -41,9 +41,9 @@
                         <hr>
                     </section>
                     
-                    <section> 
-                        <li onclick="window.open('./Login.html')">Login</li>
-                        <li onclick="window.open('./Signup.html')">Sign up</li> 
+                    <section>
+                        <li onclick="window.open('./Login.html','_self')">Login</li>
+                        <li onclick="window.open('./Signup.html','_self')">Sign up</li> 
                     </section>
         
                     <section class="">
@@ -65,11 +65,14 @@
                 <img src="./SVG/off_heart.svg" class="heart erase">
                 <img src="./img/HD-wallpaper-lelouch-vi-britannia-anime-code-geass.jpg" class="profile_picture erase">
                 <p class="name erase">Ayman</p>
-                <p class="signup_button" onclick="window.open('./Signup.html')">Sign up</p>
-                <p class="login_button" onclick="window.open('./Login.html')">Log in</p>
+                <p class="signup_button" onclick="window.open('./Signup.html','_self')">Sign up</p>
+                <p class="login_button" onclick="window.open('./Login.html','_self')">Log in</p>
                 
             </div>
         </div>
+    </nav>
+
+    <!-- End navbar -->
 
 
 
