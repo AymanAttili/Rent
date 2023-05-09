@@ -8,3 +8,4 @@ function popup(margin){
     console.log(margin);
     slide.classList.toggle('erase');
 }
+

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Main template CSS file-->
+    <link rel="stylesheet" href="./CSS/Search.css" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>RentalMate | Search</title>
+
+</head>
+<body >
+
+
+    <!-- Start navbar -->
+    <nav class="navbar">
+        <div id="slide" class="erase" onclick="popup(-300)"></div>
+            <div class="menu_popup ">
+                <div class="topMenu">
+                    <div class="switchIcon">
+                        <img src="./SVG/switch.svg" class="switch">
+                        <p class="switchTo erase">switch to owner</p>
+                        <p class="switchTo">switch to tetnant</p>
+                    </div>
+                    <p class="close" onclick="popup(-300)">Close</p>
+                </div>
+                <hr>
+                <ul class="menuList">
+                    <li onclick="window.open('./Index.html')">Home</li>
+                    <li onclick="window.open('./Search.html')">Search</li>
+                    <hr>
+                    <section class="">
+                        <li>Saved properties <small>0</small></li>
+                        <li>History</li>
+                        <hr>
+                    </section>
+                    <section class="">
+                        <li>My realty</li>
+                        <hr>
+                    </section>
+                    
+                    <section>
+                        <li onclick="window.open('./Login.html')">Login</li>
+                        <li onclick="window.open('./Signup.html')">Sign up</li> 
+                    </section>
+        
+                    <section class="">
+                        <hr>
+                        <li class="">Log out</li>
+                    </section>
+                </ul>
+            </div>
+        
+        <div class="container">
+            <div class="left">
+                <img src="./SVG/menu1.svg" class="menu" onclick="popup(0)">
+
+                
+                <img class="logo" src="./SVG/Logo.svg">
+            </div>
+            <div class="right">
+                
+                <img src="./SVG/off_heart.svg" class="heart erase">
+                <img src="./img/HD-wallpaper-lelouch-vi-britannia-anime-code-geass.jpg" class="profile_picture erase">
+                <p class="name erase">Ayman</p>
+                <p class="signup_button" onclick="window.open('./Signup.html')">Sign up</p>
+                <p class="login_button" onclick="window.open('./Login.html')">Log in</p>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- End navbar -->
+
+
+    <!-- start Body -->
+
+    
+    <section class="cardsSection">
+        
+        <!-- Start searchbar -->
+        <div class="searchbar">
+            <div class="searchbox">
+                <input type="text" class="search" placeholder="Search">
+                <img class="icon" src="./SVG/X.svg">
+            </div>
+            <div class="selections">
+                <select class="choose" title="Max price">
+                    <option>Max price</option>
+                </select>
+                <select class="choose" title="Beds">
+                    <option>Beds</option>
+                </select>
+                <button class="filterButton" onmouseenter="filterIcon.src='./SVG/filtersearch1.svg'" onmouseleave="filterIcon.src='./SVG/filtersearch.svg'">
+                    Filters
+                    <img class="icon" name="filterIcon" src="./SVG/filtersearch.svg">
+                </button>
+            </div>
+            <div class="filtersList">
+                <div class="filter" id="f1" onmouseenter="i1.src='./SVG/X3.svg'" onmouseleave="i1.src='./SVG/X2.svg'">
+                    <p class="filterDescription">filter 1</p>
+                    <img class="icon" name="i1" src="./SVG/X2.svg" onclick="deleteFilter('f4')">
+                </div>
+                <div class="filter" id="f2" onmouseenter="i2.src='./SVG/X3.svg'" onmouseleave="i2.src='./SVG/X2.svg'">
+                    <p class="filterDescription">filter 2</p>
+                    <img class="icon" name="i2" src="./SVG/X2.svg" onclick="deleteFilter('f2')">
+                </div>
+                <div class="filter" id="f3" onmouseenter="i3.src='./SVG/X3.svg'" onmouseleave="i3.src='./SVG/X2.svg'">
+                    <p class="filterDescription">filter 3</p>
+                    <img class="icon" name="i3" src="./SVG/X2.svg" onclick="deleteFilter('f3')">
+                </div>
+                <div class="filter" id="f4" onmouseenter="i4.src='./SVG/X3.svg'" onmouseleave="i4.src='./SVG/X2.svg'">
+                    <p class="filterDescription">filter 4</p>
+                    <img class="icon" name="i4" src="./SVG/X2.svg" onclick="deleteFilter('f4')">
+                </div>
+                
+                <p class="clearAll" onclick="clearAll()">Clear all</p>
+            </div>
+
+            <div class="sort">
+                <p class="noProperties">1198</p>
+                <div class="divSortBy">
+                    <select class="sortBy"><option>Best match</option></select>
+                </div>
+            </div>
+        </div>
+        <!-- End searchbar -->
+
+
+        <!-- Start Cards -->
+        <div class="cards">
+            
+            <div class="card ">
+                <button type="button" class="likeButton">
+                    <img class="like" src="./SVG/heart1.svg">
+                </button><img class="photo" src="./img/card1.png">
+                <div class="innerCard">
+                    <div class="desrciption">
+                        <p class="price">120$+</p>
+                        <p class="rate">9.1</p>
+                        <p class="name">Attili Rent.</p>
+                        <p class="location">Tulkarem, Attil</p>
+                        <p class="beds">3 Beds</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
+                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="card ">
+                <button type="button" class="likeButton">
+                    <img class="like" src="./SVG/heart1.svg">
+                </button><img class="photo" src="./img/card1.png">
+                <div class="innerCard">
+                    <div class="desrciption">
+                        <p class="price">120$+</p>
+                        <p class="rate">9.1</p>
+                        <p class="name">Attili Rent.</p>
+                        <p class="location">Tulkarem, Attil</p>
+                        <p class="beds">3 Beds</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
+                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card ">
+                <button type="button" class="likeButton">
+                    <img class="like" src="./SVG/heart1.svg">
+                </button><img class="photo" src="./img/card1.png">
+                <div class="innerCard">
+                    <div class="desrciption">
+                        <p class="price">120$+</p>
+                        <p class="rate">9.1</p>
+                        <p class="name">Attili Rent.</p>
+                        <p class="location">Tulkarem, Attil</p>
+                        <p class="beds">3 Beds</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
+                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card ">
+                <button type="button" class="likeButton">
+                    <img class="like" src="./SVG/heart1.svg">
+                </button><img class="photo" src="./img/card1.png">
+                <div class="innerCard">
+                    <div class="desrciption">
+                        <p class="price">120$+</p>
+                        <p class="rate">9.1</p>
+                        <p class="name">Attili Rent.</p>
+                        <p class="location">Tulkarem, Attil</p>
+                        <p class="beds">3 Beds</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
+                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card ">
+                <button type="button" class="likeButton">
+                    <img class="like" src="./SVG/heart1.svg">
+                </button><img class="photo" src="./img/card1.png">
+                <div class="innerCard">
+                    <div class="desrciption">
+                        <p class="price">120$+</p>
+                        <p class="rate">9.1</p>
+                        <p class="name">Attili Rent.</p>
+                        <p class="location">Tulkarem, Attil</p>
+                        <p class="beds">3 Beds</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
+                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card ">
+                <button type="button" class="likeButton">
+                    <img class="like" src="./SVG/heart1.svg">
+                </button><img class="photo" src="./img/card1.png">
+                <div class="innerCard">
+                    <div class="desrciption">
+                        <p class="price">120$+</p>
+                        <p class="rate">9.1</p>
+                        <p class="name">Attili Rent.</p>
+                        <p class="location">Tulkarem, Attil</p>
+                        <p class="beds">3 Beds</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
+                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card ">
+                <button type="button" class="likeButton">
+                    <img class="like" src="./SVG/heart1.svg">
+                </button><img class="photo" src="./img/card1.png">
+                <div class="innerCard">
+                    <div class="desrciption">
+                        <p class="price">120$+</p>
+                        <p class="rate">9.1</p>
+                        <p class="name">Attili Rent.</p>
+                        <p class="location">Tulkarem, Attil</p>
+                        <p class="beds">3 Beds</p>
+                    </div>
+                    <div class="buttonDiv">
+                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
+                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <!-- End cards -->
+        
+    </section>
+    <!-- End searchbar -->
+
+
+
+
+    <section class="mapContainer">
+        <a class="direction-link" target="_blank" href="//maps.google.com/maps?f=d&amp;daddr=37.422230,-122.084058&amp;hl=en"> Get Directions</a>
+        <div id="map"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUxruZQ8r_AszFmZvHCH_hlDrUL3_plRE"></script>
+    
+    <script>
+        var myCenter = new google.maps.LatLng(32.304956, 35.038719);
+        function initialize(){
+            var mapProp = {
+                center:myCenter,
+                zoom:16,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+        
+            var map = new google.maps.Map(document.getElementById("map"),mapProp);
+        
+            var marker = new google.maps.Marker({
+                position:myCenter,
+            });
+        
+            marker.setMap(map);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    </section>
+    <!-- End body -->
+
+
+    
+   
+    
+
+
+    <script src="./browse.js"></script>
+    
+    
+
+</body>

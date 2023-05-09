@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Main template CSS file-->
-    <link rel="stylesheet" href="./CSS/browse.css" />
+    <link rel="stylesheet" href="./CSS/Search.css" />
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,11 +13,9 @@
     <title>Home</title>
 
 </head>
-<body >
-
-
-    <!-- Start navbar -->
-    <nav class="navbar">
+<body>
+      <!-- Start navbar -->
+      <nav class="navbar">
         <div id="slide" class="erase" onclick="popup(-300)"></div>
             <div class="menu_popup ">
                 <div class="topMenu">
@@ -30,8 +28,8 @@
                 </div>
                 <hr>
                 <ul class="menuList">
-                    <li>Home</li>
-                    <li>Search</li>
+                    <li onclick="window.open('./Index.html')">Home</li>
+                    <li onclick="window.open('./Search.html')">Search</li>
                     <hr>
                     <section class="">
                         <li>Saved properties <small>0</small></li>
@@ -43,9 +41,9 @@
                         <hr>
                     </section>
                     
-                    <section>
-                        <li>Login</li>
-                        <li>Sign up</li> 
+                    <section> 
+                        <li onclick="window.open('./Login.html')">Login</li>
+                        <li onclick="window.open('./Signup.html')">Sign up</li> 
                     </section>
         
                     <section class="">
@@ -72,152 +70,42 @@
                 
             </div>
         </div>
+
+
+
+        <section class="d-flex" style=" background-image: url(./img/background1.jpg); 
+                     background-size: cover; 
+                     background-position: center;
+                     width: 100%;
+                     height: 100vh;">
+
+        <div class="search-bar d-flex" style="background-color: #E8ECEC;">
+
+            <input placeholder="Tulkarm, Attil" style="width: 75%;
+                          height: 100%; 
+                          outline: none; 
+                          border: none;
+                          border-radius: 5%;
+                          padding-left: 20px;
+                          background-color: #E8ECEC;
+                          font-size: large;" type="text">
+            <button style="width: 25%;
+                           height: 80%;
+                           border-radius: 5%;
+                           border: none;
+                           background-color:#ec801d;
+                           color: white;
+                           text-align: center;
+                           padding: 1px;
+                           font-weight: 600;">Search</button>
+
+        </div>
+    </section>
     </nav>
 
     <!-- End navbar -->
 
-
-    <!-- start Body -->
-    <section class="cardsSection">
-        <div class="searchbar">
-            <div class="searchbox">
-                <input type="text" class="search" placeholder="Search">
-                <img class="icon" src="./SVG/X.svg">
-            </div>
-            <div class="selections">
-                <select class="choose" title="Max price">
-                    <option>Max price</option>
-                </select>
-                <select class="choose" title="Beds">
-                    <option>Beds</option>
-                </select>
-                <button class="filterButton">Filters<img class="icon" src="./SVG/filtersearch.svg"></button>
-            </div>
-            <div class="filtersList">
-                <div class="filter">
-                    <p class="filterDescription">filter 1</p>
-                    <img class="icon" src="./SVG/X2.svg">
-                </div>
-                <div class="filter">
-                    <p class="filterDescription">filter 2</p>
-                    <img class="icon" src="./SVG/X2.svg">
-                </div>
-                <div class="filter">
-                    <p class="filterDescription">filter 3</p>
-                    <img class="icon" src="./SVG/X2.svg">
-                </div>
-                <div class="filter">
-                    <p class="filterDescription">filter 4</p>
-                    <img class="icon" src="./SVG/X2.svg">
-                </div>
-                
-                <p class="clearAll">Clear all</p>
-            </div>
-
-            <div class="sort">
-                <p class="noProperties">1198</p>
-                <div class="divSortBy">
-                    <select class="sortBy"><option>Best match</option></select>
-                </div>
-            </div>
-        </div>
-        <div class="cards">
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <h1>Hello</h1>
-            <div class="card">
-                <img class="like">
-                <div class="innerCard">
-                    <img class="photo">
-                    <p class="price"></p>
-                    <p class="name"></p>
-                    <p class="location"></p>
-                    <p class="beds"></p>
-                    <p class="rate"></p>
-                </div>
-                <button class="phone"></button>
-                <button class="email"></button>
-                
-            </div>
-            <footer class="footer">
-                &copy; 2023 <span>RentalMate</span> All Right Reserved
-            </footer>
-        </div>
-        
-
-    </section>
-
-
-
-
-
-    <section class="mapContainer">
-        <a class="direction-link" target="_blank" href="//maps.google.com/maps?f=d&amp;daddr=37.422230,-122.084058&amp;hl=en"> Get Directions</a>
-        <div id="map"></div>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUxruZQ8r_AszFmZvHCH_hlDrUL3_plRE"></script>
-    
-    <script>
-        var myCenter = new google.maps.LatLng(32.304956, 35.038719);
-        function initialize(){
-            var mapProp = {
-                center:myCenter,
-                zoom:16,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
-        
-            var map = new google.maps.Map(document.getElementById("map"),mapProp);
-        
-            var marker = new google.maps.Marker({
-                position:myCenter,
-            });
-        
-            marker.setMap(map);
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-    </section>
-    <!-- End body -->
-
-
-    
-    
-    <div class="hid" style="visibility: hidden; height: 40px;">
-        HHHHHHHHHHHHHHHHHH
-    </div>
-
-    
-
-
     <script src="./browse.js"></script>
-    
-    
+
 
 </body>
