@@ -4,14 +4,14 @@ function changeVis(){
     if(input[0].type==='password'){
         for(i=0 ; i<input.length ; i++){
             input[i].type='text';
-            icons[i].src='/SVG/mdi_eye-off.svg';
+            icons[i].src='./SVG/mdi_eye-off.svg';
         }
     }
 
     else{
         for(i=0 ; i<input.length ; i++){
             input[i].type='password';
-            icons[i].src='/SVG/ic_baseline-remove-red-eye.svg';
+            icons[i].src='./SVG/ic_baseline-remove-red-eye.svg';
         }
     }
     
