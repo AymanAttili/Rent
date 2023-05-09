@@ -437,7 +437,7 @@ select:hover{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    z-index: -1;
 }
 
 .card{
@@ -461,6 +461,7 @@ select:hover{
     justify-content: center;
     width: 40px;
     height: 40px;
+    z-index: 100;
 }
 .likeButton:hover{
     cursor: pointer;
@@ -487,9 +488,10 @@ select:hover{
     align-content: space-between;
     flex-wrap: wrap;
     height: 55%;
-    background: var(--third-color);
+    background: unset;
     padding: 10px;
     border-radius: 0 0 16px 16px;
+    border: #09203f23 solid 1px;
 }
 .desrciption{
     display: flex;
