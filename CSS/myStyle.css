@@ -53,6 +53,7 @@ body{
     align-items: center;
     width: 100%;
     background-color: unset;
+    height: 100%;
 }
 
 .header img{
@@ -85,6 +86,10 @@ body{
         background: url('../SVG/Rectangle\ 12.svg');
         background-repeat: no-repeat;
         background-size: cover;
+    }
+    .header .container{
+        height: unset;
+        
     }
 }
 @media (min-width: 800px){
