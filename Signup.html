@@ -19,7 +19,7 @@
     <!-- start header -->
     <header class="header">
         <div class="container">
-            <img src="./SVG/back.svg" onclick="window.open('/index.html','_self')">
+            <img src="./SVG/back.svg" class="back" onclick="window.open('/index.html','_self')">
             <p class="logo">RentalMate<span>/Sign up</span></p>
             <img src="./SVG/back.svg" alt="" style="visibility: hidden;">
         </div>
@@ -72,8 +72,13 @@
                 
                 <div class="userType">
                     <p>Select User type:</p>
-                    <button type="button" id="tenant" class="typeButton tenant" onclick="flip(id)" onmouseenter="tenantIcon.src='./SVG/tenant.svg'" onmouseleave="tenantIcon.src='./SVG/tenant1.svg'"><img name="tenantIcon" src="./SVG/tenant1.svg"></button>
-                    <button type="button" id="owner" class="typeButton owner" onclick="flip(id)" onmouseenter="ownerIcon.src='./SVG/owner.svg'" onmouseleave="ownerIcon.src='./SVG/owner1.svg'"><img name="ownerIcon" src="./SVG/owner1.svg"></button>
+                    <button type="button" id="tenant" class="typeButton tenant"  >
+                        Tenatnt <img id="tenantIcon" class="btnIcon" src="./SVG/tenant1.svg">
+                    </button>
+
+                    <button type="button" id="owner" class="typeButton owner"  >
+                        Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
+                    </button>
                 </div>
                 <button type="submit">Continue</button> 
 

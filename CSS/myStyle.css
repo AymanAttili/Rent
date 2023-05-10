@@ -248,24 +248,24 @@ body{
 }
 .userType .typeButton{
     width: 48%;
+    font-size: 22px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 .userType .tenant{
     color: white;
     background: var(--main-color);
 }
-.userType .tenant:hover{
-    color: var(--main-color);
-    background: unset;
-    border:3.5px solid var(--main-color); 
-}
+
 .userType .owner{
     color: white;
     background: var(--secondary-color);
 }
-.userType .owner:hover{
-    color: var(--secondary-color);
-    background: unset;
-    border:3.5px solid var(--secondary-color); 
+
+.userType .btnIcon{
+    width: 34px
 }
 
 .others{
