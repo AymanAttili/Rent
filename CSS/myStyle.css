@@ -12,6 +12,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    transition-duration: 0.25s;
 }
 ::-ms-reveal {
     display: none;
@@ -145,7 +146,7 @@ body{
     border-radius: 7px; 
     padding-left: 15px; 
     align-self: center;
-    margin: 10px 0px;  
+    margin: 20px 0px 0 0 ;  
 }
 
 .sign_legend{
@@ -200,6 +201,7 @@ body{
     color: var(--third-color);
     background-color: var(--main-color);
     font-family: 'Oxanium';
+    border: none;
     border-radius: 20px;
     font-size: 20px; 
     font-weight: 900;
@@ -230,6 +232,40 @@ body{
 .name fieldset{
     width: 48%;
     display: flexbox;
+}
+
+.userType{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.userType p{
+    font-size: 20px;
+    font-weight: 600;
+    text-indent: 10px;
+    width: 100%;
+}
+.userType .typeButton{
+    width: 48%;
+}
+.userType .tenant{
+    color: white;
+    background: var(--main-color);
+}
+.userType .tenant:hover{
+    color: var(--main-color);
+    background: unset;
+    border:3.5px solid var(--main-color); 
+}
+.userType .owner{
+    color: white;
+    background: var(--secondary-color);
+}
+.userType .owner:hover{
+    color: var(--secondary-color);
+    background: unset;
+    border:3.5px solid var(--secondary-color); 
 }
 
 .others{

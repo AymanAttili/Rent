@@ -23,3 +23,23 @@ function visEye(id){
     id.style.visibility='visible';
 }
 
+let owner = document.getElementById('owner');
+let tenant = document.getElementById('tenant');
+
+function flip(id){
+    if(id==='owner'){
+        tenant.style.color='white';
+        tenant.style.background='#09203F';
+        tenant.src='./SVG/owner.svg';
+
+        
+        
+        
+        owner.style.color= '#EC801D';
+        owner.style.background= 'unset';
+        owner.style.border='3.5px solid var(--secondary-color)'; 
+    }
+    else{
+
+    }
+}

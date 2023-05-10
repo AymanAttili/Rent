@@ -69,7 +69,12 @@
                     <input class="sign_password" type="password" onfocus="visEye(eye3)" >
                     <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick="changeVis()">
                 </fieldset>
-
+                
+                <div class="userType">
+                    <p>Select User type:</p>
+                    <button type="button" id="tenant" class="typeButton tenant" onclick="flip(id)" onmouseenter="tenantIcon.src='./SVG/tenant.svg'" onmouseleave="tenantIcon.src='./SVG/tenant1.svg'"><img name="tenantIcon" src="./SVG/tenant1.svg"></button>
+                    <button type="button" id="owner" class="typeButton owner" onclick="flip(id)" onmouseenter="ownerIcon.src='./SVG/owner.svg'" onmouseleave="ownerIcon.src='./SVG/owner1.svg'"><img name="ownerIcon" src="./SVG/owner1.svg"></button>
+                </div>
                 <button type="submit">Continue</button> 
 
             </form>

@@ -156,36 +156,23 @@ body{
 
 .topMenu{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    height: 50px;
 }
-
-.topMenu .switchTo{
-    font-size: 14px;
+.topMenu .logo{
+    width: 75%;
 }
-.topMenu .switchIcon{
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-}
-.topMenu .switchIcon:hover{
-    background: var(--hover-color);
+.topMenu .logo:hover{
     cursor: pointer;
-}
-.topMenu .switchIcon p{
-    margin-bottom: 0;
 }
 .topMenu .close{
     color: var(--secondary-color);
-    order: -1;
+    float: right;
 }
 .topMenu .close:hover{
-    text-decoration: underline;
     cursor: pointer;
+    background: var(--hover-color);
 }
 .menuList {
     list-style-type: none;
@@ -243,7 +230,7 @@ body{
     height:44px;
     width:45%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 5px;
     border: #09203f2c solid 2px;
@@ -254,12 +241,20 @@ body{
     font-size: 16px;
     font-weight: 500;
     text-indent: 5px;
-    width: 95%;
+    width: 90%;
     height: 100%;
     border: none;
     outline: unset;
     background: unset;
     color: var(--fourth-color);
+}
+.searchbox .search-icon{
+    height: 100%;
+    padding: 3px;
+    border-radius: 4px;
+}
+.searchbox .search-icon:hover{
+    background: var(--hover-color);
 }
 
 .selections{
