@@ -94,3 +94,4 @@ tenant.addEventListener('click', function(){
     owner.style.background='#EC801D';
     ownerIcon.src='./SVG/owner1.svg';
 })
+

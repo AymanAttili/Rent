@@ -116,7 +116,7 @@ body{
     cursor: pointer;
 }
 
-@media (max-width: 700px){
+@media (max-width: 850px){
     .navbar .signup_button, .navbar .login_button{
         display: none;
     }
@@ -397,7 +397,7 @@ select:hover{
     }
 }
 
-@media (max-width: 700px){
+@media (max-width: 850px){
     .selections{
         width: 32%;
         margin: 0;
@@ -505,10 +505,6 @@ select:hover{
     font-weight: 700;
     color: var(--main-color);
 }
-.desrciption .rate{
-    font-size: 14px;
-    color: var(--secondary-color);
-}
 .desrciption .name{
     font-size: 18px;
     font-weight: 600;
@@ -521,9 +517,7 @@ select:hover{
 .name, .location, .beds{
     width: 100%;
 }
-.rate::before{
-    content: 'Rate: ';
-}
+
 
 
 .buttonDiv{
@@ -567,7 +561,13 @@ select:hover{
         width: 100%;
     }
 }
-@media (max-width: 700px){
+@media (max-width: 850px){
+    body{
+        overflow:unset;
+    }
+    .cards{
+        overflow:visible;
+    }
     .card{
         width: 49%;
     }
@@ -617,7 +617,7 @@ select:hover{
     color: var(--third-color);
 }
 
-@media (max-width: 700px){
+@media (max-width: 850px){
     .mapContainer{
         display: none;
     }
