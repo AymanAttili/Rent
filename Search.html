@@ -34,7 +34,7 @@
                         <hr>
                     </section>
                     <section class="">
-                        <li>My realty</li>
+                        <li onclick="window.open('./add.html','_self')">My realty</li>
                         <hr>
                     </section>
                     
@@ -238,23 +238,24 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUxruZQ8r_AszFmZvHCH_hlDrUL3_plRE"></script>
     
     <script>
-        var myCenter = new google.maps.LatLng(32.304956, 35.038719);
-        function initialize(){
-            var mapProp = {
+        
+        function initialize(x, y){
+            let myCenter = new google.maps.LatLng(x, y);
+            let mapProp = {
                 center:myCenter,
-                zoom:16,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
+                zoom:17,
+                mapTypeId:'hybrid'
             };
         
-            var map = new google.maps.Map(document.getElementById("map"),mapProp);
+            let map = new google.maps.Map(document.getElementById("map"),mapProp);
         
-            var marker = new google.maps.Marker({
+            let marker = new google.maps.Marker({
                 position:myCenter,
             });
         
             marker.setMap(map);
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
+        google.maps.event.addDomListener(window, 'load', initialize(32.304956, 35.038719));
     </script>
     </section>
     <!-- End body -->

@@ -1,0 +1,248 @@
+:root{
+    --main-color: #09203F;
+    --secondary-color: #EC801D;
+    --third-color: #f5f4f4;
+    --fourth-color: #537895c9;
+    --hover-color:#eaebf3;
+    --linear-color: linear-gradient(90deg, #09203F 0%, #537895 100%);
+}
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: 'Oxanium';
+    transition-duration: 0.25s;
+}
+::-ms-reveal {
+    display: none;
+}
+html{
+    scroll-behavior: smooth;
+    height: 100vh;
+}
+
+
+body{
+    margin: 0;
+    min-height: 100%;
+}
+
+.container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hide{
+    visibility: hidden;
+}
+.erase{
+    display: none;
+}
+
+
+/* Start navbar */
+
+.navbar .container{
+    width: 100%;
+    height: 80px;
+    background: var(--linear-color);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.navbar .logo{
+    width: 300px;
+    margin: 0 10px;
+}
+
+.navbar .right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.navbar .left{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 10px 0;
+}
+.navbar .menu{
+    width: 45px;
+    margin: 10px 0 0 10px;
+}
+.navbar .menu:hover{
+    cursor: pointer;
+}
+.navbar .profile_picture{
+    width: 40px
+}
+.navbar .heart{
+    width: 40px;
+    margin: 0 10px;
+}
+.navbar .signup_button{
+    color: var(--main-color);
+    background: var(--third-color);
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 14px;
+    margin: 0 5px;
+}
+.navbar .signup_button:hover{
+    background: var(--secondary-color);
+    color: var(--third-color);
+    cursor: pointer;
+}
+.navbar .login_button{
+    color: var(--third-color);
+    background: var(--main-color);
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 14px;
+    margin: 0 5px;
+}
+.navbar .login_button:hover{
+    background: var(--secondary-color);
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+@media (max-width: 850px){
+    .navbar .signup_button, .navbar .login_button{
+        display: none;
+    }
+    .navbar .logo{
+        width: 50%;
+        float: left;
+    }
+}
+
+/* Start menu */
+#slide{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #284b794b;
+    z-index: 3;
+}
+
+.menu_popup{
+    position: absolute;
+    width: 240px;
+    font-weight: 700;
+    font-size: 18px;
+    color:var(--main-color);
+    margin: 0 10px 0 -300px;
+    padding: 10px;
+    background: var(--third-color);
+    height: 100vh;
+    border: #b5bdc4 solid 2px;
+    border-radius: 3px;
+    z-index: 4;
+    transition-duration: 0.5s;
+}
+.menu_popup .switch{
+    width: 30px;
+}
+
+.topMenu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+.topMenu .logo{
+    width: 75%;
+}
+.topMenu .logo:hover{
+    cursor: pointer;
+}
+.topMenu .close{
+    color: var(--secondary-color);
+    float: right;
+}
+.topMenu .close:hover{
+    cursor: pointer;
+    background: var(--hover-color);
+}
+.menuList {
+    list-style-type: none;
+    text-indent: 10px;
+    padding: 0;
+}
+
+.menuList li{
+    padding: 5px 0;
+    border-radius: 3px;
+}
+.menuList li:hover{
+    background: var(--hover-color);
+    cursor: pointer;
+}
+
+/* End menu */
+
+.d-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar{
+    width: 33%;  
+    height: 9%;
+    margin: 185px auto auto auto;
+    display: flex;
+    background-color: white;
+    position: relative;
+    padding-right: 10px;
+    border-radius: 5px;
+    min-width: 300px;
+}
+
+/* End navbar */
+
+
+/* Start map */
+#map{
+    width: 100%;
+    height: 100%;
+}
+
+.mapContainer{
+    position: fixed;
+    right: 0;
+    width:100%;
+    height: 100%;
+    
+    height: calc(100vh - 80px);
+    padding: 5px;
+    background: var(--secondary-color);
+}
+.mapContainer a.direction-link {
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    z-index: 1;
+    color: var(--third-color);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 25px;
+    padding: 8px 20px;
+    background: var(--secondary-color);
+}
+.mapContainer a.direction-link:hover {
+    text-decoration: none;
+    background: var(--main-color);
+    color: var(--third-color);
+}
+
+/* End map 
