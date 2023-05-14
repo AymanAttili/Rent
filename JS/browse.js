@@ -9,3 +9,12 @@ function popup(margin){
     slide.classList.toggle('erase');
 }
 
+function xchange(img){
+    if(img.src=='./SVG/heart2.svg'){
+        img.src='./SVG/heart2.svg'
+    }
+    else{
+        img.src='./SVG/heart.svg'
+    }
+}
+

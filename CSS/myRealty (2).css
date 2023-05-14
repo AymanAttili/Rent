@@ -120,26 +120,6 @@ ul.menu {
 }
 
 /*end header*/
-/*Start Section*/
-
-section{
-    margin-top: 20px;
-}
-.Add-property-button, .Manage-users{
-    background-image: url(svg/App-property.svg);
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    background-position-x: 95%;
-    background-position-y: 50%;
-    width: 30vh;
-    height: 6vh;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--primary-color);
-    color: white;
-    font-size: 20px;
-    text-align: start;
-}
 
 section{
     margin-top: 30px;
@@ -198,7 +178,7 @@ label{
 }
 .left-side{
     margin-right: 10px; 
-    height: 80vh;
+    height: 85vh;
 }
 @media (max-width:992px){
     .right-side{
@@ -221,48 +201,92 @@ label{
     background-color: var(--secondary-color);
 }
 
-/*Tenant*/
-.Delete{
-    background-color: var(--secondary-color);
-    color: white;
+/*CARDS here*/
+
+.card {
+    width: 32%;
+    height: 45%;
+    position: relative;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    
+}
+.Delete-and-Update{
+    margin-top: 20px;
+    display: flex; 
+    justify-content: space-around;
+}
+.Delete-button{
+    background-image: url(svg/Delete.svg);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position-x: 8%;
+    background-position-y: 50%;
+    width: 45%; 
+    height: 40px; 
+    border-radius: 10px; 
+    background-color: #ec801d; 
+    color: white; 
     border: none;
-    border-radius: 5px;
-    height: 45px;
 }
-.Update{
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 5px;
-    border: none;
-    height: 45px;
+.Update-button{
+    background-image: url(svg/Update.svg);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position-x: 8%;
+    background-position-y: 50%;
+    width: 45%; 
+    height: 40px; 
+    border-radius: 10px; 
+    background-color: #09203f; 
+    color: white; 
+    border: none; 
 }
-.infornation-row{
-    margin-top: 50px;
-    margin-bottom: 10px;
-}
-.infornation-row p, .infornation-row h5{
-    margin-bottom: 0;
-}
-/*Tenant*/
-/*Owaner*/
-.Show-properties{
-    border-radius: 5px;
-    border: none;
-    background-color: var(--third-color);
-    height: 45px;
+.card-image{
+    width: 100%;
+    height: 60%;
+    border-radius: 16px 16px 0 0;
+    margin: 0;
 }
 
-@media (max-width: 992px){
-    .infornation-row button{
-        margin-top: 10px;
-        height: 50px;
-    }
-    .infornation-row p{
-        margin-top: 10px;
-        font-size: 14px;
-        margin-top: 0;
-        margin-bottom: 0;
+.Description {
+    background: var(--third-color);
+    padding: 10px;
+    border-radius: 0 0 16px 16px;
+}
+
+.Description p{
+    font-size: 17px;
+}
+.desrciption {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.content{
+    margin: 16px;
+}
+
+.content p{
+    margin-bottom: 0;
+    font-weight: 700;
+}
+
+@media (max-width : 1070px)
+{
+    .card{
+        width: 49%;
     }
 }
-/*Owaner*/
-/*End Section*/
+@media (max-width : 768px)
+{
+    .card{
+        width: 100%;
+    }
+}
+/*End card*/
+/*end body*/
+
+

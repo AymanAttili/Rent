@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/bootstrap.css">
-  <link rel="stylesheet" href="./myRealty.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="./css/myRealty.css">
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,12 +19,12 @@
   <header>
 
 
-    <div class="row container ">
+    <div class="row container justify-content-between">
 
       <!--START MENU-->
 
       <!--menu button-->
-      <img src="svg/menu1.svg" id="menu-button" class="col-1" style="margin: 10px 0 0 5px; cursor: pointer;" alt="">
+      <img src="./svg/menu1.svg" id="menu-button" class="col-1" style="margin: 10px 0 0 5px; cursor: pointer;" alt="">
 
 
       <ul id="menu" class="menu">
@@ -33,7 +33,7 @@
 
           <div class="topMenu">
 
-            <img width="150px" height="150px" src="./SVG/Logo2.svg" style="cursor: pointer;"
+            <img width="150px" height="150px" src="./svg/Logo2.svg" style="cursor: pointer;"
               onclick="window.open('./Index.html','_self')">
 
             <img width="20px" height="20px" id="Close" style="cursor: pointer;" src='svg/X.svg'>
@@ -43,34 +43,34 @@
 
           <li onclick="window.open('./Search.html','_self')">Search</li>
           <hr>
-          <section class="">
+          <div>
 
             <li>Saved properties <small>0</small></li>
 
             <li>History</li>
             <hr>
-          </section>
-          <section class="">
+          </div>
+          <div>
             <li>My realty</li>
             <hr>
-          </section>
+          </div>
 
-          <section>
+          <div>
             <li onclick="window.open('./Login.html','_self')">Login</li>
             <li onclick="window.open('./Signup.html','_self')">Sign up</li>
-          </section>
+          </div>
 
-          <section class="">
+          <div>
             <hr>
             <li class="">Log out</li>
-          </section>
+          </div>
         </ul>
       </ul>
 
 
       <!--Rental Mate LOGO-->
       <a href="#" class="col-8 col-sm-7 col-md-6 col-lg-4">
-        <img src="./SVG/Logo.svg" alt="RentalMat.com" height="65px" width="75%">
+        <img src="./svg/Group 54.svg" alt="RentalMate.com" height="65px" width="75%">
       </a>
 
       <!--Profile image & user name-->
@@ -78,7 +78,7 @@
         class="PROFILE col-1 col-sm-3  col-md-3 offset-md-1 col-lg-3 offset-lg-4 col-xl-2 offset-xl-5 align-items-center justify-content-end">
 
         <!--profile image-->
-        <img class="profile-image-in-header" src="./img/SF-Neighborhoods-Feature-photo-.jpg" height="43px" alt="">
+        <img class="profile-image-in-header" src="./img/392f1715d423aedc.jpg" height="43px" alt="">
 
         <!--User name-->
         <p>Ayman Attili</p>
@@ -166,53 +166,57 @@
                 initial();
               })
             </script>
-
-
-            
           </div>
         </div>
         <div class="right-side row col-12 col-lg-6">
           <div class="information  row align-items-center">
-            <label class="col-5 col-md-4 text-center" for="">Images</label>
-            <input id="imgs" class="col-7 col-md-8" style="background-color: white; border: none;" type="file"
+            <label class="col-5 col-md-4 text-center" for="">Image</label>
+            <input class="col-7 col-md-8" style="background-color: white; border: none;" type="file"
               accept="image/png, image/jpeg, image/jpg" multiple>
           </div>
           <hr>
           <div class="information row align-items-center">
             <label class="col-5 col-md-4 text-center" for="">Price</label>
-            <input id="price" class="col-7 col-md-8" type="number">
+            <input class="col-7 col-md-8" type="number">
           </div>
           <hr>
           <div class="information row align-items-center">
-            <label class="col-5 col-md-4 text-center" for="">Address</label>
-            <input id="address" class="col-7 col-md-8" type="text">
+            <label class="col-5 col-md-4 text-center" for="">Country</label>
+            <input class="col-7 col-md-8" type="text">
+          </div>
+          <div class="information row align-items-center">
+            <label class="col-5 col-md-4 text-center" for="">City</label>
+            <input class="col-7 col-md-8" type="text">
+          </div>
+          <div class="information row align-items-center">
+            <label class="col-5 col-md-4 text-center" for="">Street</label>
+            <input class="col-7 col-md-8" type="text">
           </div>
           <hr>
           <div class="information row align-items-center">
             <label class="col-5 col-md-4 text-center" for="">Description</label>
-            <input id="description" class="col-7 col-md-8" type="text">
+            <input class="col-7 col-md-8" type="text">
           </div>
           <hr>
           <div class="information row align-items-center">
             <label class="col-5 col-md-4 text-center" for="">Beds</label>
-            <input id="beds" class="col-7 col-md-8" type="number">
+            <input class="col-7 col-md-8" type="number">
           </div>
           <hr>
           <div class="information row align-items-center">
             <label class="text-center" style="display: block;" for="">Validation Date</label>
             <div class="row align-items-center">
               <label class="col-5 col-md-4 text-center" for="">From</label>
-              <input id="from" class="col-7 col-md-8" type="date">
+              <input class="col-7 col-md-8" type="date">
             </div>
             <div class="row align-items-center">
               <label class="col-5 col-md-4 text-center" for="">To</label>
-              <input id="to" class="col-7 col-md-8" type="date">
+              <input class="col-7 col-md-8" type="date">
             </div>
           </div>
         </div>
 
-        <button id="addBtn" class="col-12 Add-prop text-center" type="button" onclick="addProperty()">Add Property</button>
-        
+        <button class="col-12 Add-prop text-center" type="submit">Add Property</button>
       </div>
     </div>
   </section>
@@ -222,13 +226,27 @@
     <div class="container">
       <h1 style="margin-bottom: 30px;">My Property</h1>
 
-      <div id="cards" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <div class="card">
+          <img class="card-image" src="./img/backiee-176475.jpg">
+          <div class="Description">
+            <div class="content">
+              <p>$3,000+</p>
+              <p>Saif Abu Raad</p>
+              <p>Sabastea, Nablus</p>
+              <p>2-3 beds</p>
+              <div class="Delete-and-Update">
+                <button class="Delete-button" type="button">Delete</button>
+                <button class="Update-button" type="button">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
   </section>
 
 
-  
+
   <script src="./js/popper.min.js"></script>
   <script src="./js/jquery-3.6.4.min.js"></script>
   <script src="./js/bootstrap.js"></script>
@@ -341,7 +359,6 @@
   read();
 
   </script>
-  
 
 </body>
 

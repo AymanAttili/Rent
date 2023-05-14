@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/Admin.css">
+    <link rel="stylesheet" href="./css/security-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,7 +15,6 @@
 
 <body>
     <!------------------------------------------START HEADER---------------------------------------->
-
     <header>
 
 
@@ -24,8 +23,8 @@
             <!--START MENU-->
 
             <!--menu button-->
-            <img src="./svg/menu1.svg" id="menu-button" class="col-1" style="margin: 10px 0 0 5px; cursor: pointer;"
-                alt="">
+            <img src="./svg/menu1.svg" id="menu-button" class="col-1"
+                style="margin: 10px 0 0 5px; cursor: pointer;" alt="">
 
 
             <ul id="menu" class="menu">
@@ -44,27 +43,27 @@
 
                     <li onclick="window.open('./Search.html','_self')">Search</li>
                     <hr>
-                    <div>
+                    <section class="">
 
                         <li>Saved properties <small>0</small></li>
 
                         <li>History</li>
                         <hr>
-                    </div>
-                    <div>
+                    </section>
+                    <section class="">
                         <li>My realty</li>
                         <hr>
-                    </div>
+                    </section>
 
-                    <div>
+                    <section>
                         <li onclick="window.open('./Login.html','_self')">Login</li>
                         <li onclick="window.open('./Signup.html','_self')">Sign up</li>
-                    </div>
+                    </section>
 
-                    <div>
+                    <section class="">
                         <hr>
                         <li class="">Log out</li>
-                    </div>
+                    </section>
                 </ul>
             </ul>
 
@@ -89,84 +88,86 @@
         </div>
 
     </header>
-
     <!------------------------------------------END HEADER---------------------------------------->
 
     <!------------------------------------------START SECTION---------------------------------------->
 
     <section>
-        <div class="container">
-            <button class="Manage-users">Manage users</button>
-        </div>
-    </section>
 
-    <section>
         <div class="container">
-            <div class="container">
-                <div class="row align-items-center">
-                    <h3 class="col-12 col-md-3 col-lg-2 text-start">Tenants:</h3>
-                    <label class="col-4 col-md-2 col-lg-2 text-center">Search: </label>
-                    <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
+
+            <div class="row align-items-start justify-content-between">
+
+                <!--LEFT SIDE-->
+                <div class="col-12 col-md-4">
+
+                    <!--DIV that contain all buttons-->
+                    <div class="button-container">
+
+                        <!--personal detail-->
+                        <input class="button" id="personal-detail-button" type="button" value="Personal details" onclick="window.open('./personal-details.html','_self')">
+
+                        <!--security-->
+                        <input class="button" id="security-button" type="button" value="Security" onclick="window.open('./security.html','_self')">
+
+                        <!--payment details-->
+                        <input class="button" id="payment-button" type="button" value="Payment details" onclick="window.open('./Payment.html','_self')">
+
+                        <!--Email notifications-->
+                        <input class="button" id="email-notification-button" type="button" value="Email notifications" onclick="window.open('./email-noti.html','_self')">
+
+                    </div>
+
                 </div>
-                <div class="Tenants container">
-                    <div class="infornation-row row justify-content-between">
-                        <h5 class="col-5 col-sm-7">Ayman Attili</h5>
-                        <button class="Delete col-3 col-sm-2">Delete</button>
-                        <button class="Update col-3 col-sm-2">Update</button>
+
+                <!--RIGHT SIDE-->
+                <div class="right-side col-12 col-md-7">
+
+                    <!--HEAD of right side-->
+                    <div class="row align-items-center">
+
+                        <!--Security & description-->
+                        <div class="right-side-TITLE col-12 text-start">
+                            <h1>Security</h1>
+                            <p>Adjust your security setting set up two-factor authentication.</p>
+                        </div>
+
                     </div>
-                    <hr>
-                    <div class="infornation-row row justify-content-between">
-                        <h5 class="col-5 col-sm-7">Ayman Attili</h5>
-                        <button class="Delete col-3 col-sm-2">Delete</button>
-                        <button class="Update col-3 col-sm-2">Update</button>
+
+                    <!--Password-->
+                    <div class="row align-items-center" id="informatin-rows">
+
+                        <p class="col-12 col-sm-3" for="">Password</p>
+
+                        <!--Description-->
+                        <p class="Description col-12 col-sm-7">Reset your password regularly to keep your account secure</p>
+
+                        <!--Reset-->
+                        <a class="col-12 col-sm-2 text-end" href="#">Reset</a>
                     </div>
-                    <hr>
-                    <div class="infornation-row row justify-content-between">
-                        <h5 class="col-5 col-sm-7">Ayman Attili</h5>
-                        <button class="Delete col-3 col-sm-2">Delete</button>
-                        <button class="Update col-3 col-sm-2">Update</button>
+
+
+                    <!--Delete account-->
+                    <div class="row align-items-center" id="informatin-rows">
+
+                        <p class="col-12 col-sm-3">Delete account</p>
+
+                        <!--Description-->
+                        <p class="Description col-12 col-sm-6">Permanently delete your RentalMate.com account</p>
+
+                        <!--Delete account-->
+                        <a class="col-12 col-sm-3 text-end" href="#">delete account</a>
                     </div>
-                </div>
-                <div class="row align-items-center" style="margin-top: 50px;">
-                    <h3 class="col-12 col-md-3 col-lg-2 text-start">Owners:</h3>
-                    <label class="col-4 col-md-2 col-lg-2 text-center">Search: </label>
-                    <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
-                </div>
-                <div class="Tenants container align-items-center">
-                    <div class="infornation-row row justify-content-between align-items-center">
-                        <h5 class="col-6 col-lg-2">Ayman Attili</h5>
-                        <p class="col-6 col-lg-2">No. of properties <span>0</span></p>
-                        <button class="Show-properties col-4 col-lg-2">Show properties</button>
-                        <button class="Delete col-3 col-lg-2">Delete</button>
-                        <button class="Update col-3 col-lg-2">Update</button>
-                    </div>
-                    <hr>
-                    <div class="infornation-row row justify-content-between align-items-center">
-                        <h5 class="col-6 col-lg-2">Ayman Attili</h5>
-                        <p class="col-6 col-lg-2">No. of properties <span>0</span></p>
-                        <button class="Show-properties col-4 col-lg-2">Show properties</button>
-                        <button class="Delete col-3 col-lg-2">Delete</button>
-                        <button class="Update col-3 col-lg-2">Update</button>
-                    </div>
-                    <hr>
-                    <div class="infornation-row row justify-content-between align-items-center">
-                        <h5 class="col-6 col-lg-2">Ayman Attili</h5>
-                        <p class="col-6 col-lg-2">No. of properties <span>0</span></p>
-                        <button class="Show-properties col-4 col-lg-2">Show properties</button>
-                        <button class="Delete col-3 col-lg-2">Delete</button>
-                        <button class="Update col-3 col-lg-2">Update</button>
-                    </div>
+
                 </div>
             </div>
         </div>
     </section>
     <!------------------------------------------End SECTION---------------------------------------->
 
-
     <script src="./js/popper.min.js"></script>
     <script src="./js/jquery-3.6.4.min.js"></script>
     <script src="./js/bootstrap.js"></script>
-
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -193,7 +194,6 @@
 
         });
     </script>
-
 </body>
 
 </html>
