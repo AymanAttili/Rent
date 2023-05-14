@@ -125,8 +125,8 @@ ul.menu {
 section{
     margin-top: 20px;
 }
-.Add-property-button, .Manage-users{
-    background-image: url(svg/App-property.svg);
+.Add-users{
+    background-image: url(../svg/App-property.svg);
     background-repeat: no-repeat;
     background-size: 20px 20px;
     background-position-x: 95%;
@@ -145,44 +145,6 @@ section{
     margin-top: 30px;
 }
 
-#map{
-    width: 100%;
-    height: 100%;
-}
-
-.mapContainer{
-    width:100%;
-    height: 90%;
-    padding: 5px;
-    background: var(--secondary-color);
-}
-.direction-link {
-    position: absolute;
-    z-index: 1;
-
-    color: var(--third-color);
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 25px;
-    padding: 8px 20px;
-    background: var(--secondary-color);
-}
-.mapContainer a.direction-link:hover {
-    text-decoration: none;
-    background: var(--main-color);
-    color: var(--third-color);
-}
-
-hr{
-    margin: 0;
-    padding: 0;
-    height: 12px;
-    color: black;
-}
-.infornation{
-    margin: 0;
-}
 input{
     background-color: var(--third-color);
     border-radius: 10px;
@@ -195,30 +157,6 @@ label{
     font-size: 20px;
     color: var(--primary-color);
     text-align: center;
-}
-.left-side{
-    margin-right: 10px; 
-    height: 80vh;
-}
-@media (max-width:992px){
-    .right-side{
-        margin-top: 40px;
-        height: 500px;
-    }
-    .left-side{
-        margin-right: 0;
-    }
-}
-
-.Add-prop{
-    margin-top: 30px;
-    margin-bottom: 20px;
-    width: 30vh; 
-    height: 50px;
-    border: none;
-    border-radius: 5px; 
-    color: white;
-    background-color: var(--secondary-color);
 }
 
 /*Tenant*/
