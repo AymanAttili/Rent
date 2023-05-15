@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="CSS/bootstrap.css">
   <link rel="stylesheet" href="./CSS/myRealty.css">
+  <link rel="stylesheet" href="./CSS/navbar.css">
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,80 +15,9 @@
 </head>
 
 <body>
-  <!------------------------------------------START HEADER---------------------------------------->
 
-  <header>
+  <?php    include('./Templates/navbar.php'); ?>
 
-
-    <div class="row container justify-content-between">
-
-      <!--START MENU-->
-
-      <!--menu button-->
-      <img src="./svg/menu1.svg" id="menu-button" class="col-1" style="margin: 10px 0 0 5px; cursor: pointer;" alt="">
-
-
-      <ul id="menu" class="menu">
-
-        <ul class="menuList">
-
-          <div class="topMenu">
-
-            <img width="150px" height="150px" src="./svg/Logo2.svg" style="cursor: pointer;"
-              onclick="window.open('./Index.html','_self')">
-
-            <img width="20px" height="20px" id="Close" style="cursor: pointer;" src='svg/X.svg'>
-          </div>
-
-          <li onclick="window.open('./Index.html','_self')">Home</li>
-
-          <li onclick="window.open('./Search.html','_self')">Search</li>
-          <hr>
-          <div>
-
-            <li>Saved properties <small>0</small></li>
-
-            <li>History</li>
-            <hr>
-          </div>
-          <div>
-            <li>My realty</li>
-            <hr>
-          </div>
-
-          <div>
-            <li onclick="window.open('./Login.html','_self')">Login</li>
-            <li onclick="window.open('./Signup.html','_self')">Sign up</li>
-          </div>
-
-          <div>
-            <hr>
-            <li class="">Log out</li>
-          </div>
-        </ul>
-      </ul>
-
-
-      <!--Rental Mate LOGO-->
-      <a href="#" class="col-8 col-sm-7 col-md-6 col-lg-4">
-        <img src="./svg/Group 54.svg" alt="RentalMate.com" height="65px" width="75%">
-      </a>
-
-      <!--Profile image & user name-->
-      <a href="#"
-        class="PROFILE col-1 col-sm-3  col-md-3 offset-md-1 col-lg-3 offset-lg-4 col-xl-2 offset-xl-5 align-items-center justify-content-end">
-
-        <!--profile image-->
-        <img class="profile-image-in-header" src="./img/392f1715d423aedc.jpg" height="43px" alt="">
-
-        <!--User name-->
-        <p>Ayman Attili</p>
-
-      </a>
-
-    </div>
-
-  </header>
 
   <!------------------------------------------END HEADER---------------------------------------->
   <section>
@@ -118,7 +48,7 @@
               function initial() {
                 map = new google.maps.Map(document.getElementById('map'), {
                   center: { lat: Number(lat.value), lng: Number(lng.value) },
-                  zoom: 10,
+                  zoom: 15,
                   mapTypeId: 'hybrid'
                 });
                 marker = new google.maps.Marker({
@@ -129,7 +59,7 @@
                   icon: './SVG/map_marker.svg'
                 })
                 getBtn.href=`//maps.google.com/maps?f=d&amp;daddr=${Number(lat.value)},${Number(lng.value)}&amp;hl=en`;
-                console.log(2);
+                
 
                 
                 map.addListener('click', (googleMapsEvent) => {
@@ -250,33 +180,7 @@
   <script src="./js/popper.min.js"></script>
   <script src="./js/jquery-3.6.4.min.js"></script>
   <script src="./js/bootstrap.js"></script>
-
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var menu = document.getElementById("menu");
-      var button = document.getElementById("menu-button");
-      var closeButton = document.getElementById("Close");
-
-
-      button.addEventListener("click", function (e) {
-        e.stopPropagation(); // Prevent menu hiding when clicking the button
-        menu.classList.toggle("open");
-      });
-
-      document.addEventListener("click", function (e) {
-        if (!menu.contains(e.target) && menu.classList.contains("open")) {
-          menu.classList.remove("open");
-        }
-      });
-
-      closeButton.addEventListener("click", function (e) {
-        e.stopPropagation(); // Prevent menu hiding when clicking the close button
-        menu.classList.remove("open");
-      });
-
-    });
-  </script>
+  <script src="./js/browse.js"></script>
 
 <script>
   let imgs = document.getElementById('imgs');

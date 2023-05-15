@@ -1,0 +1,184 @@
+:root{
+    --main-color: #09203F;
+    --secondary-color: #EC801D;
+    --third-color: #f5f4f4;
+    --fourth-color: #537895c9;
+    --hover-color:#eaebf3;
+    --linear-color: linear-gradient(90deg, #09203F 0%, #537895 100%);
+}
+/* Start navbar */
+
+.mynavbar{
+    background: var(--linear-color)!important;
+}
+
+.mynavbar .container{
+    width: 100%!important;  
+    height: 80px!important;
+    display: flex!important;
+    justify-content: space-between!important;
+}
+
+.mynavbar .logo{
+    width: 300px!important;
+    margin: 0 10px!important;
+}
+
+.mynavbar .right{
+    display: flex!important;
+    align-items: center!important;
+    justify-content: space-between!important;
+    margin: 10px 0!important;
+}
+.mynavbar .left{
+    display: flex!important;
+    align-items: center!important;
+    justify-content: start!important;
+    margin: 10px 0!important;
+}
+.mynavbar .menu{
+    width: 45px!important;
+    margin: 10px 0 0 10px!important;
+}
+.mynavbar .menu:hover{
+    cursor: pointer!important;
+}
+.mynavbar .profile_picture{
+    width: 40px!important
+}
+.mynavbar .heart{
+    width: 40px!important;
+    margin: 0 10px!important;
+}
+.mynavbar .signup_button{
+    color: var(--main-color)!important;
+    background: var(--third-color)!important;
+    font-weight: 600!important;
+    font-size: 18px!important;
+    border: none!important;
+    border-radius: 50px!important;
+    padding: 8px 14px!important;
+    margin: 0 5px!important;
+}
+.mynavbar .signup_button:hover{
+    background: var(--secondary-color)!important;
+    color: var(--third-color)!important;
+    cursor: pointer;
+}
+.mynavbar .login_button{
+    color: var(--third-color)!important;
+    background: var(--main-color)!important;
+    font-weight: 600!important;
+    font-size: 18px!important;
+    border: none!important;
+    border-radius: 50px!important;
+    padding: 8px 14px!important;
+    margin: 0 5px!important;
+}
+.mynavbar .login_button:hover{
+    background: var(--secondary-color)!important;
+    color: var(--main-color)!important;
+    cursor: pointer!important;
+}
+
+@media (max-width: 850px){
+    .mynavbar .signup_button, .navbar .login_button{
+        display: none!important;
+    }
+    .mynavbar .logo{
+        width: 50%!important;
+        float: left!important;
+    }
+}
+
+/* Start menu */
+#slide{
+    position: absolute!important;
+    width: 100%!important;
+    height: 100vh!important;
+    background: #284b794b!important;
+    z-index: 3!important;
+}
+
+.menu_popup{
+    position: absolute!important;
+    width: 240px!important;
+    font-weight: 700!important;
+    font-size: 18px!important;
+    color:var(--main-color)!important;
+    margin: 0 10px 0 -300px;
+    padding: 10px!important;
+    background: var(--third-color)!important;
+    height: 100vh!important;
+    border: #b5bdc4 solid 2px!important;
+    border-radius: 3px!important;
+    z-index: 4!important;
+    transition-duration: 0.5s!important;
+}
+.menu_popup .switch{
+    width: 30px!important;
+}
+
+.topMenu{
+    display: flex!important;
+    justify-content: space-between!important;
+    align-items: center!important;
+    height: 50px!important;
+}
+.topMenu .logo{
+    width: 75%!important;
+}
+.topMenu .logo:hover{
+    cursor: pointer!important;
+}
+.topMenu .close{
+    color: var(--secondary-color)!important;
+    float: right!important;
+}
+.topMenu .close:hover{
+    cursor: pointer!important;
+    background: var(--hover-color)!important;
+}
+.menuList {
+    list-style-type: none!important;
+    text-indent: 10px!important;
+    padding: 0!important;
+}
+
+.menuList li{
+    padding: 5px 0!important;
+    border-radius: 3px!important;
+}
+.menuList li:hover{
+    background: var(--hover-color)!important;
+    cursor: pointer!important;
+}
+
+/* End menu */
+
+.d-flex{
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+.search-bar{
+    width: 33%!important;  
+    height: 9%!important;
+    margin: 185px auto auto auto!important;
+    display: flex!important;
+    background-color: white!important;
+    position: relative!important;
+    padding-right: 10px!important;
+    border-radius: 5px!important;
+    min-width: 300px!important;
+}
+
+/* End navbar */
+
+.hide{
+    visibility: hidden;
+}
+.erase{
+    display: none;
+}
