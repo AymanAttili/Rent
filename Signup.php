@@ -209,6 +209,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                              VALUES ('$uname', '$email', '$fname', '$lname', '$hashed_password')";
     mysqli_query($conn, $query);
 
+    //Store the customer in the appropriate table
+    if ($user_type == "tenant") {
+        $query = "INSERT INTO tenant (Tenant_user_name)
+        VALUES ('$uname')";
+        mysqli_query($conn, $query);
+    }
+    else {
+        $query = "INSERT INTO owner (Owner_user_name)
+        VALUES ('$uname')";
+        mysqli_query($conn, $query);
+    }
+
     // Testing 
 
     if (mysqli_affected_rows($conn)) {
