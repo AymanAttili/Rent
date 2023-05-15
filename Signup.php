@@ -2,6 +2,10 @@
 include("database.php");
 ?>
 
+<!-- The Page is Complete and Tested -->
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -155,10 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST["password"];
     $repassword = $_POST["repassword"];
     $user_type = $_POST["userType"];
-    // $userType = $_POST["userType"];     // to see later
 
-    phpAlert($user_type);
-    exit;
 
     // Sanitize -> cause a problem in password 
     // $email = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -166,7 +167,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // $lname = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
     // $password = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
     // $repassword = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
-
 
 
     // Validate
@@ -185,8 +185,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-
-    /// 
 
 
     // Check if the username or email already exists in the database
@@ -209,15 +207,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                              VALUES ('$uname', '$email', '$fname', '$lname', '$hashed_password')";
     mysqli_query($conn, $query);
 
+    /////////////////////////////////////////////////
+
     //Store the customer in the appropriate table
     if ($user_type == "tenant") {
         $query = "INSERT INTO tenant (Tenant_user_name)
-        VALUES ('$uname')";
+                               VALUES ('$uname')";
         mysqli_query($conn, $query);
-    }
-    else {
+    } else {
         $query = "INSERT INTO owner (Owner_user_name)
-        VALUES ('$uname')";
+                             VALUES ('$uname')";
         mysqli_query($conn, $query);
     }
 
