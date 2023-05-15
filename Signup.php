@@ -19,7 +19,7 @@
     <!-- start header -->
     <header class="header">
         <div class="container">
-            <img src="./SVG/back.svg" class="back" onclick="window.open('/index.html','_self')">
+            <img src="./SVG/back.svg" class="back" onclick="window.open('/index.php','_self')">
             <p class="logo">RentalMate<span>/Sign up</span></p>
             <img src="./SVG/back.svg" alt="" style="visibility: hidden;">
         </div>
@@ -86,7 +86,7 @@
 
             <div class="others">
     
-                <p>Do you have an account? <a href="./Login.html">Login</a> <br><br><br>
+                <p>Do you have an account? <a href="./Login.php">Login</a> <br><br><br>
                     or continue with:
                 </p>  
                 <img src="./SVG/ic_baseline-apple.svg">
