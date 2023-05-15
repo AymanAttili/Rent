@@ -60,7 +60,7 @@ include("database.php");
 
                 <fieldset class="sign_field">
                     <legend class="sign_legend">Username</legend>
-                    <input class="sign_input" type="text" name=uname required>
+                    <input class="sign_input" type="text" name="uname" required>
                 </fieldset>
 
 
@@ -73,22 +73,29 @@ include("database.php");
                 <fieldset class="sign_field">
                     <legend class="sign_legend">Confirm password</legend>
                     <input class="sign_password" type="password" name="repassword" required onfocus="visEye(eye3)">
-                    <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick="changeVis()">
+                    <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick=changeVis()>
                 </fieldset>
 
                 <div class="userType">
+                    <input type="hidden" name="userType" id="userTypeInput" value="tenant">
                     <p>Select User type:</p>
-                    <button type="button" id="tenant" value="tenant" class="typeButton tenant">
+                    <button type="button" id="tenant" value="tenant" class="typeButton tenant" onclick="setUserType('tenant')">
                         Tenatnt <img id="tenantIcon" class="btnIcon" src="./SVG/tenant1.svg">
                     </button>
 
-                    <button type="button" id="owner" value="owner" class="typeButton owner">
+                    <button type="button" id="owner" value="owner" class="typeButton owner" onclick="setUserType('owner')">
                         Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
                     </button>
                 </div>
                 <button type="submit" value="submit">Continue</button>
 
             </form>
+
+            <script>
+                function setUserType(userType) {
+                    document.getElementById("userTypeInput").value = userType;
+                }
+            </script>
 
             <div class="others">
 
@@ -126,15 +133,16 @@ function phpAlert($msg)
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }
 
-function password_strength($password) {
-	if ( !preg_match("#[0-9]+#", $password) )
+function password_strength($password)
+{
+    if (!preg_match("#[0-9]+#", $password))
         return False;
-	if ( !preg_match("#[a-z]+#", $password) )
+    if (!preg_match("#[a-z]+#", $password))
         return False;
-	if ( !preg_match("#[A-Z]+#", $password) )
+    if (!preg_match("#[A-Z]+#", $password))
         return False;
 
-	return True;
+    return True;
 }
 
 // Check if the form has been submitted
@@ -146,8 +154,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $uname = $_POST["uname"];
     $password = $_POST["password"];
     $repassword = $_POST["repassword"];
+    $user_type = $_POST["userType"];
     // $userType = $_POST["userType"];     // to see later
 
+    phpAlert($user_type);
+    exit;
 
     // Sanitize -> cause a problem in password 
     // $email = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -196,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //Store in Database
     $query = "INSERT INTO customer (User_name , Email, First_name, Last_name, Password)
                              VALUES ('$uname', '$email', '$fname', '$lname', '$hashed_password')";
-    mysqli_query($conn, $query);                          
+    mysqli_query($conn, $query);
 
     // Testing 
 
@@ -207,7 +218,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     } else {
         phpAlert("Error: User registration failed");
-        exit; 
+        exit;
     }
 }
 
