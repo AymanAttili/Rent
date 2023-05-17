@@ -78,8 +78,9 @@
             
             <div class="card ">
                 <button type="button" class="likeButton">
-                    <img class="like" src="./SVG/heart1.svg" onclick="xchange()">
-                </button><img class="photo" src="./img/card1.png">
+                    <img class="like" id="like0" src="./SVG/heart1.svg" onclick="xchange(this.id)">
+                </button>
+                <img class="photo" src="./img/card1.png">
                 <div class="innerCard">
                     <div class="desrciption">
                         <p class="price">120$+</p>
@@ -93,79 +94,6 @@
                     </div>
                     <br>
                     <button class="cardButton rent"><img src="./SVG/Rent.svg" style="width: 30px;"><p>Rent</p></button>
-                </div>
-                
-            </div>
-
-            <div class="card ">
-                <button type="button" class="likeButton">
-                    <img class="like" src="./SVG/heart1.svg">
-                </button><img class="photo" src="./img/card1.png">
-                <div class="innerCard">
-                    <div class="desrciption">
-                        <p class="price">120$+</p>
-                        <p class="name">Attili Rent.</p>
-                        <p class="location">Tulkarem, Attil</p>
-                        <p class="beds">3 Beds</p>
-                    </div>
-                    <div class="buttonDiv">
-                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
-                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="card ">
-                <button type="button" class="likeButton">
-                    <img class="like" src="./SVG/heart1.svg">
-                </button><img class="photo" src="./img/card1.png">
-                <div class="innerCard">
-                    <div class="desrciption">
-                        <p class="price">120$+</p>
-                        <p class="name">Attili Rent.</p>
-                        <p class="location">Tulkarem, Attil</p>
-                        <p class="beds">3 Beds</p>
-                    </div>
-                    <div class="buttonDiv">
-                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
-                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="card ">
-                <button type="button" class="likeButton">
-                    <img class="like" src="./SVG/heart1.svg">
-                </button><img class="photo" src="./img/card1.png">
-                <div class="innerCard">
-                    <div class="desrciption">
-                        <p class="price">120$+</p>
-                        <p class="name">Attili Rent.</p>
-                        <p class="location">Tulkarem, Attil</p>
-                        <p class="beds">3 Beds</p>
-                    </div>
-                    <div class="buttonDiv">
-                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
-                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="card ">
-                <button type="button" class="likeButton">
-                    <img class="like" src="./SVG/heart1.svg">
-                </button><img class="photo" src="./img/card1.png">
-                <div class="innerCard">
-                    <div class="desrciption">
-                        <p class="price">120$+</p>
-                        <p class="name">Attili Rent.</p>
-                        <p class="location">Tulkarem, Attil</p>
-                        <p class="beds">3 Beds</p>
-                    </div>
-                    <div class="buttonDiv">
-                        <button class="cardButton phone"><img src="./SVG/phone.svg"><p>Phone number</p></button>
-                        <button class="cardButton email"><img src="./SVG/Email.svg"><p>Send E-mail</p></button>
-                    </div>
                 </div>
                 
             </div>
@@ -188,11 +116,6 @@
     <script src="./JS/searchMap.js"></script>
     </section>
     <!-- End body -->
-
-
-    
-   
-    
 
 
     <script src="./JS/browse.js"></script>
