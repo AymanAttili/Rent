@@ -42,13 +42,63 @@ include("database.php");
 
               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUxruZQ8r_AszFmZvHCH_hlDrUL3_plRE"></script>
 
-              <script>
-                let lat = document.getElementById('lat');
-                let lng = document.getElementById('lng');
-                let getBtn = document.getElementById('getBtn');
+            <script>
+              let lat = document.getElementById('lat');
+              let lng = document.getElementById('lng');
+              let getBtn = document.getElementById('getBtn');
+              
+              let map, marker;
+              function initial() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                  center: { lat: Number(lat.value), lng: Number(lng.value) },
+                  zoom: 15,
+                  mapTypeId: 'hybrid'
+                });
+                marker = new google.maps.Marker({
+                  position: { lat: Number(lat.value), lng: Number(lng.value) },
+                  map: map,
+                  title: 'Your property location',
+                  draggable: true,
+                  icon: './SVG/map_marker.svg'
+                })
+                getBtn.href=`//maps.google.com/maps?f=d&amp;daddr=${Number(lat.value)},${Number(lng.value)}&amp;hl=en`;
+                
 
-<<<<<<< HEAD
-            <script src="./JS/addMap.js"> </script>
+                
+                map.addListener('click', (googleMapsEvent) => {
+                  lat.value = googleMapsEvent.latLng.lat();
+                  lng.value = googleMapsEvent.latLng.lng();
+                  marker.setMap(null);
+
+                  marker.setPosition({lat: Number(lat.value), lng: Number(lng.value)});
+                  marker.setMap(map);
+                  getBtn.href=`//maps.google.com/maps?f=d&amp;daddr=${Number(lat.value)},${Number(lng.value)}&amp;hl=en`;
+                });
+
+                marker.addListener('mouseup', (googleMapsEvent) => {
+                  lat.value = googleMapsEvent.latLng.lat();
+                  lng.value = googleMapsEvent.latLng.lng();
+                  getBtn.href=`//maps.google.com/maps?f=d&amp;daddr=${Number(lat.value)},${Number(lng.value)}&amp;hl=en`;
+                });
+
+
+              }
+              navigator.geolocation.getCurrentPosition(function (position) {
+                  lat.value = position.coords.latitude;
+                  lng.value = position.coords.longitude;
+                  initial();
+                }); 
+                
+              
+              
+
+              lat.addEventListener('keyup',function(){
+                initial();
+              })
+              lng.addEventListener('keyup',function(){
+                initial();
+              })
+            </script>
           </div>
         </div>
         <div class="right-side row col-12 col-lg-6">
@@ -95,116 +145,6 @@ include("database.php");
             <div class="row align-items-center">
               <label class="col-5 col-md-4 text-center" for="">To</label>
               <input class="col-7 col-md-8" type="date">
-=======
-                let map, marker;
-
-                function initial() {
-                  map = new google.maps.Map(document.getElementById('map'), {
-                    center: {
-                      lat: Number(lat.value),
-                      lng: Number(lng.value)
-                    },
-                    zoom: 15,
-                    mapTypeId: 'hybrid'
-                  });
-                  marker = new google.maps.Marker({
-                    position: {
-                      lat: Number(lat.value),
-                      lng: Number(lng.value)
-                    },
-                    map: map,
-                    title: 'Your property location',
-                    draggable: true,
-                    icon: './SVG/map_marker.svg'
-                  })
-                  getBtn.href = `//maps.google.com/maps?f=d&amp;daddr=${Number(lat.value)},${Number(lng.value)}&amp;hl=en`;
-
-
-
-                  map.addListener('click', (googleMapsEvent) => {
-                    lat.value = googleMapsEvent.latLng.lat();
-                    lng.value = googleMapsEvent.latLng.lng();
-                    marker.setMap(null);
-
-                    marker.setPosition({
-                      lat: Number(lat.value),
-                      lng: Number(lng.value)
-                    });
-                    marker.setMap(map);
-                    getBtn.href = `//maps.google.com/maps?f=d&amp;daddr=${Number(lat.value)},${Number(lng.value)}&amp;hl=en`;
-                  });
-
-                  marker.addListener('mouseup', (googleMapsEvent) => {
-                    lat.value = googleMapsEvent.latLng.lat();
-                    lng.value = googleMapsEvent.latLng.lng();
-                    getBtn.href = `//maps.google.com/maps?f=d&amp;daddr=${Number(lat.value)},${Number(lng.value)}&amp;hl=en`;
-                  });
-
-
-                }
-                navigator.geolocation.getCurrentPosition(function(position) {
-                  lat.value = position.coords.latitude;
-                  lng.value = position.coords.longitude;
-                  initial();
-                });
-
-
-
-
-                lat.addEventListener('keyup', function() {
-                  initial();
-                })
-                lng.addEventListener('keyup', function() {
-                  initial();
-                })
-              </script>
-            </div>
-          </div>
-          <div class="right-side row col-12 col-lg-6">
-            <div class="information  row align-items-center">
-              <label class="col-5 col-md-4 text-center" for="">Image</label>
-              <input class="col-7 col-md-8" style="background-color: white; border: none;" type="file" accept="image/png, image/jpeg, image/jpg" name="image" required>
-            </div>
-            <hr>
-            <div class="information row align-items-center">
-              <label class="col-5 col-md-4 text-center" for="">Price</label>
-              <input class="col-7 col-md-8" type="number" name="price" required>
-            </div>
-            <hr>
-            <div class="information row align-items-center">
-              <label class="col-5 col-md-4 text-center" for="">Country</label>
-              <input class="col-7 col-md-8" type="text" name="country" required>
-            </div>
-            <div class="information row align-items-center">
-              <label class="col-5 col-md-4 text-center" for="">City</label>
-              <input class="col-7 col-md-8" type="text" name="city" required>
-            </div>
-            <div class="information row align-items-center">
-              <label class="col-5 col-md-4 text-center" for="">Street</label>
-              <input class="col-7 col-md-8" type="text" name="street">
-            </div>
-            <hr>
-            <div class="information row align-items-center">
-              <label class="col-5 col-md-4 text-center" for="">Description</label>
-              <input class="col-7 col-md-8" type="text" name="description">
-            </div>
-            <hr>
-            <div class="information row align-items-center">
-              <label class="col-5 col-md-4 text-center" for="">Beds</label>
-              <input class="col-7 col-md-8" type="number" name="beds" required>
-            </div>
-            <hr>
-            <div class="information row align-items-center">
-              <label class="text-center" style="display: block;" for="">Date</label>
-              <div class="row align-items-center">
-                <label class="col-5 col-md-4 text-center" for="">From</label>
-                <input class="col-7 col-md-8" type="date" name="from_date" required>
-              </div>
-              <div class="row align-items-center">
-                <label class="col-5 col-md-4 text-center" for="">To</label>
-                <input class="col-7 col-md-8" type="date" name="to_date" required>
-              </div>
->>>>>>> 379e33feb212ecfa8469bf49e17e5f486afbb98f
             </div>
           </div>
 
