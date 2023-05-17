@@ -2,7 +2,7 @@
 include("database.php");
 ?>
 
-<!-- The Page is Complete and Tested -->
+<!-- The Page is Complete and Tested, can be updated later (more validation, Keep The Values in The Form, better Alerts) -->
 
 
 
@@ -149,16 +149,23 @@ function password_strength($password)
     return True;
 }
 
+function validate($data) {
+    $data = htmlspecialchars($data); 
+    $data = stripslashes($data);
+    $data = trim($data);
+    return $data;  
+}
+
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Retrieve the form data
-    $email = $_POST["email"];
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    $uname = $_POST["uname"];
-    $password = $_POST["password"];
-    $repassword = $_POST["repassword"];
-    $user_type = $_POST["userType"];
+    // Retrieve and Validate the form data
+    $email = validate($_POST["email"]);
+    $fname = validate($_POST["fname"]);
+    $lname = validate($_POST["lname"]);
+    $uname = validate($_POST["uname"]);
+    $password = validate($_POST["password"]);
+    $repassword = validate($_POST["repassword"]);
+    $user_type = validate($_POST["userType"]);
 
 
     // Sanitize -> cause a problem in password 
@@ -169,7 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // $repassword = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
 
 
-    // Validate
+    // Validate the password
     if ($password !== $repassword) {
         phpAlert("Passwords do not match");
         exit;
