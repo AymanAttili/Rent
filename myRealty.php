@@ -32,8 +32,8 @@ include("database.php");
           <div class="left-side col-12 col-lg-6">
             <div class="row justify-content-center align-items-center" style="margin-top: 10px;">
               <label class="col-12 col-md-3 text-center" for="">Location</label>
-              <input class="col-4 mx-2" placeholder="Lat" type="number" id="lat" name="lat">
-              <input class="col-4" placeholder="Lng" type="number" id="lng" name="lng">
+              <input class="col-4 mx-2" placeholder="Lat" type="text" id="lat" name="lat">
+              <input class="col-4" placeholder="Lng" type="text" id="lng" name="lng">
             </div>
 
             <div class="mapContainer col-12" style="margin-top: 10px; margin-bottom: 10px;">
@@ -110,7 +110,7 @@ include("database.php");
             <div class="content">
               <p>$3,000+</p>
               <p>Saif Abu Raad</p>
-              <p>Sabastea, Nablus</p>
+              <p>Sabastia, Nablus</p>
               <p>2-3 beds</p>
               <div class="Delete-and-Update">
                 <button class="Delete-button" type="button">Delete</button>
