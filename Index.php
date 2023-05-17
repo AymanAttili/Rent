@@ -21,31 +21,12 @@
 
 
 
-        <section class="d-flex" style=" background-image: url(./img/background1.jpg); 
-                     background-size: cover; 
-                     background-position: center;
-                     width: 100%;
-                     height: 100vh;">
+        <section class="myTop d-flex">
 
         <div class="search-bar d-flex" style="background-color: #E8ECEC;">
 
-            <input placeholder="Tulkarm, Attil" style="width: 75%;
-                          height: 100%; 
-                          outline: none; 
-                          border: none;
-                          border-radius: 5%;
-                          padding-left: 20px;
-                          background-color: #E8ECEC;
-                          font-size: large;" type="text">
-            <button style="width: 25%;
-                           height: 80%;
-                           border-radius: 5%;
-                           border: none;
-                           background-color:#ec801d;
-                           color: white;
-                           text-align: center;
-                           padding: 1px;
-                           font-weight: 600;">Search</button>
+            <input placeholder="Tulkarm, Attil" type="text">
+            <button>Search</button>
 
         </div>
     </section>
