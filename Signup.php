@@ -2,7 +2,8 @@
 include("database.php");
 ?>
 
-<!-- The Page is Complete and Tested, can be updated later (more validation, Keep The Values in The Form, better Alerts) -->
+<!-- The Page is Complete and Tested,
+ can be updated later (more validation, Keep The Values in The Form, better Alerts, use SQL prepared statement) -->
 
 
 
@@ -136,7 +137,13 @@ function phpAlert($msg)
 {
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }
-
+function validate($data)
+{
+    $data = htmlspecialchars($data);
+    $data = stripslashes($data);
+    $data = trim($data);
+    return $data;
+}
 function password_strength($password)
 {
     if (!preg_match("#[0-9]+#", $password))
@@ -149,15 +156,9 @@ function password_strength($password)
     return True;
 }
 
-function validate($data) {
-    $data = htmlspecialchars($data); 
-    $data = stripslashes($data);
-    $data = trim($data);
-    return $data;  
-}
-
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     // Retrieve and Validate the form data
     $email = validate($_POST["email"]);
     $fname = validate($_POST["fname"]);
@@ -168,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user_type = validate($_POST["userType"]);
 
 
-    // Sanitize -> cause a problem in password 
+    // Sanitize -> cause a problem in password, consider using filter_var()
     // $email = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
     // $fname = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
     // $lname = filter_input(INPUT_POST, $email, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -232,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (mysqli_affected_rows($conn)) {
         phpAlert("User registered successfully");
         // redirect to login page 
-        // header("Location: login.php");
+        header("Location: login.php");
         exit;
     } else {
         phpAlert("Error: User registration failed");
