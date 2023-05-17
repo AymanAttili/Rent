@@ -1,5 +1,13 @@
 <?php
 include("database.php");
+// Initialize the session
+session_start();
+
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("location: index.php");
+    exit;
+}
 ?>
 
 <!-- Almost Complete. Need to add session, remove alerts, add redirection -->
@@ -120,16 +128,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($row['Admin_user_name'] === $uname && password_verify($password, $row['Password'])) {
 
-            phpAlert("Welcome Admin");
+            // phpAlert("Welcome Admin");
 
-            // $_SESSION['user_name'] = $row['user_name'];
-            // $_SESSION['name'] = $row['name'];
-            // $_SESSION['id'] = $row['id'];
+            //start a new session
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['type'] = 'admin';
+            $_SESSION['user_name'] = $row['Admin_user_name'];
 
-            // redirects to Admin page
-            // header("Location: Admin.php");
+            //redirects to Admin page
+            header("Location: Admin.php");
             exit();
-        } 
+        }
     }
     // not an admin, check if is customer
 
@@ -138,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (mysqli_num_rows($result) > 0) {
 
-
+        // row contains all data about the customer
         $row = mysqli_fetch_assoc($result);
 
         if ($row['User_name'] === $uname && password_verify($password, $row['Password'])) {
@@ -150,15 +160,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if (mysqli_num_rows($user_type_result) > 0) {
                 // the user is Owner
-                phpAlert("Welcome Owner");
+                //phpAlert("Welcome Owner");
+
+                // start a new session
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['type'] = 'owner';
+                $_SESSION['user_name'] = $row['User_name'];
+
                 // redirects to MyRealty page
-                // header("Location: MyRealty.php");
+                header("Location: MyRealty.php");
                 exit();
             } else {
                 // the user is Tenant
-                phpAlert("Welcome Tenant");
+                //phpAlert("Welcome Tenant");
+
+                // start a new session
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['type'] = 'tenant';
+                $_SESSION['user_name'] = $row['User_name'];
+
                 // redirects to home page
-                // header("Location: index.php");
+                header("Location: index.php");
                 exit();
             }
         } else {
@@ -167,12 +191,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // header("Location: Login.php");
             exit();
         }
-    }
-    else {
+    } else {
         // user name is incorrect
         // header("Location: Login.php");
-       phpAlert("User name is incorrect, try again");
-       exit();
+        phpAlert("User name is incorrect, try again");
+        exit();
     }
 }
 
