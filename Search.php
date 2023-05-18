@@ -78,7 +78,7 @@
             
             <div class="card ">
                 <button type="button" class="likeButton">
-                    <img class="like" id="like0" src="./SVG/heart1.svg" onclick="xchange(this.id)">
+                    <img class="like" id="like0" src="./SVG/heart1.svg" ">
                 </button>
                 <img class="photo" src="./img/card1.png">
                 <div class="innerCard">

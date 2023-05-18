@@ -327,7 +327,6 @@ select:hover{
 .desrciption:hover{
     cursor: pointer;
 }
-
 .desrciption p{
     margin:8px;
 }
@@ -335,7 +334,6 @@ select:hover{
     font-size: 24px;
     font-weight: 700;
     color: var(--main-color);
-    width: 50%;
 }
 .desrciption .name{
     font-size: 18px;
@@ -491,4 +489,3 @@ select:hover{
     color: var(--secondary-color);
 }
 /* End footer */
-
