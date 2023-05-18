@@ -272,6 +272,7 @@ select:hover{
     border-radius: 16px;
     margin-bottom: 20px;
     overflow: hidden;
+    height: max-content;
 }
 
 .likeButton{
@@ -371,7 +372,7 @@ select:hover{
     background: white;
 }
 .card .phone:hover{
-    background: #abafce;
+    background: #abafce60;
     cursor: pointer;
 
 }
@@ -387,16 +388,18 @@ select:hover{
 
 .card .rent{
     border: none;
-    color: white;
-    background: var(--secondary-color);
+    color: var(--secondary-color);
+    border: var(--secondary-color) solid 3px;
+    background: white;
     width: 100%;
     justify-content: space-evenly;
     font-size: 24px;
     align-self: center;
+    margin: 10px 0 0 0 ;
 }
 .card .rent:hover{
     cursor: pointer;
-    background: #ff932e;
+    background: #eb85264f;
 }
 
 @media (max-width: 1000px){
