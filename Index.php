@@ -136,9 +136,7 @@
         <!-- End cards -->
         
     
-        <footer class="footer">
-            &copy; 2023 <span>RentalMate</span> All Right Reserved
-        </footer>
+        
 
     <script src="./JS/browse.js"></script>
 

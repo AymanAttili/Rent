@@ -120,9 +120,6 @@ include("database.php");
         </div>
 
 
-        <div class="footer">
-            &copy; 2023 <span>RentalMate</span> All Right Reserved
-        </div>
 
         <script src="./JS/myJS.js">
         </script>

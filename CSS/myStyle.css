@@ -27,7 +27,7 @@ body{
     margin: 0;
     font-family: 'Oxanium';
     color: var(--main-color);
-    
+    background-color: white;
     min-height: 100%;
 }
 /* end global rules */
