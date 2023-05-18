@@ -76,7 +76,7 @@
         <!-- Start Cards -->
         <div class="cards">
             
-            <div class="card ">
+            <div class="card " onmouseenter="initialize(32.379579881501606,35.06897156349406)">
                 <button type="button" class="likeButton">
                     <img class="like" id="like0" src="./SVG/heart1.svg" onclick="xchange('like0')">
                 </button>
@@ -98,7 +98,7 @@
                 
             </div>
 
-            <div class="card ">
+            <div class="card " onmouseenter="initialize(32.379579881504606,35.16897156343406)">
                 <button type="button" class="likeButton" >
                     <img class="like" id="like1" src="./SVG/heart1.svg" onclick="xchange('like1')">
                 </button>
@@ -120,7 +120,7 @@
                 
             </div>
 
-            <div class="card ">
+            <div class="card " onmouseenter="initialize(32.579579881501606,35.06897156349406)">
                 <button type="button" class="likeButton">
                     <img class="like" id="like2" src="./SVG/heart1.svg" ">
                 </button>
@@ -142,7 +142,7 @@
                 
             </div>
 
-            <div class="card ">
+            <div class="card " onmouseenter="initialize(32.379579881501606,35.56897156349406)">
                 <button type="button" class="likeButton">
                     <img class="like" id="like3" src="./SVG/heart1.svg" ">
                 </button>

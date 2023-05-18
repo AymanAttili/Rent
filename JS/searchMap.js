@@ -14,5 +14,6 @@ function initialize(x, y){
     });
 
     marker.setMap(map);
+
 }
 google.maps.event.addDomListener(window, 'load', initialize(32.304956, 35.038719));
