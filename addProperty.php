@@ -1,7 +1,7 @@
 <?php
 // session_start();
 
-// works fine, need session handling, further validation.
+// works fine, need session handling, further validation, White space in image name handling -> replace with'_'
 
 function phpAlert($msg)
 {
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $i = 1;
     $image_name_copy = $image_name; 
     while (file_exists("property_uploads/" . $image_name . "." . $image_ext)) {
-        $image_name = $image_name_copy . " ($i)";
+        $image_name = $image_name_copy . "($i)";
         $i++;
     }
     $image_name_ext = $image_name . $image_ext;
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     //check if the location already exists 
     $query = "SELECT * FROM location WHERE Latitude = ? AND Longitude = ?";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "dd", $lat, $lng);
+    mysqli_stmt_bind_param($stmt, "ss", $lat, $lng);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     if (mysqli_num_rows($result) > 0) {
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $query = "INSERT INTO location (City, Country, Street, Longitude, Latitude )
                         VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $query);
-        mysqli_stmt_bind_param($stmt, "ssddd", $city, $country, $street, $lng, $lat);
+        mysqli_stmt_bind_param($stmt, "sssss", $city, $country, $street, $lng, $lat);
         mysqli_stmt_execute($stmt);
         // get the id of the inserted tuple
         $location_id = mysqli_insert_id($conn);
@@ -78,9 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // insert into table property
     // $Owner_user_name = $_SESSION['user_name'];
     $Owner_user_name = "AboSofian";
-    $query = "INSERT INTO property (Owner_user_name, Price, Description, Start_date, End_date, Location_id, Image_path)
-                        VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO property (Owner_user_name, Price, Description, Start_date, End_date, Location_id, Image_path, Beds)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sisssis", $Owner_user_name, $price, $description, $from_date, $to_date, $location_id, $image_path);
+    mysqli_stmt_bind_param($stmt, "sisssisi", $Owner_user_name, $price, $description, $from_date, $to_date, $location_id, $image_path, $beds);
     mysqli_stmt_execute($stmt);
 }
