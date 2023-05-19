@@ -26,7 +26,7 @@
                      width: 100%;
                      height: 100vh;">
 
-        <div class="search-bar d-flex" style="background-color: #E8ECEC;" onclick="window.open('./Search.php')">
+        <div class="search-bar d-flex" style="background-color: #E8ECEC;" onclick="window.open('./Search.php', '_self')">
 
             <input placeholder="Tulkarm, Attil" style="width: 75%;
                           height: 100%; 

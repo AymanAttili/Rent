@@ -93,10 +93,24 @@ body{
     margin: 0;
 }
 
+.search-bar{
+    width: 33%;  
+    height: 9%;
+    margin: 185px auto auto auto;
+    display: flex;
+    background-color: #E8ECEC;
+    position: relative;
+    padding-right: 10px;
+    border-radius: 5px;
+    min-width: 300px;
+}
+
+
 .Description {
     background: var(--third-color);
     padding: 10px;
     border-radius: 0 0 16px 16px;
+    margin-top: -6px;
 }
 
 .desrciption {
@@ -107,6 +121,7 @@ body{
 
 .content{
     margin: 16px;
+    color: #09203F;
 }
 
 .content p{

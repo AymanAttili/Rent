@@ -215,8 +215,7 @@ span{
 .myMid{
     display: flex;
     align-items: center;
-    border-left: VAR(--primary-color) solid 1px;
-    border-right: VAR(--primary-color) solid 1px;
+    
     margin-bottom: 10px;
     padding: 0 20px;
 }

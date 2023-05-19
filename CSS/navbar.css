@@ -192,18 +192,6 @@
     align-items: center!important;
 }
 
-.search-bar{
-    width: 33%!important;  
-    height: 9%!important;
-    margin: 185px auto auto auto!important;
-    display: flex!important;
-    background-color: white!important;
-    position: relative!important;
-    padding-right: 10px!important;
-    border-radius: 5px!important;
-    min-width: 300px!important;
-}
-
 /* End navbar */
 
 .hide{

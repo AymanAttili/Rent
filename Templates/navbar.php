@@ -24,7 +24,7 @@ include("database.php");
             if ($loggedIn) {
                 // User is logged in, display username and photo
                 $username = "Ayman Attili"; // Replace with info from query
-                $profile_image_path = "./img/HD-wallpaper-lelouch-vi-britannia-anime-code-geass.jpg"; // Replace with info from query
+                $profile_image_path = "./img/profile.jpg"; // Replace with info from query
 
                 echo '<hr>';
                 echo '<section class="">';
@@ -59,7 +59,7 @@ include("database.php");
     <div class="container">
         <div class="left">
             <img src="./SVG/menu1.svg" class="menu" onclick="popup(0)">
-            <img class="logo" src="./SVG/Logo.svg" onclick="window.open('./Index.php')">
+            <img class="logo" src="./SVG/Logo.svg" onclick="window.open('./Index.php','_self')">
         </div>
         <div class="right">
             
