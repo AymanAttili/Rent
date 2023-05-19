@@ -1,7 +1,5 @@
 <?php
-include("database.php");
-session_start();
-
+// session_start();
 
 // need testing and connection with owner page 
 
@@ -35,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $image_size = $_FILES['image']['size']; // size in bytes
     $image_tmp_location = $_FILES['image']['tmp_name'];
+
     // path of temporary file -> This file is only kept as long as the PHP script responsible for handling the form submission is running.
     //  So, if you want to use the uploaded file later on (for example, store it for display on the site),
     // you need to make a copy of it elsewhere(using move_uploaded_file()).
@@ -50,24 +49,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $i++;
     }
 
+    // insert into table location
     $query = "INSERT INTO location (City, Country, Street, Longitude, Latitude )
                         VALUES ('$city', '$country', '$street', '$lng', '$lat')";
+    mysqli_query($conn, $query);
 
-    if (mysqli_query($conn, $query)) {
-        $last_id = mysqli_insert_id($conn);
-        echo "New record created successfully. Last inserted ID is: " . $last_id;
-    } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
-    }
+    // get the id of the inserted tuple
+    $location_id = mysqli_insert_id($conn);
+    echo "New record created successfully. Last inserted ID is: " . $location_id;
 
-    $Owner_user_name = $_SESSION['user_name'];
-    $query = "INSERT INTO property(Owner_user_name, Price, Description, Start_date, End_date, Location_id)
-                        VALUES ('$Owner_user_name', $price, '$description', $from_date, $to_date, '$location_id')";
+    // insert into table property
+    // $Owner_user_name = $_SESSION['user_name'];
+    $Owner_user_name = "AboSofian";
+    $query = "INSERT INTO property(Owner_user_name, Price, Description, Start_date, End_date, Location_id, Image_path)
+                        VALUES ('$Owner_user_name', $price, '$description', $from_date, $to_date, '$location_id', '$image_path')";
+    mysqli_query($conn, $query);
 
-    if (mysqli_query($conn, $query)) {
-        $last_id = mysqli_insert_id($conn);
-        echo "New record created successfully. Last inserted ID is: " . $last_id;
-    } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
-    }
 }

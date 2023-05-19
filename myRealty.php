@@ -132,3 +132,7 @@ include("database.php");
 </body>
 
 </html>
+
+<?php
+include("addProperty.php");
+?>
