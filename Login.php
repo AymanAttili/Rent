@@ -46,13 +46,17 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     <div class="sign_screen">
         <div class="container">
 
+            <?php
+            $uname = isset($_POST['uname']) ? validate($_POST["uname"]) : '';
+            ?>
+
             <form class="sign_form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 
                 <h1>Login</h1>
 
                 <fieldset class="sign_field">
-                    <legend class="sign_legend">Email address\Username</legend>
-                    <input class="sign_input" type="text" name="uname" required>
+                    <legend class="sign_legend">Username</legend>
+                    <input class="sign_input" type="text" name="uname" value="<?php echo $uname; ?>" required>
 
                 </fieldset>
 
@@ -211,4 +215,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 mysqli_close($conn);
 ?>
-

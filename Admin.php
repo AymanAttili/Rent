@@ -1,7 +1,7 @@
 <?php
 include("database.php");
-include("deleteOwner.php");
-include("deleteTenant.php");
+include("processOwner.php");
+include("processTenant.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +27,13 @@ include("deleteTenant.php");
 
     <section>
         <div class="container">
-            <button class="Add-users">Add User</button>
+            <button class="Add-users" onclick="redirectToAddUser()">Add User</button>
         </div>
+        <script>
+            function redirectToAddUser() {
+                window.location.href = "addUser.php";
+            }
+        </script>
     </section>
 
     <section>

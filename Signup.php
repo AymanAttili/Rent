@@ -38,56 +38,64 @@ include("database.php");
     <div class="sign_screen">
         <div class="container">
 
+
+            <?php
+            $email = isset($_POST['email']) ? validate($_POST["email"]) : '';
+            $fname = isset($_POST['fname']) ? validate($_POST["fname"]) : '';
+            $lname = isset($_POST['lname']) ? validate($_POST["lname"]) : '';
+            $uname = isset($_POST['uname']) ? validate($_POST["uname"]) : '';
+            ?>
+
             <form class="sign_form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
 
                 <h1>Create an account</h1>
 
                 <fieldset class="sign_field">
                     <legend class="sign_legend">Email address</legend>
-                    <input class="sign_input" type="email" name="email" required>
+                    <input class="sign_input" type="email" name="email" value="<?php echo $email; ?>" required>
                 </fieldset>
 
-                <div class="name">
+                <div class=" name">
                     <fieldset class="sign_field">
                         <legend class="sign_legend">First name</legend>
-                        <input class="sign_input" type="text" name="fname" required>
+                        <input class="sign_input" type="text" name="fname" value="<?php echo $fname; ?>" required>
+                    </fieldset>
+
+                    <fieldset class=" sign_field">
+                        <legend class="sign_legend">Last name</legend>
+                        <input class="sign_input" type="text" name="lname" value="<?php echo $lname; ?>" required>
+                    </fieldset>
+                </div>
+
+                <fieldset class=" sign_field">
+                        <legend class="sign_legend">Username</legend>
+                        <input class="sign_input" type="text" name="uname" value="<?php echo $uname; ?>" required>
+                </fieldset>
+
+                <fieldset class=" sign_field">
+                        <legend class="sign_legend">Password</legend>
+                        <input class="sign_password" type="password" name="password" required onfocus="visEye(eye2)">
+                        <img class="eye" id="eye2" src="./SVG/ic_baseline-remove-red-eye.svg" onclick="changeVis()">
                     </fieldset>
 
                     <fieldset class="sign_field">
-                        <legend class="sign_legend">Last name</legend>
-                        <input class="sign_input" type="text" name="lname" required>
+                        <legend class="sign_legend">Confirm password</legend>
+                        <input class="sign_password" type="password" name="repassword" required onfocus="visEye(eye3)">
+                        <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick=changeVis()>
                     </fieldset>
-                </div>
 
-                <fieldset class="sign_field">
-                    <legend class="sign_legend">Username</legend>
-                    <input class="sign_input" type="text" name="uname" required>
-                </fieldset>
+                    <div class="userType">
+                        <input type="hidden" name="userType" id="userTypeInput" value="tenant">
+                        <p>Select User type:</p>
+                        <button type="button" id="tenant" value="tenant" class="typeButton tenant" onclick="setUserType('tenant')">
+                            Tenatnt <img id="tenantIcon" class="btnIcon" src="./SVG/tenant1.svg">
+                        </button>
 
-                <fieldset class="sign_field">
-                    <legend class="sign_legend">Password</legend>
-                    <input class="sign_password" type="password" name="password" required onfocus="visEye(eye2)">
-                    <img class="eye" id="eye2" src="./SVG/ic_baseline-remove-red-eye.svg" onclick="changeVis()">
-                </fieldset>
-
-                <fieldset class="sign_field">
-                    <legend class="sign_legend">Confirm password</legend>
-                    <input class="sign_password" type="password" name="repassword" required onfocus="visEye(eye3)">
-                    <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick=changeVis()>
-                </fieldset>
-
-                <div class="userType">
-                    <input type="hidden" name="userType" id="userTypeInput" value="tenant">
-                    <p>Select User type:</p>
-                    <button type="button" id="tenant" value="tenant" class="typeButton tenant" onclick="setUserType('tenant')">
-                        Tenatnt <img id="tenantIcon" class="btnIcon" src="./SVG/tenant1.svg">
-                    </button>
-
-                    <button type="button" id="owner" value="owner" class="typeButton owner" onclick="setUserType('owner')">
-                        Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
-                    </button>
-                </div>
-                <button type="submit" value="submit">Continue</button>
+                        <button type="button" id="owner" value="owner" class="typeButton owner" onclick="setUserType('owner')">
+                            Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
+                        </button>
+                    </div>
+                    <button type="submit" value="submit">Continue</button>
 
             </form>
 
@@ -111,7 +119,8 @@ include("database.php");
             HHHHHHHHHHHHHHHHHH
         </div>
         <script src="./JS/myJS.js"></script>
-    </body>
+</body>
+
 </html>
 
 <?php
