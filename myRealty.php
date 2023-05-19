@@ -136,13 +136,13 @@ include("database.php");
           $beds = $row['Beds'];
         ?>
           <div class='card'>
-            <img class='card-image' src=<?php echo ($image_path) ?>>
+            <img class='card_image' src=<?php echo ($image_path) ?>>
             <div class='Description'>
               <div class='content'>
                 <p><?php echo $price . "$" ?></p>
                 <p><?php echo $first_name . " " . $last_name ?></p>
                 <p><?php echo $city . ", " . $country ?></p>
-                <p><?php echo $beds ?></p>
+                <p><?php echo 'Beds: ' . $beds?></p>
                 <div class='Delete-and-Update'>
                   <button class='Delete-button' type='button'>Delete</button>
                 </div>
