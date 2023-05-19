@@ -103,6 +103,7 @@ function phpAlert($msg)
 {
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }
+
 function validate($data)
 {
     $data = htmlspecialchars($data);
@@ -119,8 +120,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = validate($_POST["password"]);
 
     // check if admin 
-    $query = "SELECT * from administrator WHERE Admin_user_name = '$uname'";
-    $result = mysqli_query($conn, $query);
+    $query = "SELECT * from administrator WHERE Admin_user_name = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $uname);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
 
@@ -143,8 +147,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
     // not an admin, check if is customer
 
-    $query = "SELECT * from customer WHERE User_name = '$uname'";
-    $result = mysqli_query($conn, $query);
+    $query = "SELECT * from customer WHERE User_name = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $uname);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
 
@@ -155,8 +162,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Successful login
             // check the user type
             // is Owner ?
-            $user_type_query = "SELECT * from owner WHERE Owner_user_name = '$uname'";
-            $user_type_result = mysqli_query($conn, $user_type_query);
+            $user_type_query = "SELECT * from owner WHERE Owner_user_name = ?";
+            $user_type_stmt = mysqli_prepare($conn, $user_type_query);
+            mysqli_stmt_bind_param($user_type_stmt, "s", $uname);
+            mysqli_stmt_execute($user_type_stmt);
+            $user_type_result = mysqli_stmt_get_result($user_type_stmt);
 
             if (mysqli_num_rows($user_type_result) > 0) {
                 // the user is Owner
@@ -200,3 +210,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 mysqli_close($conn);
+?>
+
