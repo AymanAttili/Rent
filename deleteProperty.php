@@ -6,3 +6,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // on delete cascade in database
     header("Location: myRealty.php");
 }
+// need modify if user is owner, redirect to myRealty page. if admin redirect to show user property.

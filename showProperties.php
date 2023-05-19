@@ -1,9 +1,8 @@
 <?php
 include("database.php");
-include("addProperty.php");
 ?>
 
-<!-- need session handling -->
+<!-- need session handling, get the owner_user_name stored in the session in admin page -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,47 +39,51 @@ include("addProperty.php");
   ?>
 
 
-  <section>
+<section>
 
-    <div class='container'>
-      <h1 style='margin-bottom: 30px;'>Properties: </h1>
-      <div class='fc' style='display: flex; justify-content: space-between; flex-wrap: wrap;'>
-        <?php
-        $query = "Select * FROM property WHERE Owner_user_name = '$owner_user_name'";
-        $result = mysqli_query($conn, $query);
-        while ($row = mysqli_fetch_array($result)) {
-          // get the Country and City from location table
-          $location_id = $row['Location_id'];
-          $query_location = "SELECT * FROM location WHERE Location_id = '$location_id'";
-          $result_location = mysqli_query($conn, $query_location);
-          $row_location = mysqli_fetch_array($result_location);
-          $country = $row_location['Country'];
-          $city = $row_location['City'];
+<div class='container'>
+  <h1 style='margin-bottom: 30px;'> <?php echo $owner_user_name ?> Properties</h1>
+  <div class='fc' style='display: flex; justify-content: space-between; flex-wrap: wrap;'>
+    <?php
+    $query = "Select * FROM property WHERE Owner_user_name = '$owner_user_name'";
+    $result = mysqli_query($conn, $query);
+    while ($row = mysqli_fetch_array($result)) {
+      // get the Country and City from location table
+      $location_id = $row['Location_id'];
+      $query_location = "SELECT * FROM location WHERE Location_id = '$location_id'";
+      $result_location = mysqli_query($conn, $query_location);
+      $row_location = mysqli_fetch_array($result_location);
+      $country = $row_location['Country'];
+      $city = $row_location['City'];
 
-          // get other info from property table 
-          $image_path = $row['Image_path'];
-          $price = $row['Price'];
-          $beds = $row['Beds'];
-        ?>
-          <div class='card'>
-            <img class='card_image' src=<?php echo ($image_path) ?>>
-            <div class='Description'>
-              <div class='content'>
-                <p><?php echo $price . "$" ?></p>
-                <p><?php echo $first_name . " " . $last_name ?></p>
-                <p><?php echo $city . ", " . $country ?></p>
-                <p><?php echo 'Beds: ' . $beds?></p>
-                <div class='Delete-and-Update'>
-                  <button class='Delete-button' type='button'>Delete</button>
-                </div>
-              </div>
-            </div>
+      // get other info from property table 
+      $image_path = $row['Image_path'];
+      $price = $row['Price'];
+      $beds = $row['Beds'];
+      $property_id = $row['Property_id'];
+    ?>
+      <div class='card'>
+        <img class='card_image' src=<?php echo ($image_path) ?>>
+        <div class='Description'>
+          <div class='content'>
+            <p><?php echo $price . "$" ?></p>
+            <p><?php echo $first_name . " " . $last_name ?></p>
+            <p><?php echo $city . ", " . $country ?></p>
+            <p><?php echo 'Beds: ' . $beds ?></p>
+            <form class="hidden-form" action="deleteProperty.php" method="POST">
+              <div class='Delete-and-Update'>
+                <input type="hidden" name="property_id" value=<?php echo $property_id ?>>
+                <button class='Delete-button' type='submit'>Delete</button>
+            </form>
           </div>
-        <?php
-        } ?>
+        </div>
       </div>
-    </div>
-  </section>
+  </div>
+<?php
+    } ?>
+</div>
+</div>
+</section>
 
 
   <script src="./js/popper.min.js"></script>

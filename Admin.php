@@ -86,7 +86,7 @@ include("processTenant.php");
                     <div class="infornation-row row justify-content-between align-items-center">
                         <h5 class="col-6 col-lg-2"><?php echo $owner_user_name ?></h5>
                         <p class="col-6 col-lg-2">No. of properties <span><?php echo $num_properties ?></span></p>
-                        <button <?php echo ($num_properties > 0 ? "" : "style = 'visibility: hidden';") ?> class="Show-properties col-4 col-lg-2">Show properties</button>
+                        <button <?php echo ($num_properties > 0 ? "" : "style = 'visibility: hidden';") ?> class="Show-properties col-4 col-lg-2" type ="submit" name ="show">Show properties</button>
                         <button class="Delete col-3 col-lg-2" type="submit" name="delete">Delete</button>
                         <button class="Update col-3 col-lg-2" type="submit" name="update">Update</button>
                     </div>

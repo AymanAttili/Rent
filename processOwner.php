@@ -7,5 +7,11 @@ if (isset($_POST['delete'])) {
     // on delete cascade in database
     header("Location: admin.php");
 }
+
 if (isset($_POST['update'])) { 
+
+}
+
+if (isset($_POST['show'])) { 
+    
 }
