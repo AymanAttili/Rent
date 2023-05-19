@@ -63,7 +63,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                 </fieldset>
 
 
-                <a href="./img/15939048_605.jpg">Forgot password...?</a>
+                <a href="">Forgot password...?</a>
 
                 <button type="submit" name="submit" value="submit">Login</button>
             </form>
