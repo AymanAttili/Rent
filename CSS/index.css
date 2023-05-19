@@ -128,6 +128,21 @@ body{
 }
 /*End card*/
 
+.searchBTN{
+    width: 25%;
+    height: 80%;
+    border-radius: 5%;
+    border: none;
+    background-color:#ec801d;
+    color: white;
+    text-align: center;
+    padding: 1px;
+    font-weight: 600;
+}
+.searchBTN:hover{
+    cursor: pointer;
+}
+
 /* Start footer */
 .footer{
     

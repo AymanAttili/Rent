@@ -59,7 +59,7 @@ include("database.php");
     <div class="container">
         <div class="left">
             <img src="./SVG/menu1.svg" class="menu" onclick="popup(0)">
-            <img class="logo" src="./SVG/Logo.svg">
+            <img class="logo" src="./SVG/Logo.svg" onclick="window.open('./Index.php')">
         </div>
         <div class="right">
             

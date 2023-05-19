@@ -26,7 +26,7 @@
                      width: 100%;
                      height: 100vh;">
 
-        <div class="search-bar d-flex" style="background-color: #E8ECEC;">
+        <div class="search-bar d-flex" style="background-color: #E8ECEC;" onclick="window.open('./Search.php')">
 
             <input placeholder="Tulkarm, Attil" style="width: 75%;
                           height: 100%; 
@@ -36,15 +36,7 @@
                           padding-left: 20px;
                           background-color: #E8ECEC;
                           font-size: large;" type="text">
-            <button style="width: 25%;
-                           height: 80%;
-                           border-radius: 5%;
-                           border: none;
-                           background-color:#ec801d;
-                           color: white;
-                           text-align: center;
-                           padding: 1px;
-                           font-weight: 600;">Search</button>
+            <button style="" class="searchBTN"">Search</button>
 
         </div>
     </section>

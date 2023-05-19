@@ -182,6 +182,10 @@
 
 /* End menu */
 
+.logo:hover{
+    cursor: pointer;
+}
+
 .d-flex{
     display: flex!important;
     justify-content: center!important;
