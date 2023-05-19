@@ -135,6 +135,7 @@ include("addProperty.php");
           $image_path = $row['Image_path'];
           $price = $row['Price'];
           $beds = $row['Beds'];
+          $property_id = $row['Property_id'];
         ?>
           <div class='card'>
             <img class='card_image' src=<?php echo ($image_path) ?>>
@@ -143,16 +144,19 @@ include("addProperty.php");
                 <p><?php echo $price . "$" ?></p>
                 <p><?php echo $first_name . " " . $last_name ?></p>
                 <p><?php echo $city . ", " . $country ?></p>
-                <p><?php echo 'Beds: ' . $beds?></p>
-                <div class='Delete-and-Update'>
-                  <button class='Delete-button' type='button'>Delete</button>
-                </div>
+                <p><?php echo 'Beds: ' . $beds ?></p>
+                <form class="hidden-form" action="deleteProperty.php" method="POST">
+                  <div class='Delete-and-Update'>
+                    <input type="hidden" name="property_id" value=<?php echo $property_id ?>>
+                    <button class='Delete-button' type='submit'>Delete</button>
+                </form>
               </div>
             </div>
           </div>
-        <?php
-        } ?>
       </div>
+    <?php
+        } ?>
+    </div>
     </div>
   </section>
 
@@ -163,4 +167,5 @@ include("addProperty.php");
   <script src="./js/browse.js"></script>
 
 </body>
+
 </html>

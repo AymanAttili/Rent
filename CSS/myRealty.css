@@ -240,7 +240,6 @@ label{
     border-radius: 16px 16px 0 0;
     margin: 0;
 }
-
 .Description {
     background: var(--third-color);
     padding: 10px;
@@ -250,6 +249,7 @@ label{
 .Description p{
     font-size: 17px;
 }
+
 .desrciption {
     display: flex;
     align-items: center;
