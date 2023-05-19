@@ -1,7 +1,7 @@
 <?php
 // session_start();
 
-// need testing and connection with owner page 
+// works fine, need session handling, further validation.
 
 function phpAlert($msg)
 {
@@ -44,25 +44,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // if there is another image with the same exact name, expand filename with an auto-increment number 
     $i = 1;
-    while (file_exists($image_name . "." . $image_ext)) {
-        $filename = $file['filename'] . " ($i)";
+    $image_name_copy = $image_name; 
+    while (file_exists("property_uploads/" . $image_name . "." . $image_ext)) {
+        $image_name = $image_name_copy . " ($i)";
         $i++;
     }
+    $image_name_ext = $image_name . $image_ext;
+    $image_path = "property_uploads/" . $image_name . "." . $image_ext;
+    move_uploaded_file($image_tmp_location, $image_path);
 
-    // insert into table location
-    $query = "INSERT INTO location (City, Country, Street, Longitude, Latitude )
-                        VALUES ('$city', '$country', '$street', '$lng', '$lat')";
-    mysqli_query($conn, $query);
-
-    // get the id of the inserted tuple
-    $location_id = mysqli_insert_id($conn);
-    echo "New record created successfully. Last inserted ID is: " . $location_id;
+    $location_id = "";
+    //check if the location already exists 
+    $query = "SELECT * FROM location WHERE Latitude = ? AND Longitude = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "dd", $lat, $lng);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if (mysqli_num_rows($result) > 0) {
+        // location already exists
+        $row = mysqli_fetch_assoc($result);
+        $location_id = $row['Location_id'];
+    } else {
+        // insert new location into table location
+        $query = "INSERT INTO location (City, Country, Street, Longitude, Latitude )
+                        VALUES (?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "ssddd", $city, $country, $street, $lng, $lat);
+        mysqli_stmt_execute($stmt);
+        // get the id of the inserted tuple
+        $location_id = mysqli_insert_id($conn);
+    }
 
     // insert into table property
     // $Owner_user_name = $_SESSION['user_name'];
     $Owner_user_name = "AboSofian";
-    $query = "INSERT INTO property(Owner_user_name, Price, Description, Start_date, End_date, Location_id, Image_path)
-                        VALUES ('$Owner_user_name', $price, '$description', $from_date, $to_date, '$location_id', '$image_path')";
-    mysqli_query($conn, $query);
-
+    $query = "INSERT INTO property (Owner_user_name, Price, Description, Start_date, End_date, Location_id, Image_path)
+                        VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "sisssis", $Owner_user_name, $price, $description, $from_date, $to_date, $location_id, $image_path);
+    mysqli_stmt_execute($stmt);
 }
