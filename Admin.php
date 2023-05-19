@@ -39,7 +39,7 @@ include("deleteTenant.php");
                 <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
             </div>
 
-            <form action="deleteTenant.php" method="POST">
+            <form action="processTenant.php" method="POST">
                 <div class="Tenants container">
                     <?php
                     $query_tenant = "SELECT Tenant_user_name
@@ -64,7 +64,7 @@ include("deleteTenant.php");
             <label class="col-4 col-md-2 col-lg-2 text-center">Search: </label>
             <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
         </div>
-        <form action="deleteOwner.php" method ="POST">
+        <form action="processOwner.php" method="POST">
             <div class="Tenants container align-items-center">
                 <?php
                 $query_owner = "SELECT Owner_user_name, COUNT(Property_id)
@@ -82,8 +82,8 @@ include("deleteTenant.php");
                         <h5 class="col-6 col-lg-2"><?php echo $owner_user_name ?></h5>
                         <p class="col-6 col-lg-2">No. of properties <span><?php echo $num_properties ?></span></p>
                         <button <?php echo ($num_properties > 0 ? "" : "style = 'visibility: hidden';") ?> class="Show-properties col-4 col-lg-2">Show properties</button>
-                        <button class="Delete col-3 col-lg-2">Delete</button>
-                        <button class="Update col-3 col-lg-2">Update</button>
+                        <button class="Delete col-3 col-lg-2" type="submit" name="delete">Delete</button>
+                        <button class="Update col-3 col-lg-2" type="submit" name="update">Update</button>
                     </div>
                 <?php } ?>
 
