@@ -15,17 +15,7 @@ include("database.php");
         <ul class="menuList">
             <li onclick="window.open('./Index.php','_self')">Home</li>
             <li onclick="window.open('./Search.php','_self')">Search</li>
-            <hr>
-            <section class="">
-                <li>Saved properties <small>0</small></li>
-                <li>History</li>
-                <li onclick="window.open('./personal-details.php','_self')">Settings</li>
-                <hr>
-            </section>
-            <section class="">
-                <li onclick="window.open('./myRealty.php','_self')">My realty</li>
-                <hr>
-            </section>
+            
 
             <?php
             // Check if the user is logged in
@@ -36,12 +26,23 @@ include("database.php");
                 $username = "Ayman Attili"; // Replace with info from query
                 $profile_image_path = "./img/HD-wallpaper-lelouch-vi-britannia-anime-code-geass.jpg"; // Replace with info from query
 
+                echo '<hr>';
                 echo '<section class="">';
-                echo '<img src="' . $profile_image_path . '" class="profile_picture">';
-                echo '<li onclick="window.open(\'./personal-details.php\', \'_self\')">' . $username . '</li>';
+                echo '<li>Saved properties <small>0</small></li>';
+                echo '<li>History</li>';
+                echo '<li onclick="window.open(\'./personal-details.php\',\'_self\')">Settings</li>';
                 echo '<hr>';
                 echo '</section>';
+                echo '<section class="">';
+                echo '<li onclick="window.open(\'./myRealty.php\',\'_self\')">My realty</li>';
+                echo '</section>';
+                
+                echo '<section>';
+                echo '<hr>';
+                echo '<li class="">Log out</li>';
+                echo '</section>';
             } else {
+                echo '<hr>';
                 // User is not logged in, display login/sign up buttons
                 echo '<section>';
                 echo '<li onclick="window.open(\'./Login.php\',\'_self\')">Login</li>';
@@ -49,11 +50,6 @@ include("database.php");
                 echo '</section>';
             }
             ?>
-
-            <section class="">
-                <hr>
-                <li class="">Log out</li>
-            </section>
         </ul>
     </div>
 
@@ -66,11 +62,11 @@ include("database.php");
             <img class="logo" src="./SVG/Logo.svg">
         </div>
         <div class="right">
-            <img src="./SVG/on_heart.svg" class="heart" title="Saved Properties" onclick="window.open('../saved.php')">
-
+            
             <?php
             if ($loggedIn) {
-                // User is logged in, display user's name and photo
+                // User is logged in, display user's name, heart and photo
+                echo '<img src="./SVG/on_heart.svg" class="heart" title="Saved Properties" onclick="window.open(\'../saved.php\')">';
                 echo '<div class="namebar" onclick="window.open(\'./personal-details.php\', \'_self\')">';
                 echo '<img src="' . $profile_image_path . '" class="profile_picture">';
                 echo '<p class="name">' . $username . '</p>';
