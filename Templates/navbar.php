@@ -43,14 +43,17 @@
             </div>
             <div class="right">
                 
-                <img src="./SVG/off_heart.svg" class="heart erase">
-                <img src="./img/HD-wallpaper-lelouch-vi-britannia-anime-code-geass.jpg" class="profile_picture erase">
-                <p class="name erase">Ayman</p>
-                <p class="signup_button" onclick="window.open('./Signup.php','_self')">Sign up</p>
-                <p class="login_button" onclick="window.open('./Login.php','_self')">Log in</p>
+                <img src="./SVG/on_heart.svg" class="heart " title="Saved Properties" onclick="window.open('../saved.php')">
+                <div class="namebar " onclick="window.open('./personal-details.php', '_self')">
+                    <img src="./img/HD-wallpaper-lelouch-vi-britannia-anime-code-geass.jpg" class="profile_picture ">
+                    <p class="name ">Ayman Attili</p>
+                </div>
+                <p class="signup_button " onclick="window.open('./Signup.php','_self')">Sign up</p>
+                <p class="login_button " onclick="window.open('./Login.php','_self')">Log in</p>
                 
             </div>
         </div>
     </nav>
-
+    
+    <script src="./JS/navbar.js"></script>
     <!-- End navbar -->

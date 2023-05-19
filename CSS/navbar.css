@@ -29,6 +29,7 @@
     align-items: center!important;
     justify-content: space-between!important;
     margin: 10px 0!important;
+
 }
 .mynavbar .left{
     display: flex!important;
@@ -43,13 +44,38 @@
 .mynavbar .menu:hover{
     cursor: pointer!important;
 }
-.mynavbar .profile_picture{
-    width: 40px!important
-}
+
 .mynavbar .heart{
-    width: 40px!important;
+    width: 45px!important;
     margin: 0 10px!important;
 }
+.mynavbar .heart{
+    cursor: pointer;
+}
+
+.mynavbar .namebar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center!important;
+}
+.mynavbar .profile_picture{
+    width: 45px!important;
+    height: 45px;
+    border-radius: 40px;
+    border: var(--secondary-color) solid 3px;
+    margin: 0 10px 0 0;
+}
+.mynavbar .name{
+    color: var(--third-color);
+    font-size: 20px;
+    font-weight: 700;
+    margin: unset;
+}
+.mynavbar .namebar{
+    cursor: pointer;
+}
+
+
 .mynavbar .signup_button{
     color: var(--main-color)!important;
     background: var(--third-color)!important;
@@ -82,7 +108,7 @@
 }
 
 @media (max-width: 850px){
-    .mynavbar .signup_button, .navbar .login_button{
+    .mynavbar .signup_button, .mynavbar .login_button, .mynavbar .heart, .mynavbar .namebar{
         display: none!important;
     }
     .mynavbar .logo{
@@ -177,8 +203,8 @@
 /* End navbar */
 
 .hide{
-    visibility: hidden;
+    visibility: hidden!important;
 }
 .erase{
-    display: none;
+    display: none!important;
 }
