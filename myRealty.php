@@ -1,5 +1,6 @@
 <?php
 include("database.php");
+include("addProperty.php");
 ?>
 
 <!-- need session handling -->
@@ -162,10 +163,4 @@ include("database.php");
   <script src="./js/browse.js"></script>
 
 </body>
-
 </html>
-
-<?php
-include("addProperty.php");
-exit; 
-?>

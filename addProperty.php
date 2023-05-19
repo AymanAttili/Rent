@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // if there is another image with the same exact name, expand filename with an auto-increment number 
     $i = 1;
-    $image_name_copy = $image_name; 
+    $image_name_copy = $image_name;
     while (file_exists("property_uploads/" . $image_name . "." . $image_ext)) {
         $image_name = $image_name_copy . "($i)";
         $i++;
@@ -83,4 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "sisssisi", $Owner_user_name, $price, $description, $from_date, $to_date, $location_id, $image_path, $beds);
     mysqli_stmt_execute($stmt);
+
+    // Redirect back to the same page
+    header("Location: myRealty.php");
+    exit();
 }
