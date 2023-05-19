@@ -1,5 +1,7 @@
 <?php
 include("database.php");
+include("deleteOwner.php");
+include("deleteTenant.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,28 +39,32 @@ include("database.php");
                 <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
             </div>
 
-            <div class="Tenants container">
-                <?php
-                $query_tenant = "SELECT Tenant_user_name
+            <form action="deleteTenant.php" method="POST">
+                <div class="Tenants container">
+                    <?php
+                    $query_tenant = "SELECT Tenant_user_name
                                  FROM tenant
                                  LIMIT 6";
-                $result_tenant = mysqli_query($conn, $query_tenant);
-                while ($row_tenant = mysqli_fetch_array($result_tenant)) {
-                    $tenant_user_name = $row_tenant['Tenant_user_name'];
-                ?>
-                    <div class="infornation-row row justify-content-between">
-                        <h5 class="col-5 col-sm-7"><?php echo $tenant_user_name ?></h5>
-                        <button class="Delete col-3 col-sm-2">Delete</button>
-                        <button class="Update col-3 col-sm-2">Update</button>
-                    </div>
-                <?php } ?>
-                <hr>
-            </div>
-            <div class="row align-items-center" style="margin-top: 50px;">
-                <h3 class="col-12 col-md-3 col-lg-2 text-start">Owners:</h3>
-                <label class="col-4 col-md-2 col-lg-2 text-center">Search: </label>
-                <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
-            </div>
+                    $result_tenant = mysqli_query($conn, $query_tenant);
+                    while ($row_tenant = mysqli_fetch_array($result_tenant)) {
+                        $tenant_user_name = $row_tenant['Tenant_user_name'];
+                    ?>
+                        <input type="hidden" name="tenant_user_name" value=<?php echo $tenant_user_name ?>>
+                        <div class="infornation-row row justify-content-between">
+                            <h5 class="col-5 col-sm-7"><?php echo $tenant_user_name ?></h5>
+                            <button class="Delete col-3 col-sm-2" type="submit" name="delete">Delete</button>
+                            <button class="Update col-3 col-sm-2" type="submit" name="update">Update</button>
+                        </div>
+                        <hr>
+                    <?php } ?>
+            </form>
+        </div>
+        <div class="row align-items-center" style="margin-top: 50px;">
+            <h3 class="col-12 col-md-3 col-lg-2 text-start">Owners:</h3>
+            <label class="col-4 col-md-2 col-lg-2 text-center">Search: </label>
+            <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
+        </div>
+        <form action="deleteOwner.php" method ="POST">
             <div class="Tenants container align-items-center">
                 <?php
                 $query_owner = "SELECT Owner_user_name, COUNT(Property_id)
@@ -71,10 +77,11 @@ include("database.php");
                     $num_properties = $row_owner['COUNT(Property_id)'];
 
                 ?>
+                    <input type="hidden" name="owner_user_name" value=<?php echo $owner_user_name ?>>
                     <div class="infornation-row row justify-content-between align-items-center">
                         <h5 class="col-6 col-lg-2"><?php echo $owner_user_name ?></h5>
                         <p class="col-6 col-lg-2">No. of properties <span><?php echo $num_properties ?></span></p>
-                        <button <?php echo ($num_properties > 0 ? "" : "hidden") ?> class="Show-properties col-4 col-lg-2">Show properties</button>
+                        <button <?php echo ($num_properties > 0 ? "" : "style = 'visibility: hidden';") ?> class="Show-properties col-4 col-lg-2">Show properties</button>
                         <button class="Delete col-3 col-lg-2">Delete</button>
                         <button class="Update col-3 col-lg-2">Update</button>
                     </div>
@@ -82,6 +89,7 @@ include("database.php");
 
                 <hr>
             </div>
+        </form>
         </div>
     </section>
     <!------------------------------------------End SECTION---------------------------------------->
