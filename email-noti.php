@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./CSS/bootstrap.css">
     <link rel="stylesheet" href="./CSS/email-noti-style.css">
     <link rel="stylesheet" href="./CSS/navbar.css">
+    <link rel="stylesheet" href="./CSS/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,7 +23,7 @@
 
     <!------------------------------------------START SECTION---------------------------------------->
 
-    <section>
+    <section style="background: white">
 
         <div class="container">
 
@@ -83,6 +84,7 @@
     <!------------------------------------------End SECTION---------------------------------------->
 
 
+    <?php include('./Templates/footer.php')?>
 
     <script src="./js/popper.min.js"></script>
     <script src="./js/jquery-3.6.4.min.js"></script>

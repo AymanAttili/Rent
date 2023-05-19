@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./CSS/bootstrap.css">
     <link rel="stylesheet" href="./CSS/pers-det-style.css">
     <link rel="stylesheet" href="./CSS/navbar.css">
+    <link rel="stylesheet" href="./CSS/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,7 +22,7 @@
 
     <!------------------------------------------START SECTION---------------------------------------->
 
-    <section>
+    <section style="background: white">
 
         <div class="container">
 
@@ -79,11 +80,17 @@
 
                         <!--Name lable-->
                         <label class="col-12 col-sm-3" for="">Username</label>
-                        <input placeholder="Ayman Attili" class="col-12 col-sm-8" type="text">
-
+                        <div class="myMid col-12 col-sm-8">
+                            <p>El_Attili</p>
+                        </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" href="#">Edit</a>
+                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('usernameForm','editUsername')" id="editUsername">Edit</a>
 
+                        <form class="editForm erase" id="usernameForm">
+                            <label>New name:</label>
+                            <input type="text"></input>
+                            <button type="submit">OK</button>
+                        </form>
                     </div>
 
                     <!--Display name-->
@@ -91,10 +98,26 @@
 
                         <!--display name lable-->
                         <label class="col-12 col-sm-3" for="">Full name</label>
-                        <input placeholder="Choose a disply name" class="col-12 col-sm-8" type="text">
-
+                        <div class="myMid col-12 col-sm-8">
+                            <p>Ayman Attili</p>
+                        </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" href="#">Edit</a>
+                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('fullnameForm','editFullname')" id="editFullname">Edit</a>
+
+                        <form class="editForm erase" id="fullnameForm">
+                            <div>
+                                <div>
+                                    <label>First name:</label>
+                                    <input type="text"></input>
+                                </div>
+                            
+                                <div>
+                                    <label>Last name:</label>
+                                    <input type="text"></input>
+                                </div>
+                            </div>
+                            <button type="submit" style="flex">OK</button>
+                        </form>
                     </div>
 
                     <!--Email address-->
@@ -102,10 +125,17 @@
 
                         <!--Email address lable-->
                         <label class="col-12 col-sm-3" for="">Email address</label>
-                        <input placeholder="ayman.....@gmail.com" class="col-12 col-sm-8" type="email">
-
+                        <div class="myMid col-12 col-sm-8">
+                            <p>aymanman2002@gmail.com</p>
+                        </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" href="#">Edit</a>
+                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('emailForm','editEmail')" id="editEmail">Edit</a>
+
+                        <form class="editForm erase" id="emailForm">
+                            <label>New email:</label>
+                            <input type="email"></input>
+                            <button type="submit">OK</button>
+                        </form>
                     </div>
 
                     <!--Phone number-->
@@ -113,10 +143,17 @@
 
                         <!--phone number lable-->
                         <label class="col-12 col-sm-3" for="">Phone number</label>
-                        <input placeholder="Add your phone number" class="col-12 col-sm-8" type="tel">
-
+                        <div class="myMid col-12 col-sm-8">
+                            <p>+970593945459</p>
+                        </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" href="#">Edit</a>
+                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('phoneForm','editPhone')" id="editPhone">Edit</a>
+
+                        <form class="editForm erase" id="phoneForm">
+                            <label>New phone:</label>
+                            <input type="phone"></input>
+                            <button type="submit">OK</button>
+                        </form>
 
                     </div>
 
@@ -126,13 +163,12 @@
                         <!--Gender lable-->
                         <label class="col-12 col-sm-3" for="">Gender</label>
 
-                        <select style="color: gray;" class="col-12 col-sm-8" name="Gender">
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                        </select>
+                        <div class="myMid col-12 col-sm-8">
+                            <p>Male</p>
+                        </div>
 
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" href="#">Edit</a>
+                        <a class="col-12 col-sm-1 text-start hide" href="#">Edit</a>
                     </div>
 
                     <!--birthdate-->
@@ -141,10 +177,17 @@
                         <!--biryhdate lable-->
                         
                         <label class="col-12 col-sm-3" for="">Birth date</label>
-                        <input class="col-12 col-sm-8" type="date">
- 
+                        <div class="myMid col-12 col-sm-8">
+                            <p>26/2/2002</p>
+                        </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" href="#">Edit</a>
+                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('dateForm','editDate')" id="editDate">Edit</a>
+
+                        <form class="editForm erase" id="dateForm">
+                            <label>New birthdate:</label>
+                            <input type="date"></input>
+                            <button type="submit">OK</button>
+                        </form>
                     </div>
 
                 </div>
@@ -156,10 +199,12 @@
     <!------------------------------------------End SECTION---------------------------------------->
 
 
+    <?php include('./Templates/footer.php')?>
+
     <script src="./js/popper.min.js"></script>
     <script src="./js/jquery-3.6.4.min.js"></script>
     <script src="./js/bootstrap.js"></script>
-    <script src="./js/browse.js"></script>
+    <script src="./js/settings.js"></script>
 
 </body>
 
