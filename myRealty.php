@@ -101,7 +101,7 @@ include("database.php");
 
   <section>
     <div class="container">
-      <h1 style="margin-bottom: 30px;">My Property</h1>
+      <h1 style="margin-bottom: 30px;">My Properties</h1>
 
       <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
         <div class="card">
@@ -114,7 +114,6 @@ include("database.php");
               <p>2-3 beds</p>
               <div class="Delete-and-Update">
                 <button class="Delete-button" type="button">Delete</button>
-                <button class="Update-button" type="button">Update</button>
               </div>
             </div>
           </div>
