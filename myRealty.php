@@ -2,6 +2,7 @@
 include("database.php");
 ?>
 
+<!-- need session handling -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,29 +99,61 @@ include("database.php");
     </div>
   </section>
 
+  <?php
+  // get all properties for that owner
+  // $owner_user_name = $_SESSION['user_name']
+  $owner_user_name = "AboSofian"; // for testing purposes only 
+
+  // get the full name of the owner 
+  $query_owner = "SELECT * FROM customer WHERE User_name = '$owner_user_name'";
+  $result_owner = mysqli_query($conn, $query_owner);
+  $row_owner = mysqli_fetch_array($result_owner);
+  $first_name = $row_owner['First_name'];
+  $last_name = $row_owner['Last_name'];
+  ?>
+
 
   <section>
-    <div class="container">
-      <h1 style="margin-bottom: 30px;">My Properties</h1>
 
-      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        <div class="card">
-          <img class="card-image" src="./img/backiee-176475.jpg">
-          <div class="Description">
-            <div class="content">
-              <p>$3,000+</p>
-              <p>Saif Abu Raad</p>
-              <p>Sabastia, Nablus</p>
-              <p>2-3 beds</p>
-              <div class="Delete-and-Update">
-                <button class="Delete-button" type="button">Delete</button>
+    <div class='container'>
+      <h1 style='margin-bottom: 30px;'>My Properties</h1>
+      <div class='fc' style='display: flex; justify-content: space-between; flex-wrap: wrap;'>
+        <?php
+        $query = "Select * FROM property WHERE Owner_user_name = '$owner_user_name'";
+        $result = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_array($result)) {
+          // get the Country and City from location table
+          $location_id = $row['Location_id'];
+          $query_location = "SELECT * FROM location WHERE Location_id = '$location_id'";
+          $result_location = mysqli_query($conn, $query_location);
+          $row_location = mysqli_fetch_array($result_location);
+          $country = $row_location['Country'];
+          $city = $row_location['City'];
+
+          // get other info from property table 
+          $image_path = $row['Image_path'];
+          $price = $row['Price'];
+          $beds = $row['Beds'];
+        ?>
+          <div class='card'>
+            <img class='card-image' src=<?php echo ($image_path) ?>>
+            <div class='Description'>
+              <div class='content'>
+                <p><?php echo $price . "$" ?></p>
+                <p><?php echo $first_name . " " . $last_name ?></p>
+                <p><?php echo $city . ", " . $country ?></p>
+                <p><?php echo $beds ?></p>
+                <div class='Delete-and-Update'>
+                  <button class='Delete-button' type='button'>Delete</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <?php
+        } ?>
       </div>
+    </div>
   </section>
-
 
 
   <script src="./js/popper.min.js"></script>
@@ -134,4 +167,5 @@ include("database.php");
 
 <?php
 include("addProperty.php");
+exit; 
 ?>
