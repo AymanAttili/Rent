@@ -1,3 +1,6 @@
+<?php
+include("database.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,11 +38,20 @@
             </div>
 
             <div class="Tenants container">
-                <div class="infornation-row row justify-content-between">
-                    <h5 class="col-5 col-sm-7">Ayman Attili</h5>
-                    <button class="Delete col-3 col-sm-2">Delete</button>
-                    <button class="Update col-3 col-sm-2">Update</button>
-                </div>
+                <?php
+                $query_tenant = "SELECT Tenant_user_name
+                                 FROM tenant
+                                 LIMIT 6";
+                $result_tenant = mysqli_query($conn, $query_tenant);
+                while ($row_tenant = mysqli_fetch_array($result_tenant)) {
+                    $tenant_user_name = $row_tenant['Tenant_user_name'];
+                ?>
+                    <div class="infornation-row row justify-content-between">
+                        <h5 class="col-5 col-sm-7"><?php echo $tenant_user_name ?></h5>
+                        <button class="Delete col-3 col-sm-2">Delete</button>
+                        <button class="Update col-3 col-sm-2">Update</button>
+                    </div>
+                <?php } ?>
                 <hr>
             </div>
             <div class="row align-items-center" style="margin-top: 50px;">
@@ -47,15 +59,27 @@
                 <label class="col-4 col-md-2 col-lg-2 text-center">Search: </label>
                 <input class="col-5 col-md-4 col-lg-3" placeholder="User Name" type="text">
             </div>
-
             <div class="Tenants container align-items-center">
-                <div class="infornation-row row justify-content-between align-items-center">
-                    <h5 class="col-6 col-lg-2">Ayman Attili</h5>
-                    <p class="col-6 col-lg-2">No. of properties <span>0</span></p>
-                    <button class="Show-properties col-4 col-lg-2">Show properties</button>
-                    <button class="Delete col-3 col-lg-2">Delete</button>
-                    <button class="Update col-3 col-lg-2">Update</button>
-                </div>
+                <?php
+                $query_owner = "SELECT Owner_user_name, COUNT(Property_id)
+                                FROM owner LEFT JOIN property USING (Owner_user_name)
+                                GROUP BY Owner_user_name 
+                                LIMIT 6";
+                $result_owner = mysqli_query($conn, $query_owner);
+                while ($row_owner = mysqli_fetch_array($result_owner)) {
+                    $owner_user_name = $row_owner['Owner_user_name'];
+                    $num_properties = $row_owner['COUNT(Property_id)'];
+
+                ?>
+                    <div class="infornation-row row justify-content-between align-items-center">
+                        <h5 class="col-6 col-lg-2"><?php echo $owner_user_name ?></h5>
+                        <p class="col-6 col-lg-2">No. of properties <span><?php echo $num_properties ?></span></p>
+                        <button <?php echo ($num_properties > 0 ? "" : "hidden") ?> class="Show-properties col-4 col-lg-2">Show properties</button>
+                        <button class="Delete col-3 col-lg-2">Delete</button>
+                        <button class="Update col-3 col-lg-2">Update</button>
+                    </div>
+                <?php } ?>
+
                 <hr>
             </div>
         </div>
