@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("database.php");
 // get from session
 $user_name_edit = $_SESSION['user_name_edit'];
@@ -48,7 +49,7 @@ $password = $row['Password'];
             <div class="row align-items-start justify-content-between">
 
                 <!--RIGHT SIDE-->
-                <form class="right-side col-12 col-md-12 " action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" enctype="multipart/form-data" method="POST">
+                <form class="right-side col-12 col-md-12 " action="updateUser.php" enctype="multipart/form-data" method="POST">
 
                     <!--HEAD of right side-->
                     <div class="row align-items-center">
@@ -226,8 +227,10 @@ function phpAlert($msg)
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // no need for validation in admin privileges mode :)
+
+    phpAlert('assasa'); 
 
     $new_uname = empty($_POST['new_uname']) ? $user_name_edit : $_POST['new_uname'];
     $new_fname = empty($_POST['new_fname']) ? $first_name : $_POST['new_fname'];
