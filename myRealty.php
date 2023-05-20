@@ -133,7 +133,7 @@ else {
 
     <div class='container'>
       <h1 style='margin-bottom: 30px;'>My Properties</h1>
-      <div class='fc' style='display: flex; justify-content: space-between; flex-wrap: wrap;'>
+      <div class='fc' style='display: flex; justify-content: space-evenly; flex-wrap: wrap;'>
         <?php
         $query = "Select * FROM property WHERE Owner_user_name = '$owner_user_name'";
         $result = mysqli_query($conn, $query);
