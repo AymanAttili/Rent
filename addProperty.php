@@ -1,7 +1,21 @@
 <?php
-// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+$username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
+include("database.php");
+if (!$loggedIn) {
+    header("location: index.php");
+} 
+else {
+    if ($usertype == "admin") {
+        header("location: admin.php");
+    }
+}
 
-// works fine, need session handling, further validation, White space in image name handling -> replace with'_'
+// works fine, further validation, White space in image name handling -> replace with'_'
 
 function phpAlert($msg)
 {
@@ -76,8 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // insert into table property
-    // $Owner_user_name = $_SESSION['user_name'];
-    $Owner_user_name = "AboSofian";
+    $Owner_user_name = $_SESSION['user_name'];
     $query = "INSERT INTO property (Owner_user_name, Price, Description, Start_date, End_date, Location_id, Image_path, Beds)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);

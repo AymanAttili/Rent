@@ -1,3 +1,18 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include("database.php");
+// Check if the user is logged in
+$loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+$username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
+
+if ($loggedIn && $usertype == "admin") {
+    header("location: admin.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,54 +57,54 @@
     </section>
 
     <!-- Start cards -->
-    <section style="margin-top: 30px; padding: 20px;">
+    <section style=" margin-top: 30px; padding: 20px;">
 
-        <h1>Hot Properties</h1>
+                <h1>Hot Properties</h1>
 
-        <?php
-        // get the 6 last inserted properties 
-        $query = "SELECT * FROM property LIMIT 6";
-        $result = mysqli_query($conn, $query);
-        ?>
+                <?php
+                // get the 6 last inserted properties 
+                $query = "SELECT * FROM property LIMIT 6";
+                $result = mysqli_query($conn, $query);
+                ?>
 
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-            <?php
-            while ($row = mysqli_fetch_array($result)) {
-                $image_path = $row['Image_path'];
-                $price = $row['Price'];
-                $beds = $row['Beds'];
-                $location_id = $row['Location_id'];
-                $owner_user_name = $row['Owner_user_name'];
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                    <?php
+                    while ($row = mysqli_fetch_array($result)) {
+                        $image_path = $row['Image_path'];
+                        $price = $row['Price'];
+                        $beds = $row['Beds'];
+                        $location_id = $row['Location_id'];
+                        $owner_user_name = $row['Owner_user_name'];
 
-                // get the Country and City from location table
-                $query_location = "SELECT * FROM location WHERE Location_id = '$location_id'";
-                $result_location = mysqli_query($conn, $query_location);
-                $row_location = mysqli_fetch_array($result_location);
-                $country = $row_location['Country'];
-                $city = $row_location['City'];
+                        // get the Country and City from location table
+                        $query_location = "SELECT * FROM location WHERE Location_id = '$location_id'";
+                        $result_location = mysqli_query($conn, $query_location);
+                        $row_location = mysqli_fetch_array($result_location);
+                        $country = $row_location['Country'];
+                        $city = $row_location['City'];
 
-                // get the owner full name from customer table
-                $query_owner = "SELECT * FROM customer WHERE User_name = '$owner_user_name'";
-                $result_owner = mysqli_query($conn, $query_owner);
-                $row_owner = mysqli_fetch_array($result_owner);
-                $first_name = $row_owner['First_name'];
-                $last_name = $row_owner['Last_name'];
-            ?>
-                <div class="card">
-                    <img class="card-image" src=<?php echo ($image_path) ?>>
-                    <div class="Description">
-                        <div class="content">
-                            <p><?php echo $price . "$" ?></p>
-                            <p><?php echo $first_name . " " . $last_name ?></p>
-                            <p><?php echo $city . ", " . $country ?></p>
-                            <p><?php echo 'Beds: ' . $beds ?></p>
+                        // get the owner full name from customer table
+                        $query_owner = "SELECT * FROM customer WHERE User_name = '$owner_user_name'";
+                        $result_owner = mysqli_query($conn, $query_owner);
+                        $row_owner = mysqli_fetch_array($result_owner);
+                        $first_name = $row_owner['First_name'];
+                        $last_name = $row_owner['Last_name'];
+                    ?>
+                        <div class="card">
+                            <img class="card-image" src=<?php echo ($image_path) ?>>
+                            <div class="Description">
+                                <div class="content">
+                                    <p><?php echo $price . "$" ?></p>
+                                    <p><?php echo $first_name . " " . $last_name ?></p>
+                                    <p><?php echo $city . ", " . $country ?></p>
+                                    <p><?php echo 'Beds: ' . $beds ?></p>
+                                </div>
+                                <button class='Delete-button' type='submit'>Delete</button>
+                            </div>
+
                         </div>
-                        <button class='Delete-button' type='submit'>Delete</button>
-                    </div>
-
+                    <?php } ?>
                 </div>
-            <?php } ?>
-        </div>
 
     </section>
 

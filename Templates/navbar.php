@@ -1,5 +1,20 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include("database.php");
+// Check if the user is logged in
+$loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+$username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
+
+$profile_image_path = "";
+if ($loggedIn && $usertype != "admin") {
+    $query = "SELECT * FROM customer WHERE User_name = '$username'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $profile_image_path = $row['Profile_picture_path'];
+}
 ?>
 <!-- need session handling -->
 
@@ -14,32 +29,38 @@ include("database.php");
         </div>
         <ul class="menuList">
             <li onclick="window.open('./Index.php','_self')">Home</li>
-            <li onclick="window.open('./Search.php','_self')">Search</li>
-            
+            <?php
+            if ($loggedIn && $usertype != "admin") {
+                echo "<li onclick='window.open('./Search.php','_self')''>Search</li>";
+            }
+            ?>
+
 
             <?php
-            // Check if the user is logged in
-            $loggedIn = true; // Replace with info from session
+
 
             if ($loggedIn) {
-                // User is logged in, display username and photo
-                $username = "Ayman Attili"; // Replace with info from query
-                $profile_image_path = "./img/profile.jpg"; // Replace with info from query
+                if ($usertype != "admin") {
+                    echo '<hr>';
+                    echo '<section class="">';
+                    echo '<li>Saved properties <small>0</small></li>';
+                    echo '<li>History</li>';
+                    echo '<li onclick="window.open(\'./personal-details.php\',\'_self\')">Settings</li>';
+                    echo '<hr>';
+                }
+                echo '</section>';
 
-                echo '<hr>';
-                echo '<section class="">';
-                echo '<li>Saved properties <small>0</small></li>';
-                echo '<li>History</li>';
-                echo '<li onclick="window.open(\'./personal-details.php\',\'_self\')">Settings</li>';
-                echo '<hr>';
-                echo '</section>';
-                echo '<section class="">';
-                echo '<li onclick="window.open(\'./myRealty.php\',\'_self\')">My realty</li>';
-                echo '</section>';
-                
+
+                // Check if the user type is owner
+                if ($usertype == "owner") {
+                    echo '<section class="">';
+                    echo '<li onclick="window.open(\'./myRealty.php\',\'_self\')">My realty</li>';
+                    echo '<hr>';
+                    echo '</section>';
+                }
+
                 echo '<section>';
-                echo '<hr>';
-                echo '<li class="">Log out</li>';
+                echo '<li onclick="window.open(\'./logout.php\',\'_self\')" class="">Log out</li>';
                 echo '</section>';
             } else {
                 echo '<hr>';
@@ -62,13 +83,15 @@ include("database.php");
             <img class="logo" src="./SVG/Logo.svg" onclick="window.open('./Index.php','_self')">
         </div>
         <div class="right">
-            
+
             <?php
             if ($loggedIn) {
-                // User is logged in, display user's name, heart and photo
-                echo '<img src="./SVG/on_heart.svg" class="heart" title="Saved Properties" onclick="window.open(\'../saved.php\')">';
-                echo '<div class="namebar" onclick="window.open(\'./personal-details.php\', \'_self\')">';
-                echo '<img src="' . $profile_image_path . '" class="profile_picture">';
+                // User is logged in, display user's name, heart and photo. nothing if admin 
+                if ($usertype != "admin") {
+                    echo '<img src="./SVG/on_heart.svg" class="heart" title="Saved Properties" onclick="window.open(\'../saved.php\')">';
+                    echo '<div class="namebar" onclick="window.open(\'./personal-details.php\', \'_self\')">';
+                    echo '<img src="' . $profile_image_path . '" class="profile_picture">';
+                }
                 echo '<p class="name">' . $username . '</p>';
                 echo '</div>';
             } else {

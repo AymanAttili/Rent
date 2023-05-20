@@ -1,11 +1,13 @@
 <?php
-include("database.php");
-// Initialize the session
 session_start();
-
-// Check if the user is already logged in, if yes then redirect him to welcome page
+include("database.php");
+// Check if the user is already logged in, if yes then redirect him to the appropriate page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: index.php");
+    if ($_SESSION["user_type"] == "admin") {
+        header("location: admin.php");
+    } else {
+        header("location: index.php");
+    }
     exit;
 }
 ?>
@@ -139,9 +141,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // phpAlert("Welcome Admin");
 
             //start a new session
-            session_start();
             $_SESSION['loggedin'] = true;
-            $_SESSION['type'] = 'admin';
+            $_SESSION['user_type'] = "admin";
             $_SESSION['user_name'] = $row['Admin_user_name'];
 
             //redirects to Admin page
@@ -177,9 +178,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 //phpAlert("Welcome Owner");
 
                 // start a new session
-                session_start();
                 $_SESSION['loggedin'] = true;
-                $_SESSION['type'] = 'owner';
+                $_SESSION['user_type'] = 'owner';
                 $_SESSION['user_name'] = $row['User_name'];
 
                 // redirects to MyRealty page
@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 // start a new session
                 session_start();
                 $_SESSION['loggedin'] = true;
-                $_SESSION['type'] = 'tenant';
+                $_SESSION['user_type'] = 'tenant';
                 $_SESSION['user_name'] = $row['User_name'];
 
                 // redirects to home page

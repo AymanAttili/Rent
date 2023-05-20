@@ -1,6 +1,22 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+$loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+$username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
 include("database.php");
 include("addProperty.php");
+if (!$loggedIn) {
+  header("location: index.php");
+} 
+else {
+  if ($usertype == "admin") {
+      header("location: admin.php");
+  }
+}
+
+
 ?>
 
 <!-- need session handling -->
@@ -102,8 +118,7 @@ include("addProperty.php");
 
   <?php
   // get all properties for that owner
-  // $owner_user_name = $_SESSION['user_name']
-  $owner_user_name = "AboSofian"; // for testing purposes only 
+  $owner_user_name = $username; // from session
 
   // get the full name of the owner 
   $query_owner = "SELECT * FROM customer WHERE User_name = '$owner_user_name'";
