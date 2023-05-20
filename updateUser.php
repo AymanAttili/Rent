@@ -1,7 +1,8 @@
 <?php
 include("database.php");
+session_start();
 // get from session
-$user_name_edit = "saif123";
+$user_name_edit = $_SESSION['user_name_edit'];
 
 $query = "SELECT * from customer where User_name = '$user_name_edit' ";
 $result = mysqli_query($conn, $query);
@@ -14,6 +15,7 @@ $phone_number = $row['Phone_number']; //nullable
 $gender = $row['Gender'];   // nullable
 $birth_date = $row['Birth_date']; // nullable 
 $user_profile_image_path = $row['Profile_picture_path'];
+$password = $row['Password'];
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +36,8 @@ $user_profile_image_path = $row['Profile_picture_path'];
 
 <body>
 
-    <?php //include('./Templates/navbar.php'); 
-    ?>
+    <?php //include('./Templates/navbar.php');  -->
+     ?>
 
 
     <!------------------------------------------START SECTION---------------------------------------->
@@ -80,7 +82,7 @@ $user_profile_image_path = $row['Profile_picture_path'];
                         <!--Edit-->
                         <div class="editForm " id="usernameForm">
                             <label>New name:</label>
-                            <input name ="new_uname" type="text"></input>
+                            <input name="new_uname" type="text"></input>
                         </div>
                     </div>
 
@@ -97,12 +99,12 @@ $user_profile_image_path = $row['Profile_picture_path'];
                             <div>
                                 <div>
                                     <label>First name:</label>
-                                    <input name ="new_fname" type="text"></input>
+                                    <input name="new_fname" type="text"></input>
                                 </div>
 
                                 <div>
                                     <label>Last name:</label>
-                                    <input name ="new_lname" type="text"></input>
+                                    <input name="new_lname" type="text"></input>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +122,7 @@ $user_profile_image_path = $row['Profile_picture_path'];
 
                         <div class="editForm " id="emailForm">
                             <label>New email:</label>
-                            <input name ="new_email" type="email"></input>
+                            <input name="new_email" type="email"></input>
                         </div>
                     </div>
 
@@ -136,7 +138,7 @@ $user_profile_image_path = $row['Profile_picture_path'];
 
                         <div class="editForm " id="phoneForm">
                             <label>New phone:</label>
-                            <input name ="new_phone_number" type="phone"></input>
+                            <input name="new_phone_number" type="phone"></input>
                         </div>
 
                     </div>
@@ -150,7 +152,7 @@ $user_profile_image_path = $row['Profile_picture_path'];
 
                         <div class="editForm " id="passordForm">
                             <label>Set password:</label>
-                            <input name ="new_password" type="text"></input>
+                            <input name="new_password" type="text"></input>
                         </div>
 
                     </div>
@@ -167,9 +169,9 @@ $user_profile_image_path = $row['Profile_picture_path'];
                         <!--Edit-->
                         <div class="editForm " id="genderForm">
                             <label>Your gender:</label>
-                            <select name ="gender">
-                                <option value ="male">Male</option>
-                                <option value ="female">Female</option>
+                            <select name="new_gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
                         </div>
                     </div>
@@ -187,13 +189,13 @@ $user_profile_image_path = $row['Profile_picture_path'];
 
                         <div class="editForm " id="dateForm">
                             <label>New birthdate:</label>
-                            <input name ="new_birth_date" type="date"></input>
+                            <input name="new_birth_date" type="date"></input>
                         </div>
                     </div>
 
 
                     <div class="submitContainer">
-                        <button type="submit" style="width: 80px; heigth: 40px" name = "submit">OK</button>
+                        <button type="submit" style="width: 80px; heigth: 40px" name="submit">OK</button>
                     </div>
                 </form>
             </div>
@@ -214,3 +216,89 @@ $user_profile_image_path = $row['Profile_picture_path'];
 </body>
 
 </html>
+
+<?php
+function phpAlert($msg)
+{
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // no need for validation in admin privileges mode :)
+
+    $new_uname = empty($_POST['new_uname']) ? $user_name_edit : $_POST['new_uname'];
+    $new_fname = empty($_POST['new_fname']) ? $first_name : $_POST['new_fname'];
+    $new_lname = empty($_POST['new_lname']) ? $last_name : $_POST['new_lname'];
+    $new_email = empty($_POST['new_email']) ? $email : $_POST['new_email'];
+    $new_phone_number = empty($_POST['new_phone_number']) ? $phone_number : $_POST['new_phone_number'];
+    $new_password = empty($_POST['new_password']) ? $password :
+        password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+    $new_gender = empty($_POST['new_gender']) ? $gender : $_POST['new_gender'];
+    $new_birth_date = empty($_POST['new_birth_date']) ? $birth_date : $_POST['new_birth_date'];
+
+    // $new_values = array(
+    //     "new_uname" => $new_uname,
+    //     "new_fname" => $new_fname,
+    //     "new_lname" => $new_lname,
+    //     "new_email" => $new_email,
+    //     "new_phone_number" => $new_phone_number,
+    //     "new_password" => $new_password,
+    //     "new_gender" => $new_gender,
+    //     "new_birth_date" => $new_birth_date
+    // );
+
+    $email_is_changed = false;
+    $uname_is_changed = false;
+    if ($new_email != $email) $email_is_changed = true;
+    if ($new_uname != $user_name_edit) $uname_is_changed = true;
+
+
+    // Check if the new username or new email already exists in the database
+    $ok = true;
+    if ($uname_is_changed) {
+        $query_exists = "SELECT * FROM customer WHERE (User_name = '$new_uname')";
+        $result = mysqli_query($conn, $query_exists);
+        // Check if any rows were returned
+        if (mysqli_num_rows($result) > 0) {
+            // username already exists
+            $ok = false;
+        }
+    }
+    if ($email_is_changed) {
+        $query_exists = "SELECT * FROM customer WHERE (Email = '$new_email')";
+        $result = mysqli_query($conn, $query_exists);
+        // Check if any rows were returned
+        if (mysqli_num_rows($result) > 0) {
+            // Email already exists
+            $ok = false;
+        }
+    }
+
+    if (!$ok) {
+        phpAlert("Username or email already taken");
+        exit;
+    }
+
+
+    // no restrictions on passwords for admin 
+    $query_update = "UPDATE customer
+                     SET User_name = '$new_uname', First_name = '$new_fname',
+                         Last_name = '$new_lname', Email = '$new_email', Password = '$new_password',
+                         Phone_number = '$new_phone_number', Gender = '$new_gender',
+                         Birth_date = '$new_birth_date'
+                     WHERE User_name = '$user_name_edit'";
+
+    mysqli_query($conn, $query_update);
+
+    // on Update Cascade
+
+    PhpAlert("User Updated Successfully");
+
+    // update the user in session
+    $_SESSION['user_name_edit'] = $new_uname;
+    
+    // to refresh the page. header won't work because of output
+    echo "<script> location.replace('updateUser.php'); </script>"; 
+    exit;
+}
+?>

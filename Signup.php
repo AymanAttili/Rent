@@ -104,7 +104,7 @@ include("database.php");
                         Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
                     </button>
                 </div>
-                <button type="submit" value="submit">Continue</button>
+                <button type="submit" value="submit" name='submit'>Continue</button>
 
             </form>
 
@@ -159,7 +159,7 @@ function password_strength($password)
 }
 
 // Check if the form has been submitted
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($isset([$_POST['submit']])) {
 
     // Retrieve and Validate the form data
     $email = validate($_POST["email"]);

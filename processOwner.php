@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 include("database.php");
 if (isset($_POST['delete'])) { 
     $delete_uname = $_POST['owner_user_name'];
@@ -9,7 +10,9 @@ if (isset($_POST['delete'])) {
 }
 
 if (isset($_POST['update'])) { 
-
+    $_SESSION['user_name_edit'] = "besho"; 
+    header("Location: updateUser.php");
+    exit;
 }
 
 if (isset($_POST['show'])) { 
