@@ -159,7 +159,7 @@ function password_strength($password)
 }
 
 // Check if the form has been submitted
-if ($isset([$_POST['submit']])) {
+if (isset($_POST['submit'])) {
 
     // Retrieve and Validate the form data
     $email = validate($_POST["email"]);

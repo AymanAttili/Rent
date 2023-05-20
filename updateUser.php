@@ -1,7 +1,10 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include("database.php");
-// get from session
+// get from session 
+// admin.php -> processOwner/processTenant -> updateUser
 $user_name_edit = $_SESSION['user_name_edit'];
 
 $query = "SELECT * from customer where User_name = '$user_name_edit' ";
@@ -37,7 +40,7 @@ $password = $row['Password'];
 <body>
 
     <?php //include('./Templates/navbar.php');  -->
-     ?>
+    ?>
 
 
     <!--------------------------------------START SECTION---------------------------------------->
@@ -64,12 +67,11 @@ $password = $row['Password'];
                         <div class="col-12 col-lg-3 col-xl-2 text-center">
 
                             <label for="profile_photo" class="change_photo">
-                                <img class="right-side-profile-image" height="80px" width="80px"
-                                    <?php echo " src='$user_profile_image_path'" ?> alt="">
+                                <img class="right-side-profile-image" height="80px" width="80px" <?php echo " src='$user_profile_image_path'" ?> alt="">
                                 <span>change photo</span>
                             </label>
 
-                            <input type="file"  name="image" id="profile_photo" accept="image/png, image/jpeg, image/jpg" style="display:none">
+                            <input type="file" name="image" id="profile_photo" accept="image/png, image/jpeg, image/jpg" style="display:none">
                         </div>
 
 
@@ -309,9 +311,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // update the user in session
     $_SESSION['user_name_edit'] = $new_uname;
-    
+
     // to refresh the page. header won't work because of output
-    echo "<script> location.replace('updateUser.php'); </script>"; 
+    echo "<script> location.replace('updateUser.php'); </script>";
     exit;
 }
 ?>

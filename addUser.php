@@ -3,7 +3,7 @@ include("database.php");
 ?>
 
 <!-- The Page is Complete and Tested,
- can be updated later (more validation, Keep The Values in The Form, better Alerts) -->
+ can be updated later (more validation, better Alerts, White space in image name handling -> replace with'_') -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +14,11 @@ include("database.php");
     <!--Main template CSS file-->
     <link rel="stylesheet" href="./CSS/myStyle.css" />
 
-    <!-- Google fonts-->
+    <!--    Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>ٌRentalMate | add user</title>
+    <title>ٌRentalMate Add a User</title>
 
 </head>
 
@@ -28,7 +28,7 @@ include("database.php");
     <header class="header">
         <div class="container">
             <img src="./SVG/back.svg" class="back" onclick="window.open('/index.php','_self')">
-            <p class="logo">RentalMate<span>/Add user</span></p>
+            <p class="logo">RentalMate<span>|Add a User</span></p>
             <img src="./SVG/back.svg" alt="" style="visibility: hidden;">
         </div>
     </header>
@@ -38,33 +38,41 @@ include("database.php");
     <div class="sign_screen">
         <div class="container">
 
-            <form class="sign_form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
 
-                <h1>Add user</h1>
+            <?php
+            $email = isset($_POST['email']) ? validate($_POST["email"]) : '';
+            $fname = isset($_POST['fname']) ? validate($_POST["fname"]) : '';
+            $lname = isset($_POST['lname']) ? validate($_POST["lname"]) : '';
+            $uname = isset($_POST['uname']) ? validate($_POST["uname"]) : '';
+            ?>
+
+            <form class="sign_form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" enctype="multipart/form-data" method="POST">
+
+                <h1>Add a User</h1>
 
                 <fieldset class="sign_field">
                     <legend class="sign_legend">Email address</legend>
-                    <input class="sign_input" type="email" name="email" required>
+                    <input class="sign_input" type="email" name="email" value="<?php echo $email; ?>" required>
                 </fieldset>
 
-                <div class="name">
+                <div class=" name">
                     <fieldset class="sign_field">
                         <legend class="sign_legend">First name</legend>
-                        <input class="sign_input" type="text" name="fname" required>
+                        <input class="sign_input" type="text" name="fname" value="<?php echo $fname; ?>" required>
                     </fieldset>
 
-                    <fieldset class="sign_field">
+                    <fieldset class=" sign_field">
                         <legend class="sign_legend">Last name</legend>
-                        <input class="sign_input" type="text" name="lname" required>
+                        <input class="sign_input" type="text" name="lname" value="<?php echo $lname; ?>" required>
                     </fieldset>
                 </div>
 
-                <fieldset class="sign_field">
+                <fieldset class=" sign_field">
                     <legend class="sign_legend">Username</legend>
-                    <input class="sign_input" type="text" name="uname" required>
+                    <input class="sign_input" type="text" name="uname" value="<?php echo $uname; ?>" required>
                 </fieldset>
 
-                <fieldset class="sign_field">
+                <fieldset class=" sign_field">
                     <legend class="sign_legend">Password</legend>
                     <input class="sign_password" type="password" name="password" required onfocus="visEye(eye2)">
                     <img class="eye" id="eye2" src="./SVG/ic_baseline-remove-red-eye.svg" onclick="changeVis()">
@@ -75,6 +83,15 @@ include("database.php");
                     <input class="sign_password" type="password" name="repassword" required onfocus="visEye(eye3)">
                     <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick=changeVis()>
                 </fieldset>
+
+
+                <label for="user_image" class="uploadLabel">
+                    <p id="file_name">Upload user photo.....</p>
+                    <img src="./SVG/upload.svg" alt="">
+                </label>
+
+                <input id="user_image" class="user_image " style="background-color: white; border: none; display:none" type="file" accept="image/png, image/jpeg, image/jpg" name="image" required>
+
 
                 <div class="userType">
                     <input type="hidden" name="userType" id="userTypeInput" value="tenant">
@@ -87,7 +104,7 @@ include("database.php");
                         Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
                     </button>
                 </div>
-                <button type="submit" value="submit">Continue</button>
+                <button type="submit" value="submit" name='submit'>Continue</button>
 
             </form>
 
@@ -96,14 +113,14 @@ include("database.php");
                     document.getElementById("userTypeInput").value = userType;
                 }
             </script>
-
         </div>
         <!-- end sign_screen -->
         <div class="hid" style="visibility: hidden; height: 40px;">
             HHHHHHHHHHHHHHHHHH
         </div>
         <script src="./JS/myJS.js"></script>
-    </body>
+</body>
+
 </html>
 
 <?php
@@ -133,7 +150,7 @@ function password_strength($password)
 }
 
 // Check if the form has been submitted
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if (isset($_POST['submit'])) {
 
     // Retrieve and Validate the form data
     $email = validate($_POST["email"]);
@@ -143,6 +160,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = validate($_POST["password"]);
     $repassword = validate($_POST["repassword"]);
     $user_type = validate($_POST["userType"]);
+    $image_size = $_FILES['image']['size']; // size in bytes
+    $image_tmp_location = $_FILES['image']['tmp_name'];
+    // path of temporary file -> This file is only kept as long as the PHP script responsible for handling the form submission is running.
+    //  So, if you want to use the uploaded file later on (for example, store it for display on the site),
+    // you need to make a copy of it elsewhere(using move_uploaded_file()).
+    $image_name_ext = $_FILES['image']['name']; // name with extension
+
 
     // Validate the password
     if ($password !== $repassword) {
@@ -177,10 +201,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Hash the password, for security requirements.
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+
+    // process image 
+    $image_name = pathinfo($image_name_ext, PATHINFO_FILENAME);
+    $image_ext = pathinfo($image_name_ext, PATHINFO_EXTENSION);
+
+    // if there is another image with the same exact name, expand filename with an auto-increment number 
+    $i = 1;
+    $image_name_copy = $image_name;
+    while (file_exists("profile_uploads/" . $image_name . "." . $image_ext)) {
+        $image_name = $image_name_copy . "($i)";
+        $i++;
+    }
+    $image_name_ext = $image_name . $image_ext;
+    $image_path = "profile_uploads/" . $image_name . "." . $image_ext;
+    move_uploaded_file($image_tmp_location, $image_path);
+    // end process image 
+
+
+
     //Store in Database
-    $query = "INSERT INTO customer (User_name , Email, First_name, Last_name, Password) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO customer (User_name , Email, First_name, Last_name, Password, Profile_picture_path) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssss", $uname, $email, $fname, $lname, $hashed_password);
+    mysqli_stmt_bind_param($stmt, "ssssss", $uname, $email, $fname, $lname, $hashed_password, $image_path);
     mysqli_stmt_execute($stmt);
 
     // Check if the insertion was successful

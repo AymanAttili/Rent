@@ -1,4 +1,7 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include("database.php");
 include("processOwner.php");
 include("processTenant.php");
@@ -57,8 +60,8 @@ include("processTenant.php");
                         <input type="hidden" name="tenant_user_name" value=<?php echo $tenant_user_name ?>>
                         <div class="infornation-row row justify-content-between">
                             <h5 class="col-5 col-sm-7"><?php echo $tenant_user_name ?></h5>
-                            <button class="Delete col-3 col-sm-2" type="submit" name="delete">Delete</button>
-                            <button class="Update col-3 col-sm-2" type="submit" name="update">Update</button>
+                            <button class="Delete col-3 col-sm-2" type="submit" name="delete" value="<?php echo $tenant_user_name ?>">Delete</button>
+                            <button class="Update col-3 col-sm-2" type="submit" name="update" value="<?php echo $tenant_user_name ?>">Update</button>
                         </div>
                         <hr>
                     <?php } ?>
@@ -80,15 +83,14 @@ include("processTenant.php");
                 while ($row_owner = mysqli_fetch_array($result_owner)) {
                     $owner_user_name = $row_owner['Owner_user_name'];
                     $num_properties = $row_owner['COUNT(Property_id)'];
-
                 ?>
                     <input type="hidden" name="owner_user_name" value=<?php echo $owner_user_name ?>>
                     <div class="infornation-row row justify-content-between align-items-center">
                         <h5 class="col-6 col-lg-2"><?php echo $owner_user_name ?></h5>
                         <p class="col-6 col-lg-2">No. of properties <span><?php echo $num_properties ?></span></p>
-                        <button <?php echo ($num_properties > 0 ? "" : "style = 'visibility: hidden';") ?> class="Show-properties col-4 col-lg-2" type ="submit" name ="show">Show properties</button>
-                        <button class="Delete col-3 col-lg-2" type="submit" name="delete">Delete</button>
-                        <button class="Update col-3 col-lg-2" type="submit" name="update">Update</button>
+                        <button <?php echo ($num_properties > 0 ? "" : "style = 'visibility: hidden';") ?> class="Show-properties col-4 col-lg-2" type="submit" name="show" value="<?php echo $owner_user_name ?>">Show properties</button>
+                        <button class="Delete col-3 col-lg-2" type="submit" name="delete" value="<?php echo $owner_user_name ?>">Delete</button>
+                        <button class="Update col-3 col-lg-2" type="submit" name="update" value="<?php echo $owner_user_name ?>">Update</button>
                     </div>
                 <?php } ?>
 
