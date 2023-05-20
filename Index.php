@@ -84,6 +84,7 @@
                             <p><?php echo $city . ", " . $country ?></p>
                             <p><?php echo 'Beds: ' . $beds ?></p>
                         </div>
+                        <button class='Delete-button' type='submit'>Delete</button>
                     </div>
 
                 </div>
