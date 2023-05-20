@@ -49,7 +49,7 @@ $password = $row['Password'];
             <div class="row align-items-start justify-content-between">
 
                 <!--RIGHT SIDE-->
-                <form class="right-side col-12 col-md-12 " action="updateUser.php" enctype="multipart/form-data" method="POST">
+                <form class="right-side col-12 col-md-12 " action="updateUser.php" method="POST">
 
                     <!--HEAD of right side-->
                     <div class="row align-items-center">
@@ -69,7 +69,7 @@ $password = $row['Password'];
                                 <span>change photo</span>
                             </label>
 
-                            <input type="file"  name="profile_photo" id="profile_photo" accept="image/png, image/jpeg, image/jpg" style="display:none" required>
+                            <input type="file"  name="profile_photo" id="profile_photo" accept="image/png, image/jpeg, image/jpg" style="display:none">
                         </div>
 
 
@@ -229,8 +229,6 @@ function phpAlert($msg)
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // no need for validation in admin privileges mode :)
-
-    phpAlert('assasa'); 
 
     $new_uname = empty($_POST['new_uname']) ? $user_name_edit : $_POST['new_uname'];
     $new_fname = empty($_POST['new_fname']) ? $first_name : $_POST['new_fname'];
