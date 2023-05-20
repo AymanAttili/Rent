@@ -49,7 +49,7 @@ $password = $row['Password'];
             <div class="row align-items-start justify-content-between">
 
                 <!--RIGHT SIDE-->
-                <form class="right-side col-12 col-md-12 " action="updateUser.php" method="POST">
+                <form class="right-side col-12 col-md-12 " action="updateUser.php" enctype="multipart/form-data" method="POST">
 
                     <!--HEAD of right side-->
                     <div class="row align-items-center">
@@ -65,11 +65,11 @@ $password = $row['Password'];
 
                             <label for="profile_photo" class="change_photo">
                                 <img class="right-side-profile-image" height="80px" width="80px"
-                                    src="./img/392f1715d423aedc.jpg" alt="">
+                                    <?php echo " src='$user_profile_image_path'" ?> alt="">
                                 <span>change photo</span>
                             </label>
 
-                            <input type="file"  name="profile_photo" id="profile_photo" accept="image/png, image/jpeg, image/jpg" style="display:none">
+                            <input type="file"  name="image" id="profile_photo" accept="image/png, image/jpeg, image/jpg" style="display:none">
                         </div>
 
 
@@ -239,17 +239,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         password_hash($_POST['new_password'], PASSWORD_DEFAULT);
     $new_gender = empty($_POST['new_gender']) ? $gender : $_POST['new_gender'];
     $new_birth_date = empty($_POST['new_birth_date']) ? $birth_date : $_POST['new_birth_date'];
+    $image_size = $_FILES['image']['size']; // size in bytes
+    $image_tmp_location = $_FILES['image']['tmp_name'];
+    $image_name_ext = $_FILES['image']['name']; // name with extension
 
-    // $new_values = array(
-    //     "new_uname" => $new_uname,
-    //     "new_fname" => $new_fname,
-    //     "new_lname" => $new_lname,
-    //     "new_email" => $new_email,
-    //     "new_phone_number" => $new_phone_number,
-    //     "new_password" => $new_password,
-    //     "new_gender" => $new_gender,
-    //     "new_birth_date" => $new_birth_date
-    // );
 
     $email_is_changed = false;
     $uname_is_changed = false;
@@ -283,13 +276,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
+    // process image 
+    $image_name = pathinfo($image_name_ext, PATHINFO_FILENAME);
+    $image_ext = pathinfo($image_name_ext, PATHINFO_EXTENSION);
+
+    // if there is another image with the same exact name, expand filename with an auto-increment number 
+    $i = 1;
+    $image_name_copy = $image_name;
+    while (file_exists("profile_uploads/" . $image_name . "." . $image_ext)) {
+        $image_name = $image_name_copy . "($i)";
+        $i++;
+    }
+    $image_name_ext = $image_name . $image_ext;
+    $image_path = "profile_uploads/" . $image_name . "." . $image_ext;
+    move_uploaded_file($image_tmp_location, $image_path);
+    // end process image 
+
 
     // no restrictions on passwords for admin 
     $query_update = "UPDATE customer
                      SET User_name = '$new_uname', First_name = '$new_fname',
                          Last_name = '$new_lname', Email = '$new_email', Password = '$new_password',
                          Phone_number = '$new_phone_number', Gender = '$new_gender',
-                         Birth_date = '$new_birth_date'
+                         Birth_date = '$new_birth_date', Profile_picture_path = '$image_path'
                      WHERE User_name = '$user_name_edit'";
 
     mysqli_query($conn, $query_update);
