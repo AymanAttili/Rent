@@ -3,7 +3,7 @@ include("database.php");
 ?>
 
 <!-- The Page is Complete and Tested,
- can be updated later (more validation, Keep The Values in The Form, better Alerts) -->
+ can be updated later (more validation, better Alerts, White space in image name handling -> replace with'_') -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +46,7 @@ include("database.php");
             $uname = isset($_POST['uname']) ? validate($_POST["uname"]) : '';
             ?>
 
-            <form class="sign_form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="POST">
+            <form class="sign_form" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" enctype="multipart/form-data" method="POST">
 
                 <h1>Create an account</h1>
 
@@ -68,43 +68,43 @@ include("database.php");
                 </div>
 
                 <fieldset class=" sign_field">
-                        <legend class="sign_legend">Username</legend>
-                        <input class="sign_input" type="text" name="uname" value="<?php echo $uname; ?>" required>
+                    <legend class="sign_legend">Username</legend>
+                    <input class="sign_input" type="text" name="uname" value="<?php echo $uname; ?>" required>
                 </fieldset>
 
                 <fieldset class=" sign_field">
-                        <legend class="sign_legend">Password</legend>
-                        <input class="sign_password" type="password" name="password" required onfocus="visEye(eye2)">
-                        <img class="eye" id="eye2" src="./SVG/ic_baseline-remove-red-eye.svg" onclick="changeVis()">
-                    </fieldset>
+                    <legend class="sign_legend">Password</legend>
+                    <input class="sign_password" type="password" name="password" required onfocus="visEye(eye2)">
+                    <img class="eye" id="eye2" src="./SVG/ic_baseline-remove-red-eye.svg" onclick="changeVis()">
+                </fieldset>
 
-                    <fieldset class="sign_field">
-                        <legend class="sign_legend">Confirm password</legend>
-                        <input class="sign_password" type="password" name="repassword" required onfocus="visEye(eye3)">
-                        <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick=changeVis()>
-                    </fieldset>
+                <fieldset class="sign_field">
+                    <legend class="sign_legend">Confirm password</legend>
+                    <input class="sign_password" type="password" name="repassword" required onfocus="visEye(eye3)">
+                    <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick=changeVis()>
+                </fieldset>
 
-                    
-                    <label for="user_image" class="uploadLabel" >
-                        <p id="file_name" >Upload user photo.....</p>
-                        <img src="./SVG/upload.svg" alt="">
-                    </label>   
-                    
-                    <input id="user_image" name="user_image" class="user_image " style="background-color: white; border: none; display:none" type="file" accept="image/png, image/jpeg, image/jpg" name="image" required>
-                    
 
-                    <div class="userType">
-                        <input type="hidden" name="userType" id="userTypeInput" value="tenant">
-                        <p>Select User type:</p>
-                        <button type="button" id="tenant" value="tenant" class="typeButton tenant" onclick="setUserType('tenant')">
-                            Tenatnt <img id="tenantIcon" class="btnIcon" src="./SVG/tenant1.svg">
-                        </button>
+                <label for="user_image" class="uploadLabel">
+                    <p id="file_name">Upload user photo.....</p>
+                    <img src="./SVG/upload.svg" alt="">
+                </label>
 
-                        <button type="button" id="owner" value="owner" class="typeButton owner" onclick="setUserType('owner')">
-                            Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
-                        </button>
-                    </div>
-                    <button type="submit" value="submit">Continue</button>
+                <input id="user_image" class="user_image " style="background-color: white; border: none; display:none" type="file" accept="image/png, image/jpeg, image/jpg" name="image" required>
+
+
+                <div class="userType">
+                    <input type="hidden" name="userType" id="userTypeInput" value="tenant">
+                    <p>Select User type:</p>
+                    <button type="button" id="tenant" value="tenant" class="typeButton tenant" onclick="setUserType('tenant')">
+                        Tenatnt <img id="tenantIcon" class="btnIcon" src="./SVG/tenant1.svg">
+                    </button>
+
+                    <button type="button" id="owner" value="owner" class="typeButton owner" onclick="setUserType('owner')">
+                        Owner <img id="ownerIcon" class="btnIcon" src="./SVG/owner1.svg">
+                    </button>
+                </div>
+                <button type="submit" value="submit">Continue</button>
 
             </form>
 
@@ -169,6 +169,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = validate($_POST["password"]);
     $repassword = validate($_POST["repassword"]);
     $user_type = validate($_POST["userType"]);
+    $image_size = $_FILES['image']['size']; // size in bytes
+    $image_tmp_location = $_FILES['image']['tmp_name'];
+    // path of temporary file -> This file is only kept as long as the PHP script responsible for handling the form submission is running.
+    //  So, if you want to use the uploaded file later on (for example, store it for display on the site),
+    // you need to make a copy of it elsewhere(using move_uploaded_file()).
+    $image_name_ext = $_FILES['image']['name']; // name with extension
+
 
     // Validate the password
     if ($password !== $repassword) {
@@ -203,10 +210,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Hash the password, for security requirements.
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
+
+    // process image 
+    $image_name = pathinfo($image_name_ext, PATHINFO_FILENAME);
+    $image_ext = pathinfo($image_name_ext, PATHINFO_EXTENSION);
+
+    // if there is another image with the same exact name, expand filename with an auto-increment number 
+    $i = 1;
+    $image_name_copy = $image_name;
+    while (file_exists("profile_uploads/" . $image_name . "." . $image_ext)) {
+        $image_name = $image_name_copy . "($i)";
+        $i++;
+    }
+    $image_name_ext = $image_name . $image_ext;
+    $image_path = "profile_uploads/" . $image_name . "." . $image_ext;
+    move_uploaded_file($image_tmp_location, $image_path);
+    // end process image 
+
+
+
     //Store in Database
-    $query = "INSERT INTO customer (User_name , Email, First_name, Last_name, Password) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO customer (User_name , Email, First_name, Last_name, Password, Profile_picture_path) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "sssss", $uname, $email, $fname, $lname, $hashed_password);
+    mysqli_stmt_bind_param($stmt, "ssssss", $uname, $email, $fname, $lname, $hashed_password, $image_path);
     mysqli_stmt_execute($stmt);
 
     // Check if the insertion was successful
