@@ -84,6 +84,15 @@ include("database.php");
                         <img class="eye" id="eye3" src="./SVG/ic_baseline-remove-red-eye.svg" onclick=changeVis()>
                     </fieldset>
 
+                    
+                    <label for="user_image" class="uploadLabel" >
+                        <p id="file_name" >Upload user photo.....</p>
+                        <img src="./SVG/upload.svg" alt="">
+                    </label>   
+                    
+                    <input id="user_image" name="user_image" class="user_image " style="background-color: white; border: none; display:none" type="file" accept="image/png, image/jpeg, image/jpg" name="image" required>
+                    
+
                     <div class="userType">
                         <input type="hidden" name="userType" id="userTypeInput" value="tenant">
                         <p>Select User type:</p>

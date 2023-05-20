@@ -95,3 +95,12 @@ tenant.addEventListener('click', function(){
     ownerIcon.src='./SVG/owner1.svg';
 })
 
+
+let user_image = document.getElementById('user_image');
+let file_name = document.getElementById('file_name');
+
+
+user_image.addEventListener('change',function(){
+    file_name.innerText=user_image.files[0].name
+})
+
