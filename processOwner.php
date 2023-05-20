@@ -10,7 +10,7 @@ if (isset($_POST['delete'])) {
 }
 
 if (isset($_POST['update'])) { 
-    $_SESSION['user_name_edit'] = "besho"; 
+    $_SESSION['user_name_edit'] = "besho12345"; 
     header("Location: updateUser.php");
     exit;
 }

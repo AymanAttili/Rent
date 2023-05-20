@@ -1,6 +1,5 @@
-<!-- <?php
+<?php
 include("database.php");
-session_start();
 // get from session
 $user_name_edit = $_SESSION['user_name_edit'];
 
@@ -40,7 +39,7 @@ $password = $row['Password'];
      ?>
 
 
-    <!------------------------------------------START SECTION---------------------------------------->
+    <!--------------------------------------START SECTION---------------------------------------->
 
     <section style="background: white">
 
