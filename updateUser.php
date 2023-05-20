@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Profile</title>
+    <title>Update user</title>
 </head>
 
 <body>
@@ -28,38 +28,15 @@
 
             <div class="row align-items-start justify-content-between">
 
-                <!--LEFT SIDE-->
-                <div class="col-12 col-md-4">
-
-                    <!--DIV that contain all buttons-->
-                    <div class="button-container">
-
-                        <!--personal detail-->
-                        <input class="button" id="personal-detail-button" type="button" value="Personal details" onclick="window.open('./personal-details.php','_self')">
-
-                        <!--security-->
-                        <input class="button" id="security-button" type="button" value="Security" onclick="window.open('./security.php','_self')">
-
-                        <!--payment details-->
-                        <input class="button" id="payment-button" type="button" value="Payment details" onclick="window.open('./Payment.php','_self')">
-
-                        <!--Email notifications-->
-                        <input class="button" id="email-notification-button" type="button" value="Email notifications" onclick="window.open('./email-noti.php','_self')">
-
-                    </div>
-
-                </div>
-
                 <!--RIGHT SIDE-->
-                <div class="right-side col-12 col-md-7">
+                <form class="right-side col-12 col-md-12 ">
 
                     <!--HEAD of right side-->
                     <div class="row align-items-center">
 
                         <!--Personal details & description-->
                         <div class="right-side-TITLE col-12 col-lg-9 col-xl-10 text-start">
-                            <h1>Personal Details</h1>
-                            <p>Update your info and find out how it's used.</p>
+                            <h1>Update user</h1>
                         </div>
 
 
@@ -76,7 +53,7 @@
                     </div>
 
                     <!--NAME-->
-                    <div class="row align-items-center justify-content-between" id="informatin-rows">
+                    <div class="row align-items-center justify-content-between" id="informatin-rows2">
 
                         <!--Name lable-->
                         <label class="col-12 col-sm-3" for="">Username</label>
@@ -84,17 +61,14 @@
                             <p>El_Attili</p>
                         </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('usernameForm','editUsername')" id="editUsername">Edit</a>
-
-                        <form class="editForm erase" id="usernameForm">
+                        <div class="editForm " id="usernameForm">
                             <label>New name:</label>
                             <input type="text"></input>
-                            <button type="submit">OK</button>
-                        </form>
+                        </div>
                     </div>
 
                     <!--Display name-->
-                    <div class="row align-items-center justify-content-between" id="informatin-rows">
+                    <div class="row align-items-center justify-content-between" id="informatin-rows2">
 
                         <!--display name lable-->
                         <label class="col-12 col-sm-3" for="">Full name</label>
@@ -102,9 +76,7 @@
                             <p>Ayman Attili</p>
                         </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('fullnameForm','editFullname')" id="editFullname">Edit</a>
-
-                        <form class="editForm erase" id="fullnameForm">
+                        <div class="editForm " id="fullnameForm">
                             <div>
                                 <div>
                                     <label>First name:</label>
@@ -116,12 +88,11 @@
                                     <input type="text"></input>
                                 </div>
                             </div>
-                            <button type="submit" style="flex">OK</button>
-                        </form>
+                        </div>
                     </div>
 
                     <!--Email address-->
-                    <div class="row align-items-center justify-content-between" id="informatin-rows">
+                    <div class="row align-items-center justify-content-between" id="informatin-rows2">
 
                         <!--Email address lable-->
                         <label class="col-12 col-sm-3" for="">Email address</label>
@@ -129,17 +100,15 @@
                             <p>aymanman2002@gmail.com</p>
                         </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('emailForm','editEmail')" id="editEmail">Edit</a>
 
-                        <form class="editForm erase" id="emailForm">
+                        <div class="editForm " id="emailForm">
                             <label>New email:</label>
                             <input type="email"></input>
-                            <button type="submit">OK</button>
-                        </form>
+                        </div>
                     </div>
 
                     <!--Phone number-->
-                    <div class="row align-items-center justify-content-between" id="informatin-rows">
+                    <div class="row align-items-center justify-content-between" id="informatin-rows2">
 
                         <!--phone number lable-->
                         <label class="col-12 col-sm-3" for="">Phone number</label>
@@ -147,18 +116,29 @@
                             <p>+970593945459</p>
                         </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('phoneForm','editPhone')" id="editPhone">Edit</a>
 
-                        <form class="editForm erase" id="phoneForm">
+                        <div class="editForm " id="phoneForm">
                             <label>New phone:</label>
                             <input type="phone"></input>
-                            <button type="submit">OK</button>
-                        </form>
+                        </div>
 
                     </div>
 
+                    <!-- Set password -->
+                    <div class="row align-items-center justify-content-between" id="informatin-rows2">
+
+                        <!--password lable-->
+                        <label class="col-12 col-sm-3" for="">Password</label>
+                        <!--Edit-->
+
+                        <div class="editForm " id="passordForm">
+                            <label>Set password:</label>
+                            <input type="text"></input>
+                        </div>
+
+                    </div>
                     <!--Gender-->
-                    <div class="row align-items-center justify-content-between" id="informatin-rows">
+                    <div class="row align-items-center justify-content-between" id="informatin-rows2">
 
                         <!--Gender lable-->
                         <label class="col-12 col-sm-3" for="">Gender</label>
@@ -168,19 +148,17 @@
                         </div>
 
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('genderForm','editGender')" id="editGender">Edit</a>
-                        <form class="editForm erase" id="genderForm">
+                        <div class="editForm " id="genderForm">
                             <label>Your gender:</label>
                             <select>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
-                            <button type="submit">OK</button>
-                        </form>
+                        </div>                    
                     </div>
 
                     <!--birthdate-->
-                    <div class="row align-items-center justify-content-between" id="informatin-rows">
+                    <div class="row align-items-center justify-content-between" id="informatin-rows2">
 
                         <!--biryhdate lable-->
                         
@@ -189,16 +167,18 @@
                             <p>26/2/2002</p>
                         </div>
                         <!--Edit-->
-                        <a class="col-12 col-sm-1 text-start" onclick="myEdit('dateForm','editDate')" id="editDate">Edit</a>
 
-                        <form class="editForm erase" id="dateForm">
+                        <div class="editForm " id="dateForm">
                             <label>New birthdate:</label>
                             <input type="date"></input>
-                            <button type="submit">OK</button>
-                        </form>
+                        </div>
                     </div>
 
-                </div>
+                    
+                    <div class="submitContainer">
+                        <button type="submit" style="width: 80px; heigth: 40px">OK</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

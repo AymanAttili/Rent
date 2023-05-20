@@ -197,6 +197,7 @@ span{
     font-size: 13px;
 }
 
+
 .right-side input{
     margin-top: 5px;
     margin-bottom: 5px;
@@ -206,9 +207,8 @@ span{
 }
 
 .right-side select{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    height: 80px;
+    margin: 10px;
+    height: 30px;
     border: none;
     outline: none;
 }
@@ -237,6 +237,11 @@ span{
     display: flex;
     min-height: 100px;
 }
+#informatin-rows2{
+    border-bottom: 4px solid #09203f;
+    display: flex;
+    min-height: 100px;
+}
 
 .editForm{
     display: flex;
@@ -256,7 +261,11 @@ span{
     font-size: 14px;
     text-indent: 8px;
 }
-
+.submitContainer{
+    display: flex; 
+    justify-content: center;
+    padding: 20px
+}
 #informatin-rows a{
     color: var(--secondary-color);
 }
