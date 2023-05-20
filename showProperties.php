@@ -5,7 +5,7 @@ include("database.php");
 <!-- need session handling, get the owner_user_name stored in the session in admin page -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">  
 
 <head>
   <meta charset="UTF-8">
@@ -21,7 +21,7 @@ include("database.php");
 
 <body>
 
-  <?php include('./Templates/navbar.php'); ?>
+   <?php include('./Templates/navbar.php'); ?> 
 
 
   
