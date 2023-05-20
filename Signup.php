@@ -256,7 +256,7 @@ if (isset($_POST['submit'])) {
         if ($affected_rows === 1) {
             //User registered successfully
             // redirect to login page
-            header("Location: login.php");
+            echo "<script> location.replace('login.php'); </script>";
             exit;
         } else {
             phpAlert("Error: User registration failed");

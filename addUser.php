@@ -245,9 +245,8 @@ if (isset($_POST['submit'])) {
         // Check if the second insertion was successful
         $affected_rows = mysqli_stmt_affected_rows($stmt);
         if ($affected_rows === 1) {
-            phpAlert("User registered successfully");
             // redirect to login page
-            header("Location: login.php");
+            echo "<script> location.replace('admin.php'); </script>";
             exit;
         } else {
             phpAlert("Error: User registration failed");
