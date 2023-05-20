@@ -11,6 +11,10 @@ $usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
 if ($loggedIn && $usertype == "admin") {
     header("location: admin.php");
 }
+if ($loggedIn && $usertype == "owner") {
+    header("location: myRealty.php");
+}
+
 ?>
 
 <!DOCTYPE html>
