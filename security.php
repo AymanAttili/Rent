@@ -1,3 +1,20 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include("database.php");
+// Check if the user is logged in
+$loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+$username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
+
+if ($loggedIn && $usertype == "admin") {
+    header("location: admin.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,3 +1,19 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include("database.php");
+// Check if the user is logged in
+$loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+$username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
+
+if ($loggedIn && $usertype == "admin") {
+    header("location: admin.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,15 +25,14 @@
     <link rel="stylesheet" href="./CSS/pers-det-style.css">
     <link rel="stylesheet" href="./CSS/navbar.css">
     <link rel="stylesheet" href="./CSS/footer.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Profile</title>
 </head>
 
 <body>
 
-    <?php    include('./Templates/navbar.php'); ?>
+    <?php include('./Templates/navbar.php'); ?>
 
 
     <!------------------------------------------START SECTION---------------------------------------->
@@ -67,12 +82,11 @@
                         <div class="col-12 col-lg-3 col-xl-2 text-center">
 
                             <label for="profile_photo" class="change_photo">
-                                <img class="right-side-profile-image" height="80px" width="80px"
-                                    src="./img/392f1715d423aedc.jpg" alt="">
+                                <img class="right-side-profile-image" height="80px" width="80px" <?php echo "src = '$profile_image_path' " ?> alt="">
                                 <span>change photo</span>
                             </label>
 
-                            <input type="file"  name="profile_photo" id="profile_photo" style="display:none">
+                            <input type="file" name="profile_photo" id="profile_photo" style="display:none">
                         </div>
 
 
@@ -113,7 +127,7 @@
                                     <label>First name:</label>
                                     <input type="text"></input>
                                 </div>
-                            
+
                                 <div>
                                     <label>Last name:</label>
                                     <input type="text"></input>
@@ -186,7 +200,7 @@
                     <div class="row align-items-center justify-content-between" id="informatin-rows">
 
                         <!--biryhdate lable-->
-                        
+
                         <label class="col-12 col-sm-3" for="">Birth date</label>
                         <div class="myMid col-12 col-sm-8">
                             <p>26/2/2002</p>
@@ -210,7 +224,7 @@
     <!------------------------------------------End SECTION---------------------------------------->
 
 
-    <?php include('./Templates/footer.php')?>
+    <?php include('./Templates/footer.php') ?>
 
     <script src="./js/popper.min.js"></script>
     <script src="./js/jquery-3.6.4.min.js"></script>
