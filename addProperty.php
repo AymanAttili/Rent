@@ -8,10 +8,11 @@ $usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
 include("database.php");
 if (!$loggedIn) {
     header("location: index.php");
-} 
-else {
+} else {
     if ($usertype == "admin") {
         header("location: admin.php");
+    } else if ($usertype == "tenant") {
+        header("location: index.php");
     }
 }
 

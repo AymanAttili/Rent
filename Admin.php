@@ -3,6 +3,13 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 include("database.php");
+$loggedIn = isset($_SESSION['loggedin']) ? $_SESSION['loggedin'] : false;
+$username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+$usertype = isset($_SESSION['user_type']) ? $_SESSION['user_type'] : '';
+
+if ($usertype != "admin") {
+    header("location: index.php");
+}
 include("processOwner.php");
 include("processTenant.php");
 ?>
