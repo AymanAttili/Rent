@@ -31,7 +31,7 @@ if ($loggedIn && $usertype != "admin") {
             <li onclick="window.open('./Index.php','_self')">Home</li>
             <?php
             if ($loggedIn && $usertype != "admin") {
-                echo "<li onclick='window.open('./Search.php','_self')''>Search</li>";
+                echo '<li onclick="window.open(\'./Search.php\',\'_self\')">Search</li>';
             }
             ?>
 
