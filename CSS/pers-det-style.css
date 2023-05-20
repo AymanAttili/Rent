@@ -167,7 +167,12 @@ section{
 /*end left side*/
 
 /*right side*/
-.right-side-profilr-image{
+
+.change_photo:hover{
+    cursor: pointer;
+}
+
+.right-side-profile-image{
     border-radius: 100px; 
     border: 3px solid #ec801d; 
     margin: auto;

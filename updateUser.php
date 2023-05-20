@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 include("database.php");
 session_start();
 // get from session
@@ -63,9 +63,13 @@ $password = $row['Password'];
                         <!--profile image -->
                         <div class="col-12 col-lg-3 col-xl-2 text-center">
 
-                            <img class="right-side-profilr-image" height="80px" width="80px" <?php echo "src = '$user_profile_image_path'" ?> alt="">
+                            <label for="profile_photo" class="change_photo">
+                                <img class="right-side-profile-image" height="80px" width="80px"
+                                    src="./img/392f1715d423aedc.jpg" alt="">
+                                <span>change photo</span>
+                            </label>
 
-                            <a href="#"><span>change photo</span></a>
+                            <input type="file"  name="profile_photo" id="profile_photo" accept="image/png, image/jpeg, image/jpg" style="display:none" required>
                         </div>
 
 
