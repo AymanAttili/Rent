@@ -71,7 +71,7 @@ if ($loggedIn && $usertype == "owner") {
                 $result = mysqli_query($conn, $query);
                 ?>
 
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <div style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
                     <?php
                     while ($row = mysqli_fetch_array($result)) {
                         $image_path = $row['Image_path'];
