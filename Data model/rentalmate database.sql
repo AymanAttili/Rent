@@ -33,6 +33,12 @@ CREATE TABLE `administrator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `administrator`
+--
+
+INSERT INTO `administrator` (`Admin_user_name`, `Password`) VALUES
+('admin', '$2y$10$owaKi1tr3A.WgsQzuyyMluhwM5tF/n7kr1Vtv5sdVTl1rb/b45A5W'),
+('saif', '$2y$10$S/Vb7U4oP7mXuI5/kApcVush5jmWFK0RS3qngw203L8w2k6T2Z5vm');
 
 
 -- --------------------------------------------------------
