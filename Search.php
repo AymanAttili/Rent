@@ -1,3 +1,7 @@
+
+
+<!-- still need backend code, to be completed later -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,6 @@
     <?php    include('./Templates/navbar.php'); ?>
 
     <!-- start Body -->
-
     
     <section class="cardsSection">
         

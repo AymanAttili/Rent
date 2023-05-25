@@ -1,4 +1,6 @@
 <?php
+//to be completed later
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
